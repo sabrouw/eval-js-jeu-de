@@ -1,0 +1,106 @@
+html{
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+.container-grid{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr 1fr;
+    grid-gap: 10px 10px;
+    height: 100vh;
+    background-color: #94d2bd;
+}
+
+
+.header{
+    grid-column-end: 4;
+    grid-row: 1;
+   
+    
+    
+}
+.new-game{
+    justify-items: end;
+    
+}
+.player1{
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-gap: 10px;
+}
+.player2{
+    grid-column-start: 4;
+    grid-row-start: 2;
+    grid-gap: 10px;
+    
+
+}
+.cube{
+    
+    grid-column: 3;
+    grid-row: 2;
+}
+.roll{ 
+    grid-column-start: 3;
+    grid-row-end: 4;
+}
+.hold{
+    grid-column-start: 3;
+    grid-row-end: 5;
+    
+}
+.round1{
+    grid-column-start: 2;
+    grid-row: 4;
+    
+}
+.round2{
+    grid-column-start: 4;
+    grid-row: 4;
+    align-items: end;
+    
+}
+.score-global1{
+    
+    grid-column: 2;
+    grid-row: 3;
+}
+.score-global2{
+    
+    grid-column: 4;
+    grid-row: 3;
+}
+button{
+    box-shadow: 0 0 10px gray;
+}
+
+:hover,
+:focus,
+:active,
+:visited,
+:link
+{
+    text-decoration: none;
+    color: white;
+}
+#roll{
+    background-color: #9b2226;
+    border-radius: 10%;
+    
+}
+#round1{
+    background-color: #bb3e03;
+}
+#round2{
+    background-color: #bb3e03;
+
+}
+#hold{
+    background-color: #ee9b00;
+}
+#header{
+    background-color: #0a9396;
+}
+#global{
+    background-color: #ee9b00;
+}
