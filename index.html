@@ -11,6 +11,8 @@
     <title>Document</title>
 </head>
 <body>
+    
+    
         <div class="container-grid">
         
             <div class="header">
@@ -21,10 +23,12 @@
 
             <div class="player1" id="global">
                 <p>player1</p>
+                <img height="200" src="/images/2028328-ffffff.png" alt="">
             </div>
             
             <div class="player2" id="global"> 
                 <p>player2</p>
+                <img height="200" src="/images/diablotin.png" alt="">
             </div>
 
             <div class="roll">
@@ -34,7 +38,9 @@
             </div>
             
             <div class="cube">
-                <canvas>dé</canvas>
+                <canvas id="canvas" height="300" width="300">dé</canvas>
+                <script>
+                </script>
             </div>
             
             <div class="score-global1" id="global">
@@ -61,8 +67,12 @@
                 <a href="">ROUND</a>
             </button>
             </div>
+            
+            <div class="audio">
+            <audio audio, controls src="/sons/zen.mp3" type="audio/mp3" id="audio"></audio>
+            </div>
     </div>
     <script src="app.js"></script>
-    <script type="module">import * as THREE from 'https://unpkg.com/three@0.139.0/build/three.module.js'</script>
+    
 </body>
 </html>

@@ -1,42 +1,48 @@
 html{
     font-family: 'Lato', sans-serif;
     color: white;
+    
 }
 .container-grid{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
     grid-template-rows: 1fr 2fr 1fr 1fr;
     grid-gap: 10px 10px;
-    height: 100vh;
-    background-color: #94d2bd;
+    justify-items: center;
+    background-color: black;
+      
 }
 
 
 .header{
     grid-column-end: 4;
     grid-row: 1;
+    
    
-    
-    
 }
 .new-game{
     justify-items: end;
+    margin-top: 20%;
     
 }
 .player1{
     grid-column-end: 3;
     grid-row-start: 2;
     grid-gap: 10px;
+    color: #bb3e03;
+    text-align: center;
+    
 }
 .player2{
     grid-column-start: 4;
     grid-row-start: 2;
     grid-gap: 10px;
+    color: #9b2226;
+    text-align: center;
     
 
 }
 .cube{
-    
     grid-column: 3;
     grid-row: 2;
 }
@@ -61,14 +67,22 @@ html{
     
 }
 .score-global1{
-    
+    font-size: 70px ;
+    color: #fb8500;
     grid-column: 2;
     grid-row: 3;
 }
 .score-global2{
-    
+    font-size: 70px ;
+    color: #fb8500;
     grid-column: 4;
     grid-row: 3;
+}
+
+.audio{
+    grid-column-start: 5;
+    grid-row-end: 6 ;
+    color: black;
 }
 button{
     box-shadow: 0 0 10px gray;
@@ -101,6 +115,8 @@ button{
 #header{
     background-color: #0a9396;
 }
-#global{
-    background-color: #ee9b00;
+
+audio{
+    height: 10vh;
+    width: 20vh;
 }
