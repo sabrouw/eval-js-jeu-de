@@ -1,15 +1,24 @@
 html{
-    font-family: 'Lato', sans-serif;
-    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+
+    
+}
+
+body{
+    background-color: black;
+    
     
 }
 .container-grid{
+    height: 100;
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
-    grid-template-rows: 1fr 2fr 1fr 1fr;
-    grid-gap: 10px 10px;
+    grid-template-columns: 10% 32% 16% 32% 10%;
+    grid-template-rows: 10% 45% 10% 10% 10%;
     justify-items: center;
     background-color: black;
+    
       
 }
 
@@ -28,9 +37,9 @@ html{
 .player1{
     grid-column-end: 3;
     grid-row-start: 2;
-    grid-gap: 10px;
-    color: #bb3e03;
+    color: white;
     text-align: center;
+    font-size: 35px;
     
 }
 .player2{
@@ -39,44 +48,51 @@ html{
     grid-gap: 10px;
     color: #9b2226;
     text-align: center;
-    
-
+    font-size: 35px;    
 }
 .cube{
     grid-column: 3;
     grid-row: 2;
+    position:absolute;
+    z-index: 2;
 }
 .roll{ 
     grid-column-start: 3;
-    grid-row-end: 4;
+    grid-row-start: 3;
 }
 .hold{
     grid-column-start: 3;
-    grid-row-end: 5;
-    
+    grid-row-start: 5; 
 }
-.round1{
+#round1{
     grid-column-start: 2;
-    grid-row: 4;
-    
+    grid-row: 5;
+    color: #ee9b00;
+    font-size: 35px;  
+    padding-top: 2%; 
 }
-.round2{
+#round2{
     grid-column-start: 4;
-    grid-row: 4;
+    grid-row: 5;
     align-items: end;
-    
+    color: #ee9b00;
+    font-size: 35px;
+    padding-top: 2%;
 }
+
 .score-global1{
-    font-size: 70px ;
-    color: #fb8500;
+    font-size: 250% ;
+    color: white;
     grid-column: 2;
     grid-row: 3;
+    padding-top: 2%;
 }
 .score-global2{
-    font-size: 70px ;
-    color: #fb8500;
+    font-size: 250%;
+    color: #9b2226;
     grid-column: 4;
     grid-row: 3;
+    padding-top: 2%;
 }
 
 .audio{
@@ -102,13 +118,10 @@ button{
     border-radius: 10%;
     
 }
-#round1{
-    background-color: #bb3e03;
-}
-#round2{
-    background-color: #bb3e03;
 
-}
+
+
+
 #hold{
     background-color: #ee9b00;
 }
@@ -119,4 +132,14 @@ button{
 audio{
     height: 10vh;
     width: 20vh;
+}
+.diablotin{
+    box-shadow: 0 0 35px #9b2226;
+    border-radius: 9%;
+    padding-right: 1%;
+    
+}
+.ange{
+    box-shadow: 0 0 35px white;
+    border-radius: 9%;
 }
