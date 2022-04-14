@@ -11,11 +11,11 @@ body{
     
 }
 .container-grid{
-    height: 100;
+    height: 100vh;
     width: 100%;
     display: grid;
     grid-template-columns: 10% 32% 16% 32% 10%;
-    grid-template-rows: 10% 45% 10% 10% 10%;
+    grid-template-rows: 10% 45% 10% 10% 10% auto;
     justify-items: center;
     background-color: black;
     
@@ -48,7 +48,8 @@ body{
     grid-gap: 10px;
     color: #9b2226;
     text-align: center;
-    font-size: 35px;    
+    font-size: 35px;
+     
 }
 .cube{
     grid-column: 3;
@@ -56,20 +57,47 @@ body{
     position:absolute;
     z-index: 2;
 }
-.roll{ 
-    grid-column-start: 3;
-    grid-row-start: 3;
+#roll1{ 
+    background-color: #9b2226;
+    border-radius: 10%;
 }
-.hold{
-    grid-column-start: 3;
-    grid-row-start: 5; 
+.roll1{
+    grid-column-start: 2;
+    grid-row-start: 6;
 }
+#roll2{
+    background-color: #9b2226;
+    border-radius: 10%;
+
+}
+.roll2{
+    grid-column-end: 5;
+    grid-row: 6;
+}
+
+#hold1{
+    
+    Background-color: #ee9b00;
+}
+#hold2{
+    
+    Background-color: #ee9b00;
+}
+.hold1{
+    grid-column-start: 2;
+    grid-row-start: 4; 
+}
+.hold2{
+    grid-column-start: 4;
+    grid-row-start: 4;
+}
+
 #round1{
     grid-column-start: 2;
     grid-row: 5;
     color: #ee9b00;
     font-size: 35px;  
-    padding-top: 2%; 
+    
 }
 #round2{
     grid-column-start: 4;
@@ -77,7 +105,7 @@ body{
     align-items: end;
     color: #ee9b00;
     font-size: 35px;
-    padding-top: 2%;
+    
 }
 
 .score-global1{
@@ -113,18 +141,8 @@ button{
     text-decoration: none;
     color: white;
 }
-#roll{
-    background-color: #9b2226;
-    border-radius: 10%;
-    
-}
 
 
-
-
-#hold{
-    background-color: #ee9b00;
-}
 #header{
     background-color: #0a9396;
 }
