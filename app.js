@@ -13,12 +13,16 @@
 let lancer1 = document.getElementById('roll1');
 //variable lancer2 pour joueur2
 let lancer2 = document.getElementById('roll2');
+let recup1 = document.getElementById('hold1');
+let recup2 = document.getElementById('hold2');
 let de;
 let global1 = 0;
 let global2 = 0;
-let global = 0;
+
 let rounds;
 //fonction de tri aleatoire du tableau des valeurs de dé
+de = [1, 2, 3, 4, 5, 6];
+console.log('mon tableau de dé '+ de); 
 function randomize(de) {
   var i, j, tmp;
   for (i = de.length - 1; i > 0; i--) {
@@ -30,24 +34,42 @@ function randomize(de) {
   return de;
   
 }
-
-//tableau de valeur de dé
-de = [1, 2, 3, 4, 5, 6];
-
-//nouveau tableau des valeur de dé aleatoire dans rounds
 de = randomize(de);
-rounds = de.map(function (){
-  randomize(de)});
-  console.log(rounds);
+console.warn('tableau aléatoire', de);
+for (i = 0; i <= de.length; i++);
+console.log(de)
 
-//quand on clique sur les roll1 et roll2 ca déclenche le classement aleatoire et
-// la recuperation de la valeur [4] pour lancer1 
-//et de la valeur [2] pour le lancer2
-lancer1.addEventListener('click',randomize(de), global);
-console.log(de[4]);
+console.log('mon lancer1 1 ere valeur'+ ':' + de[1]);
 
-lancer2.addEventListener('click',randomize(de),global);
-console.log(de[2]);
+
+lancer2.addEventListener('click', de);
+console.log('mon lancer2 2 eme valeur'+ ':' + de[2]);
+
+
+global1 =[];
+//tableau vide pour ajouter les valeurs des lancers
+global1 = de.map(function  ajouter1(global1, de){
+//quand je clique sur hold j'envoie mes score de de[1] dans global1
+    recup1.addEventListener('click', function recup(){
+  de[1] === global1;});};)
+  
+
+
+
+  
+
+
+
+
+
+
+//nouveau tableau des valeur de dé aleatoire qui placera les rounds
+
+
+
+
+
+
 
 
 
