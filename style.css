@@ -96,27 +96,40 @@ body{
     grid-column-start: 2;
     grid-row: 5;
     color: #ee9b00;
-    font-size: 35px;  
+    font-size: 20px;  
     
+}
+#message1{
+    font-size: 35px;
 }
 #round2{
     grid-column-start: 4;
     grid-row: 5;
     align-items: end;
     color: #ee9b00;
-    font-size: 35px;
+    font-size: 20px;
     
 }
-
+#message2{
+    font-size: 35px;
+}
 .score-global1{
-    font-size: 250% ;
+    font-size: 20px;
     color: white;
     grid-column: 2;
     grid-row: 3;
     padding-top: 2%;
 }
+
+#messageglobal2{
+    font-size: 35px;
+}
+
+#messageglobal1{
+    font-size: 35px;
+}
 .score-global2{
-    font-size: 250%;
+    font-size: 20px;
     color: #9b2226;
     grid-column: 4;
     grid-row: 3;

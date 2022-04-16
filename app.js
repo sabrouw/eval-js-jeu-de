@@ -8,7 +8,6 @@
 //sinon le joueur qui a 100 à gagné
 
 //toutes mes variable seront des nombres entier
-//
 //variable lancer 1 pour joueur1
 let lancer1 = document.getElementById('roll1');
 //variable lancer2 pour joueur2
@@ -16,13 +15,12 @@ let lancer2 = document.getElementById('roll2');
 let recup1 = document.getElementById('hold1');
 let recup2 = document.getElementById('hold2');
 let de;
-let global1 = 0;
-let global2 = 0;
 
-let rounds;
 //fonction de tri aleatoire du tableau des valeurs de dé
+//tableau de mon dé
 de = [1, 2, 3, 4, 5, 6];
 console.log('mon tableau de dé '+ de); 
+//function qui randomize
 function randomize(de) {
   var i, j, tmp;
   for (i = de.length - 1; i > 0; i--) {
@@ -33,147 +31,120 @@ function randomize(de) {
   }
   return de;
   
-}
-de = randomize(de);
-console.warn('tableau aléatoire', de);
-for (i = 0; i <= de.length; i++);
-console.log(de)
-
-console.log('mon lancer1 1 ere valeur'+ ':' + de[1]);
-
-
-lancer2.addEventListener('click', de);
-console.log('mon lancer2 2 eme valeur'+ ':' + de[2]);
-
-
-global1 =[];
-//tableau vide pour ajouter les valeurs des lancers
-global1 = de.map(function  ajouter1(global1, de){
-//quand je clique sur hold j'envoie mes score de de[1] dans global1
-    recup1.addEventListener('click', function recup(){
-  de[1] === global1;});};)
+  }
   
+//tableau rounds vide
+let round1 = [];
+//variable de1 qui contient la valeur des lancers du joueur 1
+console.log('valeur de1[1] avant random:'+de[1]);
 
 
+// au clique sur mon rolldice je lance le dé et stock sa valeur dans un tableau rounds
+lancer1.onclick = function(){
+  for (i = 0; i <5; i++);
+  de = randomize(de);
+      console.warn('tableau aléatoire', de);
+      console.log('valeur de[1] après random:'+ de[1]);
+// si ma valeur de [1]est supérieure à 1
+  if (de[1] >1 && de[1]<7){
+//alors je push la valeur de de[1] dans mon nouveau tableau rounds
+round1.push(de[1]++);  
+//et je donne mon tableau  apres avoir ajouter mes [1]
+            console.log('valeur rounds actuelle après ajout des valeur:'+ (round1));
+// je parcour mon tableau rounds
+  for(i = 0; i< 5; i++);
+    
+  let sumWithInitialValue1 = round1.reduce(
+          (previousValue , currentValue) => previousValue + currentValue);
+          console.log('somme de mon tableau round1 :' +sumWithInitialValue1);
+        //affiche la somme sur ma page
+        message1.innerHTML = sumWithInitialValue1;
+    }
+      else {
+//sinon je donne ma valeur de rounds sans ajout
+            console.log('valeur rounds actuelle si valeur du lancer = 1:'+ (round1))}};
 
+
+//nouveau tableau global avec le total de tous les global
+let global1 = [];
+//fonction qui envoie le score round dans le global si on clique sur hold
+recup1.onclick = function roundOnGlobal(){
+//parcour du tableau des valeurs de round1
+      for (i = 0; i < 5; i++);
+//creation du tableau global1 avec le total des round1
+      global1.push(round1);
+      console.log('affichage de mon tableau global1 :' + global1);
+
+//la formule pour ajouter toutes les valeurs au score global1
+
+
+//la variable ou on stock la formule reduce pour la somme des valeur du tableau round1
+  let sumWithGlobaleInitialValue1 = round1.reduce(
+//valeur precedente, valeur courante => valeur precedente + valeur courante, valeur initiale
+         (previousValue , currentValue) => previousValue + currentValue);
+           console.log('somme de mon tableau round1 :' +sumWithGlobaleInitialValue1);
+          console.log('mon tableau global1 :'+global1);
+  //On change le dom avec la valeur de global
+  messageglobal1.innerHTML = sumWithGlobaleInitialValue1;
+  //tant que ma fonction est cliquée alors on met 0 en valeur dans le dom et on reinitialise le tableau à 0
+       while(roundOnGlobal){
+        message1.innerHTML = '0';
+        round1 = []; 
+          return global1;
+       };
+//reset le tableau round1
+          console.log('tableau vide'+ round1); 
+  };
+//fonction lancer somme et reset pour le joueur 2
+  let round2 = [];
+    lancer2.onclick = function(){
+      for (i = 0; i <= de.length; i++);
+      de = randomize(de);
+          console.warn('tableau aléatoire', de);
+          console.log('valeur de[1] après random:'+ de[2]);
+          // si ma valeur de [1]est supérieure à 1
+  if (de[2] >1 && de[2]<7){
+          
+//alors je push la valeur de de[1] dans mon nouveau tableau rounds
+  round2.push(de[2]++);  
+//et je log mon tableau  apres avoir ajouter mes [2]
+        console.log('valeur round2 actuelle après ajout des valeur:'+ (round2));
+// je parcour mon tableau rounds
+  for(i = 0; i< 5; i++); 
   
+  let sumWithInitialValue2 = round2.reduce(
+      (previousValue , currentValue) => previousValue + currentValue, 0);
+            console.log('somme de mon tableau round2 :' +sumWithInitialValue2);
+//affiche la somme sur ma page
+        message2.innerHTML = sumWithInitialValue2;
+      }
+      else {
+//sinon je donne ma valeur de rounds sans ajout
+            console.log('valeur rounds actuelle si on ajoute pas:'+ (round2));
+        }};
+//tableau global2 accumuler les rounds
+  let global2 = [];
+//fonction qui envoie le score round dans le global si on clique sur hold
+  recup2.onclick = function (){
+//parcour du tableau des valeurs de round1
+    for (i = 0; i <5; i++);
+//creation du tableau global1 avec le total des round1
+    global2.push(round2);
+              console.log('affichage de mon tableau global2 :' + global2);
+//la formule pour ajouter toutes les valeurs au score global1
+       
+  let sumWithGlobaleInitialValue2 = round2.reduce(
+                 (previousValue , currentValue) => previousValue + currentValue);
+                 console.log('somme de mon tableau round2 :' +sumWithGlobaleInitialValue2);
+                console.log('mon tableau global2 :'+global2);
+          messageglobal2.innerHTML = sumWithGlobaleInitialValue2;          
+          
+//reset le tableau round dans le dom    
+          message2.innerHTML = '0';
+                        console.log('tableau vide'+ round2);
 
-
-
-
-
-
-//nouveau tableau des valeur de dé aleatoire qui placera les rounds
-
-
-
-
-
-
-
-
-
-
-//const iterator1 = de.entries(3);
-//console.log(iterator1.next(3).value);
-
-//ajout au global
-//si mon score est supérieur à 1 alors il s'ajoute au round
-//if (de >1){
-//  de ++ global1;
-//}
-
-
-
-////variable pour le score courant des joueurs1 et joueur 2 round
-//let scoreJoueur1 = document.getElementById('round1');
-//let scoreJoueur2 = document.getElementById('round2');
-//let global2 = document.getElementById('global2');
-//let global1 = document.getElementById('gobal1')
-//
-////tableauDesScores pour aller chercher les valeurs et les aditionner au global
-////let tableauDesScores = [scoreJoueur1, scoreJoueur2, global1, global2]
-////console.log(tableauDesScores)
-//
-////variable pour lancer de dé joueur 1
-//let lancer1 = document.getElementById('roll1');
-////clique sur le bouton rolld1 pour lancer le dé
-//
-//            console.log(lancers1.resultat);
-//
-////variable pour le message "tu peux rejouer"
-//let message1 = document.getElementById('message1');
-//
-////lancer de dé : déclaration de fonction pour générer un nombre aléatoire
-//function lancers1 (){
-//      resultat = function getRandomIntInclusive(min, max){
-//      min = Math.ceil(1);
-//      max = Math.floor(6);
-//      return Math.floor(Math.random() * (max - min +1)) + min;}; 
-//      
-////tant que resultat rst inférieur à supérieur à 1 et inférieur ou = à 6 alors ajouter resultats à résultat      
-//      while (resultat > 1 && resultat <= 6) {
-//            resultat + resultat + 1
-//
-////tant que cette condition au dessus est validée alor on change le text pour rejouer 
-//          message1.innerHTML ="tu peux rejouer"}
-//              console.log(lancer1);
-//};
-//
-//scoreJoueur1 = [lancers1, global1];
-//      for (let i = 0; i < scoreJoueur1.length ; i++) {
-//              console.log(scoreJoueur1.lancers1);
-// };
-//      
-////variable pour le message     
-//let message2 = document.getElementById('message2');
-//
-////lancer de dé : déclaration de fonction pour générer un nombre aléatoire  
-//let lancer2 = document.getElementById('roll2');
-//
-//$('#roll2').click(lancer2);   
-//function lancers2(){
-//      resultat = function getRandomIntInclusive(min, max){
-//          min = Math.ceil(1);
-//          max = Math.floor(6);
-//                  console.log(getRandomIntInclusive(1, 6));
-//        return Math.floor(Math.random() * (max - min + 1)) + min;
-//        };
-//                  console.log(resultat);                
-//                  
-//      while (resultat > 1 && resultat <= 6) {
-//            (resultat + resultat ++);
-//       message1.innerHTML ="tu peux rejouer"};
-//      
-//                  console.log('clicque 2 ok');
-//
-//          scoreJoueur2 = [lancer2, global2];
-//                  console.log(scoreJoueur2[2]); 
-//
-//let messageglobal1 = document.getElementById('messageglobal1');
-////bouton hold1 qui envoie dans le global1
-//let hold1 = document.getElementById('hold1');
-//$('#hold1').click(holdToGlobal1);
-//
-//let messageglobal2 = document.getElementById('messageglobal2');
-////bouton hold2 qui envoie dans le global2
-//
-//let hold2 = document.getElementById('hold2');
-//$('#hold2').click(holdToGlobal2);
-//
-////fonction qui envoie sur le global
-//function holdToGlobal2(){
-//      if (resultat >1 && global2 <100){
-//            messageglobal2.innerHTML = "99"
-//            //resultat +++ global1;
-//            //global2;
-//             
-//                console.log(global2);
-//      }
-//      else{
-//            messageglobal2.innerHTML = "dommage!"; 
-//      }
-//};
-//
-////condition pour gagner le jeu
-//while(scoreJoueur1 <100) {console.log('refais une partie')};}
+    while (sumWithGlobaleInitialValue2<100)
+  {
+              console.log('tu peux continuer de jouer');
+            sumGlobalInitialeValue2++;
+  }};
