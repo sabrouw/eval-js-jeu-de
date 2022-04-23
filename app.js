@@ -55,47 +55,50 @@ lancer1.onclick = function resultats(){
   if (de[1] >1 && de[1]<7){
 //alors je push la valeur de de[1] dans mon nouveau tableau rounds
 round1.push(de[1]++);  
+round1;
 //et je donne mon tableau  apres avoir ajouter mes [1]
             console.log('valeur round1 actuelle après ajout des valeur:'+ (round1));
 
 // je parcour mon tableau round1
   for(l = 0; l< 5; l++);
     
-  let sumWithInitialValue1 = round1.reduce(
+  let resultRound1= round1.reduce(
           (previousValue , currentValue) => previousValue + currentValue);
-          console.log('somme de mon tableau round1 :' +sumWithInitialValue1);
+          console.log('somme de mon tableau round1 :' +resultRound1);
         //affiche la somme sur ma page
-        message1.innerHTML = sumWithInitialValue1;
+        message1.innerHTML = resultRound1;
+        for(m = 0; m< round1.length; m++);
+        global1.unshift(resultRound1);
+        global1.splice(1)
+        global1;
+        console.log('affichage de mon tableau global1 :' + global1)
     }
       else {
 
  //sinon je donne ma valeur de rounds sans ajout
             console.log('tu as eu 1 alors tu passes ton tour !')}};
-
-
+            
 //*****************NOUVEAU TABLEAU GLOBAL1 VIDE OU ON METTRA LES ROUND1****************
 let global1 =[];
-let sumWithInitial1;
+
 //fonction qui envoie le score round1 dans le global si on clique sur hold
 recup1.onclick = function (){
 round1OnGlobal1();
-winer
-//parcour du tableau des valeurs de round1
-      for (m = 0; m < 5; m++);
+      for (n = 0; n< 5; n++);
       message1.innerHTML = '0';
 //creation du tableau global1 avec le total des round1
-      global1.push(round1);
       
-      console.log('affichage de mon tableau global1 :' + global1);};
+      ;};
 
 
 //********************FORMULE POUR AJOUTER LES VALEUR DES ROUNDS DANS MON GLOBAL1***********/
 function round1OnGlobal1(){
-resultGlobal1 = round1.reduce(
+resultGlobal1 = global1.reduce(
 //valeur de la somme de mon round2 + valeur courante de mon] , valeur de mon resultGlobal1
          (previousValue , currentValue) => previousValue + currentValue);
-         console.log(resultGlobal1)
-
+         console.log(resultGlobal1);
+          global1.push(resultGlobal1)
+          //global1.splice(1)
          //reset du tableau round1
 round1.splice(0,round1.length);
         
@@ -125,52 +128,50 @@ round1.splice(0,round1.length);
           console.warn('tableau aléatoire', de);
           console.log('valeur de[1] après random:'+ de[2]);
           
-// si ma valeur de [1]est supérieure à 1
+/*********************************CONDITION DE VALEUR ENTRE 1 ET 6*********************** */
   if (de[2] >1 && de[2]<7){
           
 //alors je push la valeur de de[1] dans mon nouveau tableau rounds
-      round2.push(de[2]); 
-      additionRound2();}
-      else {
-        //sinon je donne ma valeur de round2 sans ajouter
-                    console.log('tu as eu 1 alors tu passes ton tour !');
-                };
-
-//et je log mon tableau  apres avoir ajouter mes [2]
-        console.log('valeur round2 actuelle après ajout des valeur:'+ round2);
-
+      round2.push(de[2]++); 
+      round2();
+    //et je log mon tableau  apres avoir ajouter mes [2]
+    console.log('valeur round2 actuelle après ajout des valeur:'+ round2);}
+      // je parcour mon tableau round1
+  for(q = 0; q< 5; q++);
 
 ////********************FORMULE POUR AJOUTER LES VALEUR DES ROUNDS DANS MON GLOBAL***********/
-function additionRound2() {
+let resultRound2= round2.reduce(
+  (previousValue , currentValue) => previousValue + currentValue);
+  console.log('somme de mon tableau round2 :' +resultRound2);
+//affiche la somme sur ma page
+message2.innerHTML = resultRound2;
+for(p = 0; p< round1.length; p++);
+global2.unshift(resultRound2);
+global2.splice(1)
+global2;
+console.log('affichage de mon tableau global1 :' + global1)
 
-  resultRound2 = round2.reduce(
-  (previousValue, currentValue) => resultRound2 + de[2]);
-            console.log('somme de mon tableau round2 :' + resultRound2);
+else {
 
-//affiche la somme des round2 sur ma page
-        message2.innerHTML = resultRound2;
-      }
-      }
+//sinon je donne ma valeur de rounds sans ajout
+    console.log('tu as eu 1 alors tu passes ton tour !')}};
  
  
 //************************NOUVEAU TABLEAU GLOBAL2 DE TOUS LES ROUNDS****************
-//tableau global2 pour accumuler les rounds
-//creation du tableau global2 avec le valeurs de round2
-// ajout des valeurs du round2 dans me global2
+
 
   let global2 = [];
   
-  global2.push(sumWithInitial1);
+  global2.push(resultRound2);
   console.log('tableau global2 avec nouvelle valeurs: ' + global2);
 
 //*******************************APPEL DE MA FUNCTION RESULTGLOBAL2**************/
   recup2.onclick = function (){
  roundOnglobal2();
- winer();
-
- round2.splice(0,round2.length)
-      console.log('tableau vide '+ round2)
- messageglobal2.innerHTML = resultGlobal2;
+    for (o = 0; o< 5; o++);
+    message2.innerHTML = '0';};
+    
+ 
 
 //************************FORMULE ROUND2 DANS GLOBAL2**********************************/
 
@@ -179,6 +180,7 @@ function roundOnglobal2(){
              (previousValue , currentValue) => previousValue + currentValue);
            console.log('somme resultGlobal2: ' + resultGlobal2)
           return resultGlobal2;
+          global1.push(resultGlobal1);
         }
           
             
@@ -205,6 +207,9 @@ function roundOnglobal2(){
 
 const faceDice = de[1];
 console.log('faceDice' + faceDice);
-
-swith (de[1])
+//function img(){
+//  changeImg= swith (de[1]){
+//  case 1: let img1
+//
+//}}
 
