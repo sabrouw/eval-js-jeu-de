@@ -10,20 +10,37 @@
 //sinon le joueur qui a 100 à gagné
 
 //***************************VARIABLES UTILES***************************************
-//variable lancer 1 pour joueur1
 const lancer1 = document.getElementById('roll1');
-//variable lancer2 pour joueur2
 const lancer2 = document.getElementById('roll2');
 const recup1 = document.getElementById('hold1');
 const recup2 = document.getElementById('hold2');
 let de;
+let global1;
+let global2;
+let round1 = [];
+let round2 = [];
+let resultGlobal1 = 0;
+let resultGlobal2 = 0;
+let resultRound1;
+let resultRound2;
+let player1;
+let player2;
+let activePlayer;
+let newGame = document.getElementById('newgame');
 
-
-
+/*********************************BUTTON NEW GAME**********************************/
+newGame.onclick = function resultats(){
+  round1 = 0;
+  round2 = 0;
+  global1 = 0;
+  global2 = 0;
+  message1.innertext = '0';
+  message2.textcontent = '0';
+  messageglobal1.textcontent = '0';
+  messageglobal2.textcontent = '0';
+};
 
 //*******************************TABLEAU DE 1 A 6************************************* 
-//fonction de tri aleatoire du tableau des valeurs de dé
-//tableau de mon dé de base
 de = [1, 2, 3, 4, 5, 6];
 console.log('mon tableau de dé '+ de); 
 
@@ -38,178 +55,208 @@ function randomize(de) {
   }
   return de;
     }
-//*******************************TABLEAU ROUND VIDE************************************ 
-let round1 = [];
-//variable de1 qui contient la valeur des lancers du joueur 1
-console.log('valeur de1[1] avant random:'+de[1]);
-
-//****************************FONCTION POUR BOUTON ROLLDICE1*****************
-// au clique sur mon rolldice je lance le dé et stock sa valeur dans un tableau round1
-lancer1.onclick = function resultats(){
-  for (k = 0; k <5; k++);
-  de = randomize(de);
-      console.warn('tableau aléatoire', de);
-      console.log('valeur de[1] après random:'+ de[1]);
-
-/*********************************CONDITION DE VALEUR ENTRE 1 ET 6*********************** */
-  if (de[1] >1 && de[1]<7){
-//alors je push la valeur de de[1] dans mon nouveau tableau rounds
-round1.push(de[1]++);  
-round1;
-//et je donne mon tableau  apres avoir ajouter mes [1]
-            console.log('valeur round1 actuelle après ajout des valeur:'+ (round1));
-
-// je parcour mon tableau round1
-  for(l = 0; l< 5; l++);
+    console.warn('tableau aléatoire', de);
+    console.log('valeur de[1] après random:'+ de[1]);
     
-  let resultRound1= round1.reduce(
-          (previousValue , currentValue) => previousValue + currentValue);
-          console.log('somme de mon tableau round1 :' +resultRound1);
-        //affiche la somme sur ma page
-        message1.innerHTML = resultRound1;
-        for(m = 0; m< round1.length; m++);
-        global1.unshift(resultRound1);
-        global1.splice(1)
-        global1;
-        console.log('affichage de mon tableau global1 :' + global1)
-    }
-      else {
+let de1 = de[1];
+let de2 = de[2];
+console.log('de1 :' + de1);
+console.log('de2 :' + de2);
+/*********************************CONDITION DE VALEUR ENTRE 1 ET 6*********************** */
+function cond() {
+  if (de1 <1 && de1< 7 || de2 >1 && de2<7){
+    console.log('bravo');
+  }
+  else
+  playerActive == false
+};
 
- //sinon je donne ma valeur de rounds sans ajout
-            console.log('tu as eu 1 alors tu passes ton tour !')}};
-            
-//*****************NOUVEAU TABLEAU GLOBAL1 VIDE OU ON METTRA LES ROUND1****************
-let global1 =[];
+/*********************************FUNCTION ACTIVE PLAYER*********************** */
+function switchPlayer(){
+  if (activePlayer === 'player1') {
+      activePlayer = 'player2';
+      console.log(`function switchPlayer : ${activePlayer}`);
+  } else {
+      activePlayer = 'player1';
+      console.log('mon active player est : ' + activePlayer);
+  }
+};
 
-//fonction qui envoie le score round1 dans le global si on clique sur hold
-recup1.onclick = function (){
-round1OnGlobal1();
-      for (n = 0; n< 5; n++);
-      message1.innerHTML = '0';
-//creation du tableau global1 avec le total des round1
+/******************************CONDITION SI LE DE FAIT 1************************************ */
+function DiceOne(){
+  if (de1 === 1) {
+      if (activePlayer === 'player1') {
+          activePlayer = 'player2';
+          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne `);
+          resultRound1 = 0;
+          message1.innerHTML = resultRound1;
+          resultRound2 = 0;
+          message2.innerHTML= resultRound2;
+      } else {
+          activePlayer = 'player1';
+          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne`);
+          resultRound2 = 0;
+          message2.innerHTML = resultRound2;
+          resultRound1 = 0;
+          message1.innerHTML = resultRound1;
+      }
+  }
+}
+/*********************************FORMULE AJOUTER SOMME ROUND1 DANS GLOBAL1************************/
+function totalRound1(){
+resultRound1 = round1.reduce(
+        (previousValue , currentValue) => previousValue + currentValue);
+        console.log('somme de mon tableau round1 :' +resultRound1);  
+        ;
+       //j'ajoute la somme de mont tableau round1 dans ma variable global1
+       global1 = [resultRound1];
+       console.log('affichage global1 :' + global1);
+};
+
+/*********************************FORMULE AJOUTER SOMME ROUND1 DANS GLOBAL1************************/
+function totalRound2(){
+resultRound2 = round2.reduce(
+        (previousValue, currentValue) => previousValue + currentValue);
+        console.log('somme de mon tableau round2 :' +resultRound2);  
       
-      ;};
-
-
-//********************FORMULE POUR AJOUTER LES VALEUR DES ROUNDS DANS MON GLOBAL1***********/
-function round1OnGlobal1(){
-resultGlobal1 = global1.reduce(
-//valeur de la somme de mon round2 + valeur courante de mon] , valeur de mon resultGlobal1
-         (previousValue , currentValue) => previousValue + currentValue);
-         console.log(resultGlobal1);
-          global1.push(resultGlobal1)
-          //global1.splice(1)
-         //reset du tableau round1
-round1.splice(0,round1.length);
-        
-//On change le dom avec la valeur de global
-  messageglobal1.innerHTML = resultGlobal1;}
-//tant que ma fonction est cliquée alors on met 0 en valeur dans le dom et 
-//on reinitialise le tableau à 0
-       if(recup1.onclick){
-        message1.innerHTML = '0';
-        round1.splice(0,round1.length);
-             }
-       else{
-        recup1 === indefinded
-       }
-          console.log('tableau vide'+ round1); 
-
-
-//****************************FONCTION POUR BOUTON ROLLDICE2*****************
-//Nouveau tableau round2 vide
-  let round2 = [];
-  
-  
-//fonction lancer  et somme des round2 et reset pour le joueur 2
-    lancer2.onclick = function resultats(){
-      for (n = 0; n <5; n++);
-      de = randomize(de);
-          console.warn('tableau aléatoire', de);
-          console.log('valeur de[1] après random:'+ de[2]);
-          
-/*********************************CONDITION DE VALEUR ENTRE 1 ET 6*********************** */
-  if (de[2] >1 && de[2]<7){
-          
-//alors je push la valeur de de[1] dans mon nouveau tableau rounds
-      round2.push(de[2]++); 
-      round2();
-    //et je log mon tableau  apres avoir ajouter mes [2]
-    console.log('valeur round2 actuelle après ajout des valeur:'+ round2);}
-      // je parcour mon tableau round1
-  for(q = 0; q< 5; q++);
-
-////********************FORMULE POUR AJOUTER LES VALEUR DES ROUNDS DANS MON GLOBAL***********/
-let resultRound2= round2.reduce(
-  (previousValue , currentValue) => previousValue + currentValue);
-  console.log('somme de mon tableau round2 :' +resultRound2);
-//affiche la somme sur ma page
-message2.innerHTML = resultRound2;
-for(p = 0; p< round1.length; p++);
-global2.unshift(resultRound2);
-global2.splice(1)
-global2;
-console.log('affichage de mon tableau global1 :' + global1)
-
-else {
-
-//sinon je donne ma valeur de rounds sans ajout
-    console.log('tu as eu 1 alors tu passes ton tour !')}};
- 
- 
-//************************NOUVEAU TABLEAU GLOBAL2 DE TOUS LES ROUNDS****************
-
-
-  let global2 = [];
-  
-  global2.push(resultRound2);
-  console.log('tableau global2 avec nouvelle valeurs: ' + global2);
-
-//*******************************APPEL DE MA FUNCTION RESULTGLOBAL2**************/
-  recup2.onclick = function (){
- roundOnglobal2();
-    for (o = 0; o< 5; o++);
-    message2.innerHTML = '0';};
-    
- 
+       //j'ajoute la somme de mont tableau round1 dans ma variable global1
+       global2 = [resultRound2];
+       console.log('affichage global2 :' + global2);
+};
+/*********************************FORMULE ROUND1 DANS GLOBAL1************************/
+function totalGlobal1(){
+  resultGlobal1 = global1.reduce(
+    (previousValue , currentValue) => previousValue + currentValue);
+};
 
 //************************FORMULE ROUND2 DANS GLOBAL2**********************************/
-
-function roundOnglobal2(){
-  resultGlobal2 =  round2.reduce(
+function totalGlobal2(){
+  resultGlobal2 =  global2.reduce(
              (previousValue , currentValue) => previousValue + currentValue);
-           console.log('somme resultGlobal2: ' + resultGlobal2)
-          return resultGlobal2;
-          global1.push(resultGlobal1);
-        }
-          
-            
+                               };
+     
+//****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
+lancer1.onclick = function resultats(){
+  //randomize le tablea de
+  randomize(de);
+  //condition entre 1 et 6
+  cond();
+  //si je fait un je passe mon tour
+  DiceOne();
+  //push de[1] dans round1
+  round1.push(de[1]++);
+  //parcour du tableau de round1
+  for (k = 0; k <5; k++);
+  round1;
+  totalRound1();
+  //affiche la somme du tableau round1 sur ma page
+  message1.innerHTML = resultRound1;
+  console.log('ajout des valeur dans round1:'+ round1);}
+       
 
-//affiche somme finale du global2 dans mon dom
-            messageglobal2.innerHTML = resultGlobal2;
-//reset du round2
-      //let resetRound2 = round2;
-      round2.splice(0,round2.length)
-      console.log('tableau vide round2 '+ round2)
-      
-//message qui reset le chiffre du dom à 0 pour le round
-            message2.innerHTML ='0';
+        //parcour de mon tableau round1
+        for(m = 0; m< round1.length; m++);
+
+
+//****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
+recup1.onclick = function (){
+//formule pour ajouter le resultRound1 au global1 à revoir
+      totalGlobal1();
+      console.log('resultGlobal1 à ce niveau: ' + resultGlobal1)
+      switchPlayer();
+      //la valeur de global 1 est maintenant resultGlobal1
+      messageglobal1.innerHTML = resultGlobal1;
+      message1.innerHTML = '0';
+      //vidange du tableau round1 de sa premiere valeur
+      round1= [];
+      console.log('valeur de round1 apres reset : ' + round1)  
+    };
+
+//****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
+lancer2.onclick = function resultats(){
+  //randomize le tablea de
+  randomize(de);
+  //condition entre 1 et 6
+  cond();
+  //si je fait un je passe mon tour
+  DiceOne();
+  //push de[1] dans round1
+  round2.push(de[1]++);
+  //parcour du tableau de round1
+  for (l = 0; l <5; l++);
+  round2;
+  totalRound2();
+  //affiche la somme du tableau round1 sur ma page
+  message2.innerHTML = resultRound2;
+  console.log('ajout des valeur dans round:'+ round2);}
+       
+
+        //parcour de mon tableau round1
+        for(n = 0; n< round1.length; n++);
+
+
+//****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
+recup2.onclick = function (){
+//formule pour ajouter le resultRound1 au global1 à revoir
+      totalGlobal2();
+      console.log('resultGlobal1 à ce niveau: ' + resultGlobal2);
+      switchPlayer();
+      //la valeur de global 1 est maintenant resultGlobal1
+      messageglobal2.innerHTML = resultGlobal2;
+      message2.innerHTML = '0';
+      //vidange du tableau round1 de sa premiere valeur
+      round2= [];
+      console.log('valeur de round1 apres reset : ' + round2)  
+    };
+
 
 //si  ma valeur totale de globale < 100 alors on met reset le tableau des rounds des 2 joueurs 
 //et on continue sinon on met un message 'tu as gagné'   
   function winer(){ 
   if(sumWithInitial1 === 100){
     alert('tu as gagné !!😄');};
-      console.log('Valeurs de round2 ' + round2);};};
+      console.log('Valeurs de round2 ' + round2);};
 
 
 /***************************FUNCTION POUR MES IMAGES DE VALEUR de[1]************************** */
 
-const faceDice = de[1];
-console.log('faceDice' + faceDice);
-//function img(){
-//  changeImg= swith (de[1]){
-//  case 1: let img1
-//
-//}}
 
+let listeImgages = document.querySelectorAll('ul.li');
+for (let ul = 1;  ul < 6; ul++);
+
+ console.log('img '+ listeImgages);
+
+let dede = resultats();
+console.log('valeur de mon de :' + round1);
+function resultImage () {
+  switch (de1){
+  case 1: let myImage1 = document.getElementById('img1');
+      console.log(myImage1);
+    breack;
+  case 2: let myImage2 = document.getElementById('img2');
+      console.log(myImage2);  
+      
+  case 3: let myImage3 = document.getElementById('img3');
+     console.log(myImage3);
+     breack;
+   
+  case 4: let myImage4 = document.getElementById('img4');
+     console.log(myImage4);
+     breack;
+   
+  case 5: let myImage5 = document.getElementById('img5');
+      console.log(myImage5);
+      breack;
+  case 6: let myImage6 = document.getElementById('img6');
+      console.log(myImage6);
+    breack;
+    default:
+      console.log('mais que se passe t il');
+      break;
+};
+//******************************STYLE ACTIVE PLAYER**************************/
+if(activePlayer === player1) {
+   document.getElementById('ange').style.boxShadow = 'orange'}
+   else{
+     console.log('ange')
+   };

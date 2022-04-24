@@ -1,15 +1,16 @@
 html{
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
+    font-weight: bold;
 
     
 }
 
-body{
-    background-color: black;
+/*body{
+/*    background-color: black;
     
     
-}
+}*/
 .container-grid{
     height: 100vh;
     width: 100%;
@@ -52,50 +53,63 @@ body{
      
 }
 .cube{
-    grid-column: 3;
-    grid-row: 2;
-    position:absolute;
+    grid-column-start: 3;
+    grid-row-end: 3;
     z-index: 2;
+    margin-right: 30%;
+    padding-top: 10%;
+    
+    
+}
+ul{
+    list-style: none;
 }
 #roll1{ 
-    background-color: #9b2226;
+    background-color: white;
     border-radius: 10%;
+    padding-top: 10%;
 }
 .roll1{
     grid-column-start: 2;
     grid-row-start: 6;
+    padding-top: 10%;
 }
 #roll2{
     background-color: #9b2226;
     border-radius: 10%;
+    padding-top: 10%;
 
 }
 .roll2{
     grid-column-end: 5;
     grid-row: 6;
+    padding-top: 10%;
+    
 }
 
 #hold1{
     
-    Background-color: #ee9b00;
+    Background-color: white;
 }
 #hold2{
     
-    Background-color: #ee9b00;
+    Background-color: #9b2226;
 }
 .hold1{
     grid-column-start: 2;
-    grid-row-start: 4; 
+    grid-row-end: 5; 
+    padding-top: 5%;
 }
 .hold2{
     grid-column-start: 4;
-    grid-row-start: 4;
+    grid-row-end:5;
+    padding-top: 5%;
 }
 
 #round1{
     grid-column-start: 2;
     grid-row: 5;
-    color: #ee9b00;
+    color: white;
     font-size: 20px;  
     
 }
@@ -106,8 +120,9 @@ body{
     grid-column-start: 4;
     grid-row: 5;
     align-items: end;
-    color: #ee9b00;
+    color: #9b2226;
     font-size: 20px;
+    margin-bottom: 10%;
     
 }
 #message2{
@@ -152,7 +167,8 @@ button{
 :link
 {
     text-decoration: none;
-    color: white;
+    color: black;
+    font-weight: bold;
 }
 
 
@@ -164,15 +180,20 @@ audio{
     height: 10vh;
     width: 20vh;
 }
-.diablotin{
+#diablotin{
     box-shadow: 0 0 35px #9b2226;
     border-radius: 9%;
     padding-right: 1%;
     
 }
-.ange{
+#ange{
     box-shadow: 0 0 35px white;
     border-radius: 9%;
+}
+
+
+#img{
+visibility: hidden;
 }
 
    
