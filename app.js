@@ -58,6 +58,8 @@ function randomize(de) {
     console.warn('tableau aléatoire', de);
     console.log('valeur de[1] après random:'+ de[1]);
     
+  randomize(de);
+    
 let de1 = de[1];
 let de2 = de[2];
 console.log('de1 :' + de1);
@@ -137,8 +139,7 @@ function totalGlobal2(){
      
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
-  //randomize le tablea de
-  randomize(de);
+  resultImage();
   //condition entre 1 et 6
   cond();
   //si je fait un je passe mon tour
@@ -174,9 +175,8 @@ recup1.onclick = function (){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
-  //randomize le tablea de
-  randomize(de);
-  //condition entre 1 et 6
+  resultImage();
+   //condition entre 1 et 6
   cond();
   //si je fait un je passe mon tour
   DiceOne();
@@ -219,41 +219,45 @@ recup2.onclick = function (){
 
 
 /***************************FUNCTION POUR MES IMAGES DE VALEUR de[1]************************** */
-
-
-let listeImgages = document.querySelectorAll('ul.li');
-for (let ul = 1;  ul < 6; ul++);
-
- console.log('img '+ listeImgages);
-
-let dede = resultats();
-console.log('valeur de mon de :' + round1);
 function resultImage () {
   switch (de1){
-  case 1: let myImage1 = document.getElementById('img1');
-      console.log(myImage1);
-    breack;
-  case 2: let myImage2 = document.getElementById('img2');
+  case 1: let myImage1 = document.createElement('img');
+  img.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
+  document.getElementById('body').appendChild(myImage1);
+            console.log(myImage1);
+    break;
+  case 2: let myImage2 = document.createElement('img');
+  img.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/two-310337__480.png';
+  document.getElementById('body').appendChild(myImage2);
       console.log(myImage2);  
+      break;
       
-  case 3: let myImage3 = document.getElementById('img3');
+  case 3: let myImage3 = document.createElement('img');
+  img.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/three-310336__480.png';
+  document.getElementById('body').appendChild(myImage3);
      console.log(myImage3);
-     breack;
+     break;
    
-  case 4: let myImage4 = document.getElementById('img4');
+  case 4: let myImage4 = document.createElement('img');
+  img.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312623__480.png';
+  document.getElementById('body').appendChild(myImage4);
      console.log(myImage4);
-     breack;
+     break;
    
-  case 5: let myImage5 = document.getElementById('img5');
+  case 5: let myImage5 = document.createElement('img');
+  img.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/five-310334__480.png';
+  document.getElementById('body').appendChild(myImage5);
       console.log(myImage5);
-      breack;
-  case 6: let myImage6 = document.getElementById('img6');
+      break;
+  case 6: let myImage6 = document.createElement('img');
+  img.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312621__480.png';
+  document.getElementById('body').appendChild(myImage6);
       console.log(myImage6);
     breack;
     default:
       console.log('mais que se passe t il');
       break;
-};
+};};
 //******************************STYLE ACTIVE PLAYER**************************/
 if(activePlayer === player1) {
    document.getElementById('ange').style.boxShadow = 'orange'}
