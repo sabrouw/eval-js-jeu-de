@@ -52,7 +52,7 @@ html{
     font-size: 35px;
      
 }
-.cube{
+#body{
     grid-column-start: 3;
     grid-row-end: 3;
     z-index: 2;
@@ -61,6 +61,8 @@ html{
     
     
 }
+
+
 ul{
     list-style: none;
 }
@@ -74,6 +76,7 @@ ul{
     grid-row-start: 6;
     padding-top: 10%;
 }
+
 #roll2{
     background-color: #9b2226;
     border-radius: 10%;
@@ -192,8 +195,6 @@ audio{
 }
 
 
-#img{
-visibility: hidden;
-}
+
 
    
