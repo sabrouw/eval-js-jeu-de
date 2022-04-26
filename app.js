@@ -66,7 +66,7 @@ let de2 = de[2];
 console.log('de1 :' + de1);
 console.log('de2 :' + de2);
 /*********************************CONDITION DE VALEUR ENTRE 1 ET 6*********************** */
-function cond() {
+function cond1() {
   if (de1 >1 && de1< 7){
     console.log('bravo');
   }
@@ -74,7 +74,7 @@ function cond() {
   activePlayer == player2;
 };
 
-function cond() {
+function cond2() {
   if (de2 >1 && de2< 7){
     console.log('bravo');
   }
@@ -118,7 +118,7 @@ function totalRound1(){
 resultRound1 = round1.reduce(
         (previousValue , currentValue) => previousValue + currentValue);
         console.log('somme de mon tableau round1 :' +resultRound1);  
-        ;
+        
        //j'ajoute la somme de mont tableau round1 dans ma variable global1
        global1 = [resultRound1];
        console.log('affichage global1 :' + global1);
@@ -143,7 +143,8 @@ function totalGlobal1(){
 //************************FORMULE ROUND2 DANS GLOBAL2**********************************/
 function totalGlobal2(){
   resultGlobal2 =  global2.reduce(
-             (previousValue , currentValue) => previousValue + currentValue);
+             (previousValue , currentValue) => previousValue + currentValue)
+             return resultGlobal2;
                                };
      
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
@@ -153,7 +154,7 @@ lancer1.onclick = function resultats(){
   console.log('function' + de[1])
   resultImage1(de[1]);
   //condition entre 1 et 6
-  cond();
+  cond1();
   //si je fait un je passe mon tour
   DiceOne();
   //push de[1] dans round1
@@ -188,13 +189,15 @@ recup1.onclick = function (){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
+  randomize(de);
+  de[2];
   resultImage2();
    //condition entre 1 et 6
-  cond();
+  cond2();
   //si je fait un je passe mon tour
   DiceOne();
-  //push de[1] dans round1
-  round2.push(de[1]++);
+  //push de[2] dans round2
+  round2.push(de[2]++);
   //parcour du tableau de round1
   for (l = 0; l <5; l++);
   round2;
@@ -204,7 +207,7 @@ lancer2.onclick = function resultats(){
   console.log('ajout des valeur dans round:'+ round2);}
        
         //parcour de mon tableau round1
-        for(n = 0; n< round1.length; n++);
+        for(n = 0; n< round2.length; n++);
 
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
@@ -225,9 +228,11 @@ recup2.onclick = function (){
 //si  ma valeur totale de globale < 100 alors on met reset le tableau des rounds des 2 joueurs 
 //et on continue sinon on met un message 'tu as gagné'   
   function winer(){ 
-  if(sumWithInitial1 === 100){
-    alert('tu as gagné !!😄');};
-      console.log('Valeurs de round2 ' + round2);};
+  if(resultGlobal1 > 100 || resultGlobal2 >100){
+    alert('tu as gagné !!😄');}
+    else{ 
+      console.log('Valeurs de round2 ' + round2);
+    }};
 
 
 /***************************FUNCTION POUR MES IMAGES DE VALEUR de[1]************************** */
