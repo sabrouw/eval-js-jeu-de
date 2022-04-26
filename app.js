@@ -137,9 +137,10 @@ resultRound2 = round2.reduce(
 /*********************************FORMULE ROUND1 DANS GLOBAL1************************/
 function totalGlobal1(){
   resultGlobal1 = global1.reduce(
-    (previousValue , currentValue) => previousValue + currentValue);
+    (resultGlobal1 , round1) => previousValue + currentValue)
+    return resultGlobal1;
 };
-
+console.log("totalGlobal1 avec valeur dans parenthese: "+ resultGlobal1)
 //************************FORMULE ROUND2 DANS GLOBAL2**********************************/
 function totalGlobal2(){
   resultGlobal2 =  global2.reduce(
@@ -182,7 +183,7 @@ recup1.onclick = function (){
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
-      //vidange du tableau round1 de sa premiere valeur
+      //vidange du tableau round1 de ses valeurs
       round1= [];
       console.log('valeur de round1 apres reset : ' + round1)  
     };
@@ -216,17 +217,16 @@ recup2.onclick = function (){
       totalGlobal2();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal2);
       switchPlayer();
-      //la valeur de global 1 est maintenant resultGlobal1
+      //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
-      //vidange du tableau round1 de sa premiere valeur
+      //vidange du tableau round2 de ses valeurs
       round2= [];
       console.log('valeur de round1 apres reset : ' + round2)  
     };
 
 
-//si  ma valeur totale de globale < 100 alors on met reset le tableau des rounds des 2 joueurs 
-//et on continue sinon on met un message 'tu as gagné'   
+//*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR A 100 ALORS IL GAGNE******/   
   function winer(){ 
   if(resultGlobal1 > 100 || resultGlobal2 >100){
     alert('tu as gagné !!😄');}
@@ -242,6 +242,7 @@ function resultImage1 () {
   let myImage1 = document.createElement('img');
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width= '100px';
+  myImage1.transition  = 1000;
   
               console.log(myImage1);
   break;
@@ -300,15 +301,6 @@ recup2.onclick = function (){
         round2= [];
         console.log('valeur de round1 apres reset : ' + round2)  
       };
-  
-  
-  //si  ma valeur totale de globale < 100 alors on met reset le tableau des rounds des 2 joueurs 
-  //et on continue sinon on met un message 'tu as gagné'   
-    function winer(){ 
-    if(sumWithInitial1 === 100){
-      alert('tu as gagné !!😄');};
-        console.log('Valeurs de round2 ' + round2);};
-  
   
   /***************************FUNCTION POUR MES IMAGES DE VALEUR de[2]************************** */
   function resultImage2 () {
