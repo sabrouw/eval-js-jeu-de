@@ -67,11 +67,19 @@ console.log('de1 :' + de1);
 console.log('de2 :' + de2);
 /*********************************CONDITION DE VALEUR ENTRE 1 ET 6*********************** */
 function cond() {
-  if (de1 <1 && de1< 7 || de2 >1 && de2<7){
+  if (de1 >1 && de1< 7){
     console.log('bravo');
   }
   else
-  playerActive == false
+  activePlayer == player2;
+};
+
+function cond() {
+  if (de2 >1 && de2< 7){
+    console.log('bravo');
+  }
+  else
+  activePlayer == player1;
 };
 
 /*********************************FUNCTION ACTIVE PLAYER*********************** */
@@ -143,7 +151,7 @@ lancer1.onclick = function resultats(){
   randomize(de);
   de[1];
   console.log('function' + de[1])
-  resultImage();
+  resultImage1(de[1]);
   //condition entre 1 et 6
   cond();
   //si je fait un je passe mon tour
@@ -168,6 +176,7 @@ recup1.onclick = function (){
 //formule pour ajouter le resultRound1 au global1 à revoir
       totalGlobal1();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1)
+      
       switchPlayer();
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
@@ -179,7 +188,7 @@ recup1.onclick = function (){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
-  resultImage();
+  resultImage2();
    //condition entre 1 et 6
   cond();
   //si je fait un je passe mon tour
@@ -194,7 +203,6 @@ lancer2.onclick = function resultats(){
   message2.innerHTML = resultRound2;
   console.log('ajout des valeur dans round:'+ round2);}
        
-
         //parcour de mon tableau round1
         for(n = 0; n< round1.length; n++);
 
@@ -223,7 +231,7 @@ recup2.onclick = function (){
 
 
 /***************************FUNCTION POUR MES IMAGES DE VALEUR de[1]************************** */
-function resultImage () {
+function resultImage1 () {
   switch (randomize(de[1])){
   case 1: 
   let myImage1 = document.createElement('img');
@@ -297,8 +305,8 @@ recup2.onclick = function (){
         console.log('Valeurs de round2 ' + round2);};
   
   
-  /***************************FUNCTION POUR MES IMAGES DE VALEUR de[1]************************** */
-  function resultImage () {
+  /***************************FUNCTION POUR MES IMAGES DE VALEUR de[2]************************** */
+  function resultImage2 () {
     switch (randomize(de[2])){
     case 1: 
     let myImage1 = document.createElement('img');
@@ -349,9 +357,3 @@ recup2.onclick = function (){
         console.log('mais que se passe-t-il');
         break;
   };};
-//******************************STYLE ACTIVE PLAYER**************************/
-//if(activePlayer === player1) {
-//   document.getElementById('ange').style.boxShadow = 'orange'}
-//   else{
-//     console.log('ange')
-//   };
