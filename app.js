@@ -28,6 +28,7 @@ let player2;
 let activePlayer;
 let newGame = document.getElementById('newgame');
 
+
 /*********************************BUTTON NEW GAME**********************************/
 newGame.onclick = function resultats(){
   round1 = 0;
@@ -58,13 +59,11 @@ function randomize(de) {
     randomize(de);
     console.warn('tableau aléatoire' + de);
     console.log('valeur de[1] après random:'+ de[1]);
-    
-  
-    
-let de1 = de[1];
-let de2 = de[2];
-console.log('de1 :' + de1);
-console.log('de2 :' + de2);
+ 
+    let de1 = de[1];
+    let de2 = de[2];
+    console.log('de1 :' + de1);
+    console.log('de2 :' + de2);
 /*********************************CONDITION DE VALEUR ENTRE 1 ET 6*********************** */
 function cond1() {
   if (de1 >1 && de1< 7){
@@ -93,6 +92,22 @@ function switchPlayer(){
   }
 };
 
+//FONCTION QUI SAUVEGARDE LES POINTS DANS SCORE GLOBAL :
+function totalGlobal() {
+  if (activePlayer === 'player1') {
+      resultGlobal1 = resultRound1 += resultGlobal1;
+      global1.textContent = resultGlobal1;
+      resultRound1 = 0;
+      round1.textContent = 0;
+      console.log(`le total du joueur 1 est : ${resultGlobal1} function globalPlayer`);
+  } else if (activePlayer === 'player2') {
+      resultGlobal2 = resultRound2 += resultGlobal2;
+      global2.textContent = resultGlobal2;
+      resultRound2 = 0;
+      round2.textContent = 0;
+      console.log(`le total du joueur 2 est : ${resultGlobal2} function globalPlayer`);
+  }
+};
 /******************************CONDITION SI LE DE FAIT 1************************************ */
 function DiceOne(){
   if (de1 === 1) {
@@ -118,8 +133,7 @@ function totalRound1(){
 resultRound1 = round1.reduce(
         (previousValue , currentValue) => previousValue + currentValue);
         console.log('somme de mon tableau round1 :' +resultRound1);  
-        
-       //j'ajoute la somme de mont tableau round1 dans ma variable global1
+               //j'ajoute la somme de mont tableau round1 dans ma variable global1
        global1 = [resultRound1];
        console.log('affichage global1 :' + global1);
 };
@@ -129,25 +143,26 @@ function totalRound2(){
 resultRound2 = round2.reduce(
         (previousValue, currentValue) => previousValue + currentValue);
         console.log('somme de mon tableau round2 :' +resultRound2);  
-      
-       //j'ajoute la somme de mont tableau round1 dans ma variable global1
-       global2 = [resultRound2];
+        //j'ajoute la somme de mont tableau round2 dans ma variable global2
+         global2 = [resultRound2];
        console.log('affichage global2 :' + global2);
 };
-/*********************************FORMULE ROUND1 DANS GLOBAL1************************/
-function totalGlobal1(){
-  resultGlobal1 = global1.reduce(
-    (resultGlobal1 , round1) => previousValue + currentValue)
-    return resultGlobal1;
-};
-console.log("totalGlobal1 avec valeur dans parenthese: "+ resultGlobal1)
-//************************FORMULE ROUND2 DANS GLOBAL2**********************************/
-function totalGlobal2(){
-  resultGlobal2 =  global2.reduce(
-             (previousValue , currentValue) => previousValue + currentValue)
-             return resultGlobal2;
-                               };
-     
+///*********************************FORMULE ROUND1 DANS GLOBAL1************************/
+//function totalGlobal1(){
+//  resultGlobal1 = global1.reduce(
+//    (resultGlobal1 , round1) => previousValue + currentValue)
+//    return resultGlobal1;
+//};
+//console.log("totalGlobal1 avec valeur dans parenthese: "+ resultGlobal1)
+//
+////************************FORMULE ROUND2 DANS GLOBAL2**********************************/
+//function totalGlobal2(){
+//  resultGlobal2 =  global2.reduce(
+//             (previousValue , currentValue) => global2 + round2)
+//             return resultGlobal2;
+//                               };
+
+
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
   randomize(de);
@@ -176,9 +191,8 @@ lancer1.onclick = function resultats(){
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup1.onclick = function (){
 //formule pour ajouter le resultRound1 au global1 à revoir
-      totalGlobal1();
+      totalGlobal();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1)
-      
       switchPlayer();
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
@@ -199,30 +213,32 @@ lancer2.onclick = function resultats(){
   DiceOne();
   //push de[2] dans round2
   round2.push(de[2]++);
-  //parcour du tableau de round1
+  //parcour du tableau de round2
   for (l = 0; l <5; l++);
   round2;
   totalRound2();
+  
   //affiche la somme du tableau round1 sur ma page
   message2.innerHTML = resultRound2;
-  console.log('ajout des valeur dans round:'+ round2);}
+  console.log('ajout des valeur dans round2:'+ round2);}
        
-        //parcour de mon tableau round1
+        //parcour de mon tableau round2
         for(n = 0; n< round2.length; n++);
 
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup2.onclick = function (){
-//formule pour ajouter le resultRound1 au global1 à revoir
-      totalGlobal2();
-      console.log('resultGlobal1 à ce niveau: ' + resultGlobal2);
+//formule pour ajouter le resultRound2 au global2 à revoir
+      totalGlobal();
       switchPlayer();
+      
+    
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
       //vidange du tableau round2 de ses valeurs
       round2= [];
-      console.log('valeur de round1 apres reset : ' + round2)  
+      console.log('valeur de round2 apres reset : ' + round2)  
     };
 
 
@@ -231,7 +247,7 @@ recup2.onclick = function (){
   if(resultGlobal1 > 100 || resultGlobal2 >100){
     alert('tu as gagné !!😄');}
     else{ 
-      console.log('Valeurs de round2 ' + round2);
+      console.log('on continue');
     }};
 
 
@@ -242,7 +258,8 @@ function resultImage1 () {
   let myImage1 = document.createElement('img');
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width= '100px';
-  myImage1.transition  = 1000;
+  myImage1.style.opacity = 1;
+  myImage1.style.opacityDuration = 1000;
   
               console.log(myImage1);
   break;
@@ -289,19 +306,7 @@ function resultImage1 () {
       break;
 };};
 
-recup2.onclick = function (){
-  //formule pour ajouter le resultRound1 au global1 à revoir
-        totalGlobal2();
-        console.log('resultGlobal1 à ce niveau: ' + resultGlobal2);
-        switchPlayer();
-        //la valeur de global 1 est maintenant resultGlobal1
-        messageglobal2.innerHTML = resultGlobal2;
-        message2.innerHTML = '0';
-        //vidange du tableau round1 de sa premiere valeur
-        round2= [];
-        console.log('valeur de round1 apres reset : ' + round2)  
-      };
-  
+
   /***************************FUNCTION POUR MES IMAGES DE VALEUR de[2]************************** */
   function resultImage2 () {
     switch (randomize(de[2])){
@@ -354,3 +359,14 @@ recup2.onclick = function (){
         console.log('mais que se passe-t-il');
         break;
   };};
+  //FONCTION QUI PERMET DE GRISER LE JOUEUR INACTIF:
+  //function activePlayerStyle(){
+  //  if (activePlayer === 'player1') {
+  //    document.getElementsByClassName('roll2').style.color = black;
+  //    document.getElementsByClassName('hold2').style.color = black;
+  //  }
+  //    else{
+  //      document.getElementsByClassName('roll1').style.color = black;
+  //      document.getElementsByClassName('hold1').style.color = black;
+  //    }};
+  
