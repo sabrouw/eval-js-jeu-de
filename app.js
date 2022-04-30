@@ -29,14 +29,14 @@ let newGame = document.getElementById('newgame');
 let randomNumber;
 let round = 0;
 
-
+console.log('active player est : '+ activePlayer)
 /*********************************BUTTON NEW GAME**********************************/
 newGame.onclick = function newGame(){
   start ();
   firstRoll();
   firstRandomPlayer();
   styleActivePlayer();
-  console.log('mon active player est ${activePlayer}'+ activePlayer);
+  console.log('mon active player est ${activePlayer}');
 };
 
 function start (){
@@ -50,7 +50,7 @@ function start (){
   messageglobal2.textcontent = '0';
 }
 
-console.log('mon active player est ${activePlayer}'+ activePlayer);
+console.log('mon active player est ${activePlayer}');
 
 //**************************  FUNCTION NOMBRE ALEATOIRE************* */
 function randomize(){
@@ -61,24 +61,17 @@ function randomize(){
    
 /*********************************FUNCTION ACTIVE PLAYER*********************** */
 function switchPlayer(){
-  if (activePlayer === player1) {
-      activePlayer = player2;
+  if (activePlayer === 'player1') {
+      activePlayer = 'player2';
       console.log(`function switchPlayer : ${activePlayer}`);
   } else {
       activePlayer = 'player1';
       console.log('mon active player est : ' + activePlayer);
   }
 };
-console.log('mon active player est ${activePlayer}'+ activePlayer);
+console.log('mon active player est ${activePlayer}');
 
-/******************FONCTION POUR DEFINIR L'ACTIVE PLAYER***********************/
-function firstRoll() {
-  if (round === 0) {
-      round =  Math.floor(Math.random() * 2) + 1;
-      console.log(`function firstRoll la valeur de round est ${round}`)
-      return activePlayer = `player${round}`;
-        }
-};
+
 console.log(`mon active player est player${round}`);
 function firstRandomPlayer() {
   round =  Math.floor(Math.random() * 2) + 1;
@@ -86,30 +79,26 @@ function firstRandomPlayer() {
   return activePlayer = `player${round}`;
   
 };
-console.log('mon active player est ${activePlayer}'+ activePlayer);
+console.log('mon active player est ${activePlayer}');
 /******************************CONDITION SI LE DE FAIT 1************************************ */
 function DiceOne(){
   if (randomNumber === 1) {
-      if (activePlayer === player1) {
+      if (activePlayer === 'player1') {
           lancer1.setAttribute('disabled','');
+          message1.innerHTML = 0;
           console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction diceOne `);
           resultRound1 = 0;
-          message1.innerHTML = 0;}
+          }
           
-     else if (activePlayer === player2)  {
+     else if (activePlayer === 'player2'){
       lancer2.setAttribute('disabled','');
       resultRound2 = 0;
-      message2.innerHTML = 0;
-    }
-          
-      else {
-          //activePlayer = player1;
-          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction diceOne`);
-          //resultRound2 = 0;
-          //message2.innerHTML = 0;           
-      };
-  };} 
-console.log('mon active player est ${activePlayer}'+ activePlayer);
+      message2.innerHTML = 0;}
+      else{
+        console.log("activePlayer est inconnu")
+      }
+    };}
+console.log('mon active player est ${activePlayer}');
 /*********************************FORMULE AJOUTER SOMME ROUND1 DANS GLOBAL1************************/
 function totalRound1(){
 resultRound1 = round1.reduce(
@@ -150,7 +139,8 @@ function totalGlobal() {
 lancer1.onclick = function resultats(){
   randomize();
   console.log('function: ' + randomNumber)
-  resultImage1(randomNumber);
+  resultImage();
+  animer();
   //si je fait un je passe mon tour
   DiceOne(activePlayer);
   //push de[1] dans round1
@@ -181,10 +171,10 @@ recup1.onclick = function (){
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
   randomize();
-  resultImage1();
+  resultImage();
+  animer()
   //si je fait un je passe mon tour
   DiceOne();
-   
   //push de[2] dans round2
   round2.push(randomNumber);
   //parcour du tableau de round2
@@ -208,7 +198,8 @@ recup2.onclick = function (){
       message2.innerHTML = '0';
       //vidange du tableau round2 de ses valeurs
       round2= [];
-      console.log('valeur de round2 apres reset : ' + round2)  
+      console.log('valeur de round2 apres reset : ' + round2) 
+
     };
 
 
@@ -222,25 +213,31 @@ recup2.onclick = function (){
 
 
 /***************************FUNCTION POUR MES IMAGES DE VALEUR de[1]************************** */
-
-function styleActivePlayer(){
-  if (activePlayer === 'player1'){
-    lancer2.setAttribute = ("disabled", "");
+function animer (){
+  let elem = document.getElementById('myImages');
+  let position = 0;
+  let id = setInterval(mvt, 5);
+  function mvt(){
+    if (position > 570 ){
+      clearInterval(id);
+    }
+    else{
+      position+15;
+      elem.style.left = position + "px";
+    }
   }
-  else if(activePlayer === 'player2')
-  lancer
-  };
-
-  function resultImage1 () {
+}
+  function resultImage () {
   switch (randomNumber){
   case 1: 
   let myImage1 = document.createElement('img');
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
-  document.getElementById('myImages').appendChild(myImage1).style.width= '100px';
-  
+  document.getElementsByTagName('img').item(0).style.width= '100px';
+ 
   
               console.log(myImage1);
   break;
+  
   case 2: 
   let myImage2 = document.createElement('img');
   myImage2.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/two-310337__480.png';
@@ -250,38 +247,34 @@ function styleActivePlayer(){
         console.log(myImage2);  
       break;
       
-  case 3:2
+  case 3:
   let myImage3 = document.createElement('img');
   myImage3.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/three-310336__480.png';
   document.getElementById('myImages').appendChild(myImage3).style.width = '100px';
-  
-    
+     
      console.log(myImage3);
      break;
    
   case 4: 
   let myImage4 = document.createElement('img');
   myImage4.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312623__480.png';
-  document.getElementById('myImages').appendChild(myImage4).style.width = '100px';
+  document.getElementById('myImages').appendChild(myImage4).style.width = '100px', visibility = 'visible';
   
- 
      console.log(myImage4);
      break;
    
   case 5: 
   let myImage5 = document.createElement('img');
-  myImage5.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/five-310334__480.png';
+  myImage5.src = '/images/de 5 icone.png';
   document.getElementById('myImages').appendChild(myImage5).style.width = '100px';
-
+  
   
       console.log(myImage5);
       break;
   case 6: let myImage6 = document.createElement('img');
   myImage6.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312621__480.png';
   document.getElementById('myImages').appendChild(myImage6).style.width = '100px';
-  myImage6.style.left = '5px';
-  myImage6.style.opacityDuration = '1000ms';
-  
+   
         console.log(myImage6);
     break;
     default:

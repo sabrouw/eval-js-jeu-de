@@ -6,20 +6,24 @@ html{
     
 }
 
-/*body{
-/*    background-color: black;
-    
-    
-}*/
+#backround{
+    background-image: url(/images/dice-g277d1f360_1920.jpg);
+    background-position: center;
+    background-color: black;
+    z-index: 0;
+
+}
+
 .container-grid{
     height: 100vh;
     width: 100%;
     display: grid;
-    grid-template-columns: 10% 32% 16% 32% 10%;
+    grid-template-columns: 10% 20% 40% 20% 10%;
     grid-template-rows: 10% 45% 10% 10% 10% auto;
     justify-items: center;
-    background-color: black;
+    z-index: 7;
     
+      
       
 }
 
@@ -56,16 +60,31 @@ html{
     grid-column-start: 3;
     grid-row-end: 3;
     z-index: 2;
-    margin-right: 30%;
-    padding-top: 10%;
+    margin-right: 5%;
+    padding-top: 10%;    
     
-    
+
 }
-
-
 ul{
     list-style: none;
 }
+
+ul img {
+    
+    animation: 5s goRight;
+    }
+
+    @keyframes goRight {
+        from { transform: rotate(0);
+                transform-style: preserve-3d;
+        }
+            to {transform: translateX(150px);
+                visibility: hidden;
+            }
+
+        }
+    
+
 #roll1{ 
     background-color: white;
     border-radius: 10%;
@@ -170,8 +189,8 @@ button{
 :link
 {
     text-decoration: none;
-    color: black;
-    font-weight: bold;
+    color: re;
+    font-weight: #9b2226;
 }
 
 
