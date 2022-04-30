@@ -26,74 +26,90 @@ let player1;
 let player2;
 let activePlayer;
 let newGame = document.getElementById('newgame');
+let randomNumber;
+let round = 0;
 
 
 /*********************************BUTTON NEW GAME**********************************/
-newGame.onclick = function resultats(){
+newGame.onclick = function newGame(){
+  start ();
+  firstRoll();
+  firstRandomPlayer();
+  styleActivePlayer();
+  console.log('mon active player est ${activePlayer}'+ activePlayer);
+};
+
+function start (){
   round1 = 0;
   round2 = 0;
   global1 = 0;
   global2 = 0;
-  message1.innertext = '0';
+  message1.textContent = '0';
   message2.textcontent = '0';
   messageglobal1.textcontent = '0';
   messageglobal2.textcontent = '0';
-};
+}
 
+console.log('mon active player est ${activePlayer}'+ activePlayer);
 
 //**************************  FUNCTION NOMBRE ALEATOIRE************* */
 function randomize(){
   randomNumber = Math.floor(Math.random() * 6 ) + 1;
-  console.warn('valeur de dé' + randomNumber);
+  console.warn('valeur de randomumber :' + randomNumber);
     return randomNumber;
-    }
-      
+    };
+   
 /*********************************FUNCTION ACTIVE PLAYER*********************** */
 function switchPlayer(){
-  if (activePlayer === 'player1') {
-      activePlayer = 'player2';
+  if (activePlayer === player1) {
+      activePlayer = player2;
       console.log(`function switchPlayer : ${activePlayer}`);
   } else {
       activePlayer = 'player1';
       console.log('mon active player est : ' + activePlayer);
-  }};
-
-/********************FONCTION QUI SAUVEGARDE LES POINTS DANS SCORE GLOBAL ************/
-function totalGlobal() {
-  if (activePlayer === 'player1') {
-      resultGlobal1 = resultRound1 += resultGlobal1;
-      global1.textContent = resultGlobal1;
-      resultRound1 = 0;
-      round1.textContent = 0;
-      console.log(`le total du joueur 1 est : ${resultGlobal1} function globalPlayer`);
-  } else if (activePlayer === 'player2') {
-      resultGlobal2 = resultRound2 += resultGlobal2;
-      global2.innerHTML = resultGlobal2;
-      resultRound2 = 0;
-      round2.textContent = 0;
-      console.log(`le total du joueur 2 est : ${resultGlobal2} function globalPlayer`);
   }
 };
+console.log('mon active player est ${activePlayer}'+ activePlayer);
+
+/******************FONCTION POUR DEFINIR L'ACTIVE PLAYER***********************/
+function firstRoll() {
+  if (round === 0) {
+      round =  Math.floor(Math.random() * 2) + 1;
+      console.log(`function firstRoll la valeur de round est ${round}`)
+      return activePlayer = `player${round}`;
+        }
+};
+console.log(`mon active player est player${round}`);
+function firstRandomPlayer() {
+  round =  Math.floor(Math.random() * 2) + 1;
+  console.log(`function firstRandomPlayer la valeur de tour est ${round}`)
+  return activePlayer = `player${round}`;
+  
+};
+console.log('mon active player est ${activePlayer}'+ activePlayer);
 /******************************CONDITION SI LE DE FAIT 1************************************ */
 function DiceOne(){
   if (randomNumber === 1) {
-      if (activePlayer === 'player1') {
-          activePlayer = 'player2';
-          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne `);
+      if (activePlayer === player1) {
+          lancer1.setAttribute('disabled','');
+          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction diceOne `);
           resultRound1 = 0;
-          message1.innerHTML = resultRound1;
-          resultRound2 = 0;
-          message2.innerHTML= resultRound2;
-      } else {
-          activePlayer = 'player1';
-          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne`);
-          resultRound2 = 0;
-          message2.innerHTML = resultRound2;
-          resultRound1 = 0;
-          message1.innerHTML = resultRound1;
-      }
-  }
-}
+          message1.innerHTML = 0;}
+          
+     else if (activePlayer === player2)  {
+      lancer2.setAttribute('disabled','');
+      resultRound2 = 0;
+      message2.innerHTML = 0;
+    }
+          
+      else {
+          //activePlayer = player1;
+          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction diceOne`);
+          //resultRound2 = 0;
+          //message2.innerHTML = 0;           
+      };
+  };} 
+console.log('mon active player est ${activePlayer}'+ activePlayer);
 /*********************************FORMULE AJOUTER SOMME ROUND1 DANS GLOBAL1************************/
 function totalRound1(){
 resultRound1 = round1.reduce(
@@ -113,22 +129,39 @@ resultRound2 = round2.reduce(
          global2 = [resultRound2];
        console.log('affichage global2 :' + global2);
 };
+/**************FONCTION QUI SAUVEGARDE LES POINTS DANS SCORE GLOBAL ******/
+function totalGlobal() {
+  if (activePlayer === 'player1') {
+      resultGlobal1 = resultRound1 += resultGlobal1;
+      global1.textContent = resultGlobal1;
+      resultRound1 = 0;
+      round1.textContent = 0;
+      console.log(`le total du joueur 1 est : ${resultGlobal1} function globalPlayer`);
+  } else if (activePlayer === 'player2') {
+      resultGlobal2 = resultRound2 += resultGlobal2;
+      global2.textContent = resultGlobal2;
+      resultRound2 = 0;
+      round2.textContent = 0;
+      console.log(`le total du joueur 2 est : ${resultGlobal2} function globalPlayer`);
+  }
+};
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
-  randomize()
-  console.log('nombre aleatoire' + randomNumber)
-  resultImage();
+  randomize();
+  console.log('function: ' + randomNumber)
+  resultImage1(randomNumber);
   //si je fait un je passe mon tour
-  DiceOne();
+  DiceOne(activePlayer);
   //push de[1] dans round1
-  round1.push(randomNumber++);
+  round1.push(randomNumber);
+  //parcour du tableau de round1
+  for (k = 0; k <5; k++);
   round1;
   totalRound1();
   //affiche la somme du tableau round1 sur ma page
   message1.innerHTML = resultRound1;
-  console.log('ajout des valeur dans round1:'+ round1);}        //parcour de mon tableau round1
-        for(m = 0; m< round1.length; m++);
+  console.log('ajout des valeur dans round1:'+ round1);}
 
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
@@ -148,26 +181,28 @@ recup1.onclick = function (){
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
   randomize();
-  resultImage();
+  resultImage1();
   //si je fait un je passe mon tour
   DiceOne();
+   
   //push de[2] dans round2
-  round2.push(randomNumber++);
+  round2.push(randomNumber);
+  //parcour du tableau de round2
+  for (l = 0; l <5; l++);
   round2;
   totalRound2();
-  //affiche la somme du tableau round1 sur ma page
   message2.innerHTML = resultRound2;
   console.log('ajout des valeur dans round2:'+ round2);}
+  //affiche la somme du tableau round1 sur ma page
+
        
-        //parcour de mon tableau round2
-        for(n = 0; n< round2.length; n++);
+
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup2.onclick = function (){
 //formule pour ajouter le resultRound2 au global2 à revoir
       totalGlobal();
-      console.log('totalglobal2'+totalGlobal)
-      switchPlayer();  
+      switchPlayer();
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
@@ -187,14 +222,22 @@ recup2.onclick = function (){
 
 
 /***************************FUNCTION POUR MES IMAGES DE VALEUR de[1]************************** */
-function resultImage () {
-  switch (randomize()){
+
+function styleActivePlayer(){
+  if (activePlayer === 'player1'){
+    lancer2.setAttribute = ("disabled", "");
+  }
+  else if(activePlayer === 'player2')
+  lancer
+  };
+
+  function resultImage1 () {
+  switch (randomNumber){
   case 1: 
   let myImage1 = document.createElement('img');
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width= '100px';
-  myImage1.style.opacity = 1;
-  myImage1.style.opacityDuration = 1000;
+  
   
               console.log(myImage1);
   break;
@@ -203,13 +246,15 @@ function resultImage () {
   myImage2.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/two-310337__480.png';
   document.getElementById('myImages').appendChild(myImage2).style.width = '100px';
   
+  
         console.log(myImage2);  
       break;
       
-  case 3: 
+  case 3:2
   let myImage3 = document.createElement('img');
   myImage3.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/three-310336__480.png';
   document.getElementById('myImages').appendChild(myImage3).style.width = '100px';
+  
     
      console.log(myImage3);
      break;
@@ -218,6 +263,7 @@ function resultImage () {
   let myImage4 = document.createElement('img');
   myImage4.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312623__480.png';
   document.getElementById('myImages').appendChild(myImage4).style.width = '100px';
+  
  
      console.log(myImage4);
      break;
@@ -226,13 +272,15 @@ function resultImage () {
   let myImage5 = document.createElement('img');
   myImage5.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/five-310334__480.png';
   document.getElementById('myImages').appendChild(myImage5).style.width = '100px';
-  
+
   
       console.log(myImage5);
       break;
   case 6: let myImage6 = document.createElement('img');
   myImage6.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312621__480.png';
   document.getElementById('myImages').appendChild(myImage6).style.width = '100px';
+  myImage6.style.left = '5px';
+  myImage6.style.opacityDuration = '1000ms';
   
         console.log(myImage6);
     break;
@@ -241,17 +289,5 @@ function resultImage () {
       break;
 };};
 
-
   
-  //FONCTION QUI PERMET DE GRISER LE JOUEUR INACTIF:
-  //function activePlayerStyle(){
-  //  if (activePlayer === 'player1') {
-  //    document.getElementsByClassName('roll2').style.color = black;
-  //    document.getElementsByClassName('hold2').style.color = black;
-  //  }
-  //    else{ 
-   //       activePlayer === 'player';
-  //      document.getElementsByClassName('roll1').style.color = black;
-  //      document.getElementsByClassName('hold1').style.color = black;
-  //    }};
   
