@@ -32,11 +32,26 @@ let round = 0;
 console.log('active player est : '+ activePlayer)
 /*********************************BUTTON NEW GAME**********************************/
 newGame.onclick = function newGame(){
+  getRandomIntStart();
+  getRandomIntLancer();
   start ();
-  firstRoll();
-  firstRandomPlayer();
-  styleActivePlayer();
   console.log('mon active player est ${activePlayer}');
+};
+// FONCTION POUR DEFINIR L'ACTIVE PLAYER :
+function getRandomIntLancer() {
+  if (tour === 0) {
+      tour =  Math.floor(Math.random() * 2) + 1;
+      console.log(`function getRandomInt la valeur de tour est ${tour}`)
+      return activePlayer = `player${tour}`;
+      
+  }
+};
+
+function getRandomIntStart() {
+      tour =  Math.floor(Math.random() * 2) + 1;
+      console.log(`function getRandomInt la valeur de tour est ${tour}`)
+      return activePlayer = `player${tour}`;
+     
 };
 
 function start (){
@@ -62,43 +77,37 @@ function randomize(){
 /*********************************FUNCTION ACTIVE PLAYER*********************** */
 function switchPlayer(){
   if (activePlayer === 'player1') {
-      activePlayer = 'player2';
+      activePlayer = 'player1';
       console.log(`function switchPlayer : ${activePlayer}`);
   } else {
-      activePlayer = 'player1';
+      activePlayer === 'player2';
       console.log('mon active player est : ' + activePlayer);
   }
 };
 console.log('mon active player est ${activePlayer}');
 
-
-console.log(`mon active player est player${round}`);
-function firstRandomPlayer() {
-  round =  Math.floor(Math.random() * 2) + 1;
-  console.log(`function firstRandomPlayer la valeur de tour est ${round}`)
-  return activePlayer = `player${round}`;
-  
-};
-console.log('mon active player est ${activePlayer}');
 /******************************CONDITION SI LE DE FAIT 1************************************ */
 function DiceOne(){
   if (randomNumber === 1) {
       if (activePlayer === 'player1') {
-          lancer1.setAttribute('disabled','');
+          lancer1.disabled = true;
+          lancer2.disabled = false;
           message1.innerHTML = 0;
           console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction diceOne `);
           resultRound1 = 0;
           }
           
      else if (activePlayer === 'player2'){
-      lancer2.setAttribute('disabled','');
+      lancer2.disabled = true;
+      lancer2.disabled = false;
+      message2.innerHTML = 0;
       resultRound2 = 0;
-      message2.innerHTML = 0;}
-      else{
-        console.log("activePlayer est inconnu")
       }
-    };}
+      else{
+        console.log(activePlayer)
+      }};}
 console.log('mon active player est ${activePlayer}');
+
 /*********************************FORMULE AJOUTER SOMME ROUND1 DANS GLOBAL1************************/
 function totalRound1(){
 resultRound1 = round1.reduce(
@@ -137,15 +146,19 @@ function totalGlobal() {
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
+  console.log('mon activplayer est :' + activePlayer)
   randomize();
   console.log('function: ' + randomNumber)
   resultImage();
-  animer();
-  //si je fait un je passe mon tour
+    //animer();
+  //si je fait 1 je passe mon tour
   DiceOne(activePlayer);
-  //push de[1] dans round1
-  round1.push(randomNumber);
-  //parcour du tableau de round1
+    //push randomnumber dans round1
+  if (randomNumber >1){
+  round1.push(randomNumber)}
+  else{
+    console.log(randomNumber)
+  }
   for (k = 0; k <5; k++);
   round1;
   totalRound1();
@@ -160,6 +173,7 @@ recup1.onclick = function (){
       totalGlobal();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1)
       switchPlayer();
+      removeIn() 
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
@@ -170,22 +184,26 @@ recup1.onclick = function (){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
+    console.log('mon activplayer est :' + activePlayer);
   randomize();
   resultImage();
-  animer()
-  //si je fait un je passe mon tour
-  DiceOne();
-  //push de[2] dans round2
-  round2.push(randomNumber);
-  //parcour du tableau de round2
+    //animer()
+  //si je fait 1 je passe mon tour
+  DiceOne(activePlayer);
+ 
+  //push randomnumberdans round2
+  if (randomNumber >1){
+  round2.push(randomNumber)}
+  else{
+    console.log(randomNumber);
+  }
   for (l = 0; l <5; l++);
   round2;
   totalRound2();
   message2.innerHTML = resultRound2;
   console.log('ajout des valeur dans round2:'+ round2);}
-  //affiche la somme du tableau round1 sur ma page
-
-       
+  
+   
 
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
@@ -193,47 +211,65 @@ recup2.onclick = function (){
 //formule pour ajouter le resultRound2 au global2 à revoir
       totalGlobal();
       switchPlayer();
+      removeIn() 
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
       //vidange du tableau round2 de ses valeurs
       round2= [];
-      console.log('valeur de round2 apres reset : ' + round2) 
-
+      console.log('valeur de round2 apres reset : ' + round2); 
     };
 
 
 //*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR A 100 ALORS IL GAGNE******/   
   function winer(){ 
-  if(resultGlobal1 > 100 || resultGlobal2 >100){
-    alert('tu as gagné !!😄');}
-    else{ 
-      console.log('on continue');
-    }};
+  if(resultGlobal1 => 100){
+    alert('Player1 gagne !!😄')}
+    else if (resultGlobal2 => 100) {
+      alert('Player2 gagne !!😄')
+    }
+      else{
+        console.log(global1, global2)
+      }};
 
 
 /***************************FUNCTION POUR MES IMAGES DE VALEUR de[1]************************** */
-function animer (){
-  let elem = document.getElementById('myImages');
-  let position = 0;
-  let id = setInterval(mvt, 5);
-  function mvt(){
-    if (position > 570 ){
-      clearInterval(id);
+//function animer (){
+//  let elem = document.getElementById('myImages');
+//  let position = 0;
+//  let id = setInterval(mvt, 5);
+//  function mvt(){
+//    if (position > 570 ){
+//      clearInterval(id);
+//    }
+//    else{
+//      position+15;
+//      elem.style.left = position + "px";
+//    }
+//  }
+//}
+function removeIn(){
+  document.getElementById('myImages');
+  $("#myImages").empty();
+  
+};
+function removeImage() {
+  if (myImages.style.transform = '100'){
+    setTimeout(removeIn, 8000, clearTimeout);
     }
     else{
-      position+15;
-      elem.style.left = position + "px";
+      console.log('ca va');
     }
-  }
-}
+  };
+   
   function resultImage () {
   switch (randomNumber){
-  case 1: 
+  
+    case 1: 
   let myImage1 = document.createElement('img');
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
-  document.getElementsByTagName('img').item(0).style.width= '100px';
- 
+  document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
+  
   
               console.log(myImage1);
   break;
@@ -242,8 +278,7 @@ function animer (){
   let myImage2 = document.createElement('img');
   myImage2.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/two-310337__480.png';
   document.getElementById('myImages').appendChild(myImage2).style.width = '100px';
-  
-  
+    
         console.log(myImage2);  
       break;
       
@@ -251,7 +286,8 @@ function animer (){
   let myImage3 = document.createElement('img');
   myImage3.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/three-310336__480.png';
   document.getElementById('myImages').appendChild(myImage3).style.width = '100px';
-     
+  
+  
      console.log(myImage3);
      break;
    
@@ -259,6 +295,7 @@ function animer (){
   let myImage4 = document.createElement('img');
   myImage4.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312623__480.png';
   document.getElementById('myImages').appendChild(myImage4).style.width = '100px', visibility = 'visible';
+  
   
      console.log(myImage4);
      break;
@@ -268,13 +305,14 @@ function animer (){
   myImage5.src = '/images/de 5 icone.png';
   document.getElementById('myImages').appendChild(myImage5).style.width = '100px';
   
+ 
   
       console.log(myImage5);
       break;
   case 6: let myImage6 = document.createElement('img');
   myImage6.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312621__480.png';
   document.getElementById('myImages').appendChild(myImage6).style.width = '100px';
-   
+  
         console.log(myImage6);
     break;
     default:

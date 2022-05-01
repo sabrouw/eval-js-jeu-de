@@ -56,12 +56,17 @@ html{
     font-size: 35px;
      
 }
+cube{
+    grid-row-end: 2;
+}
 #body{
     grid-column-start: 3;
-    grid-row-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 7;
     z-index: 2;
     margin-right: 5%;
-    padding-top: 10%;    
+    padding-top: 10%; 
+       
     
 
 }
@@ -75,11 +80,11 @@ ul img {
     }
 
     @keyframes goRight {
-        from { transform: rotate(0);
+        from { transform: rotate(0.8turn);
                 transform-style: preserve-3d;
         }
-            to {transform: translateX(150px);
-                visibility: hidden;
+            to {transform: translateX(100);
+                
             }
 
         }
