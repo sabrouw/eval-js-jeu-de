@@ -37,6 +37,7 @@ html{
 .new-game{
     justify-items: end;
     margin-top: 20%;
+    background-color: #0a9396;
     
 }
 .player1{
@@ -94,11 +95,13 @@ ul img {
     background-color: white;
     border-radius: 10%;
     padding-top: 10%;
+    
 }
 .roll1{
     grid-column-start: 2;
     grid-row-start: 6;
     padding-top: 10%;
+    margin-top: 10% ;
 }
 
 #roll2{
@@ -111,6 +114,7 @@ ul img {
     grid-column-end: 5;
     grid-row: 6;
     padding-top: 10%;
+    margin-top: 10% ;
     
 }
 
@@ -178,11 +182,7 @@ ul img {
     padding-top: 2%;
 }
 
-.audio{
-    grid-column-start: 5;
-    grid-row-end: 6 ;
-    color: black;
-}
+
 button{
     box-shadow: 0 0 10px gray;
 }
@@ -194,14 +194,12 @@ button{
 :link
 {
     text-decoration: none;
-    color: re;
+    color: black;
     font-weight: #9b2226;
 }
 
 
-#header{
-    background-color: #0a9396;
-}
+
 
 audio{
     height: 10vh;
