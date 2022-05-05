@@ -1,6 +1,6 @@
 //************************************REGLES DU JEU*******************************************
-//Je veux un jeu avec 2 joueurs qui jouerons avec un dé
-//je veux lancer le dé qui me donnera des valeurs entre 1 et 6
+//ceci un jeu de dé avec 2 joueurs 
+//le dé qui me donnera des valeurs entre 1 et 6
 //si la valeur est 1 je passe mon tour
 //sinon je peux relancer le dé.
 
@@ -14,7 +14,7 @@ const lancer1 = document.getElementById('roll1');
 const lancer2 = document.getElementById('roll2');
 const recup1 = document.getElementById('hold1');
 const recup2 = document.getElementById('hold2');
-let global1;
+let global1;;
 let global2;
 let round1;
 let round2;
@@ -22,20 +22,19 @@ let resultGlobal1 = 0;
 let resultGlobal2 = 0;
 let resultRound1 = 0;
 let resultRound2 = 0;
-let player1;
-let player2;
+let player1 = document.getElementById('player1');
+let player2 = document.getElementById('player2');
 let activePlayer;
 let newGame = document.getElementById('newgame');
 let round = 0;
 let randomNumber;
+let clr;
 
 
 /*********************************BUTTON NEW GAME RESET**********************************/
 newGame.onclick = function resultats(){
   //definit aleatoirement le joueur actif
   getRandomIntLancer()
-  //
-  //getRandomIntStart();
   disabled();
   //supprime les images de dé
   removeIn();
@@ -70,23 +69,26 @@ function disabled(){
   if (activePlayer === 'player1'){
     lancer1.disabled = false;
     recup1.disabled = false;
+    
   }
   else{
     activePlayer === 'player2'
     lancer2.disabled = false;
     recup2.disabled = false;
+    
   }
 };
 /*********************************FUNCTION ACTIVE PLAYER*******************************/
 function switchPlayer(){
   if (activePlayer === 'player1') {
       lancer2.disabled = true;
+      
+      
           console.log(`function switchPlayer : ${activePlayer}`);
   } else {
       activePlayer === 'player2';
       lancer2.disabled = false;
       lancer1.disabled = true;
-
       console.log('mon active player est : ' + activePlayer);
   }};
 
@@ -158,6 +160,20 @@ function diceOne(){
       }
   }
 }
+/**************FONCTION QUI PERMET DE STYLISER L ACTIVE PLAYER***************/
+//function activePlayerStyle(){
+//  if (activePlayer === 'player1') {
+//      lancer2.style.backgroundColor = 'black';
+//      player2.style.backgroundColor  = 'black';
+//      recup2.style.backgroundColor  = 'black';
+//      clr = setInterval(activePlayerStyle, 1000);
+//  
+//  } else if (activePlayer === 'player2') {
+//    lancer1.style.backgroundColor =  'black';
+//    player1.style.backgroundColor =   'black';
+//    recup1.style.backgroundColor = 'black';
+//     clr = setInterval(activePlayerStyle, 1000);
+//  } }
 
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
@@ -167,6 +183,7 @@ lancer1.onclick = function resultats(){
   console.log('nombre aleatoire' + randomNumber)
   //dé en image
   resultImage();
+  removeImage() ;
   //si je fait 1 je passe mon tour
   diceOne();
   //addition de tous mes round1 a chaque lancer
@@ -184,6 +201,9 @@ recup1.onclick = function (){
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
+      activePlayer = 'player2';
+      lancer1.disabled = true;
+      lancer2.disabled = false;
       //vidange du tableau round1 de ses valeurs
       round1 = 0;
       console.log('valeur de round1 apres reset : ' + round1);
@@ -196,6 +216,7 @@ lancer2.onclick = function resultats(){
   randomize();
   //dé en image
   resultImage();
+  removeImage() ;
   //si je fait un je passe mon tour
   diceOne();
   //addition de tous mes round2
@@ -214,6 +235,9 @@ recup2.onclick = function (){
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
+      activePlayer ='player1';
+      lancer2.disabled = true;
+      lancer1.disabled = false;
       //vidange du tableau round2 de ses valeurs
       round2 = 0;
       console.log('valeur de round2 apres reset : ' + round2) ;
@@ -224,7 +248,12 @@ recup2.onclick = function (){
 //*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR A 100 ALORS IL GAGNE******/   
   function winer(){ 
   if(resultGlobal1 > 100 || resultGlobal2 >100){
-    alert('tu as gagné !!😄');}
+    alert('tu as gagné !!😄');
+    lancer1.disabled = true;
+    lancer2.disabled = true;
+    recup1.disabled = true;
+    recup2.disabled = true;
+  }
     else{ 
       console.log('on continue');
     }};
@@ -237,7 +266,7 @@ function removeIn(){
 };
 function removeImage() {
   if (myImages.style.transform = '100'){
-    setTimeout(removeIn, 8000, clearTimeout);
+    setTimeout(removeIn, 15000, clearTimeout);
     }
     else{
       console.log('ca va');
@@ -284,7 +313,7 @@ function removeImage() {
    
   case 5: 
   let myImage5 = document.createElement('img');
-  myImage5.src = '/images/de 5 icone.png';
+  myImage5.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/five-310334_1280.png';
   document.getElementById('myImages').appendChild(myImage5).style.width = '100px';
   
  
