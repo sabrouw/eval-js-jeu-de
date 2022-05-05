@@ -27,12 +27,16 @@ let player2;
 let activePlayer;
 let newGame = document.getElementById('newgame');
 let round = 0;
+let randomNumber;
 
 
 /*********************************BUTTON NEW GAME RESET**********************************/
 newGame.onclick = function resultats(){
+  //definit aleatoirement le joueur actif
   getRandomIntLancer()
-  getRandomIntStart();
+  //
+  //getRandomIntStart();
+  disabled();
   //supprime les images de dé
   removeIn();
   // mise a 0 scores
@@ -55,30 +59,44 @@ function getRandomIntLancer() {
       
   }};
 
-function getRandomIntStart() {
-      tour =  Math.floor(Math.random() * 2) + 1;
-      console.log(`function getRandomInt la valeur de tour est ${tour}`)
-      return activePlayer = `player${tour}`;
-      
-};
+//function getRandomIntStart() {
+//      tour =  Math.floor(Math.random() * 2) + 1;
+//      console.log(`function getRandomInt la valeur de tour est ${tour}`)
+//      return activePlayer = `player${tour}`;
+//      
+//};
 
+function disabled(){
+  if (activePlayer === 'player1'){
+    lancer1.disabled = false;
+    recup1.disabled = false;
+  }
+  else{
+    activePlayer === 'player2'
+    lancer2.disabled = false;
+    recup2.disabled = false;
+  }
+};
 /*********************************FUNCTION ACTIVE PLAYER*******************************/
 function switchPlayer(){
   if (activePlayer === 'player1') {
       lancer2.disabled = true;
-      activePlayer = 'player2';
-      console.log(`function switchPlayer : ${activePlayer}`);
+          console.log(`function switchPlayer : ${activePlayer}`);
   } else {
-      activePlayer = 'player1';
+      activePlayer === 'player2';
       lancer2.disabled = false;
+      lancer1.disabled = true;
+
       console.log('mon active player est : ' + activePlayer);
   }};
+
+  
 //**************************  FUNCTION NOMBRE ALEATOIRE************* ****************/
 function randomize(){
   randomNumber = Math.floor(Math.random() * 6 ) + 1;
-  console.warn('valeur de dé' + randomNumber);
+  console.warn('valeur du dé' + randomNumber);
     return randomNumber;
-    }
+    };
       
 
 /********************FONCTION QUI SAUVEGARDE LES POINTS DANS SCORE GLOBAL ************/
@@ -115,107 +133,91 @@ function totalRound(){
 
 
 /******************************CONDITION SI LE DE FAIT 1************************************ */
-function DiceOne(){
+function diceOne(){
   if (randomNumber === 1) {
       if (activePlayer === 'player1') {
+          lancer1.disabled = true;
           activePlayer = 'player2';
-          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction DiceOne `);
+          lancer2.disabled = false;
+          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne `);
           resultRound1 = 0;
-          message1.innerHTML = resultRound1;
+          message1.textContent = resultRound1;
           resultRound2 = 0;
-          message2.innerHTML= resultRound2;
+          message2.textContent = resultRound2;
+          removeIn();
       } else {
           activePlayer = 'player1';
-          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction DiceOne`);
+          console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne`);
           resultRound2 = 0;
-          message2.innerHTML = resultRound2;
+          lancer2.disabled = true;
+          lancer1.disabled = false;
+          message2.textContent = resultRound2;
           resultRound1 = 0;
-          message1.innerHTML = resultRound1;
+          message1.textContent = resultRound1;
+          removeIn();
       }
   }
 }
-/*********************************FORMULE AJOUTER SOMME ROUND1 DANS GLOBAL1************************/
-//function totalRound1(){
-//resultRound1 = round1.reduce(
-//        (previousValue , currentValue) => previousValue + currentValue);
-//        console.log('somme de mon tableau round1 :' +resultRound1);  
-//               //j'ajoute la somme de mont tableau round1 dans ma variable global1
-//       global1 = [resultRound1];
-//       console.log('affichage global1 :' + global1);
-//};
-//
-///*********************************FORMULE AJOUTER SOMME ROUND1 DANS GLOBAL1************************/
-//function totalRound2(){
-//resultRound2 = round2.reduce(
-//        (previousValue, currentValue) => previousValue + currentValue);
-//        console.log('somme de mon tableau round2 :' +resultRound2);  
-//        //j'ajoute la somme de mont tableau round2 dans ma variable global2
-//         global2 = [resultRound2];
-//       console.log('affichage global2 :' + global2);
-//};
-//
+
+
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
-  randomize()
+  //nombre aléatoire
+  randomize();
   console.log('nombre aleatoire' + randomNumber)
+  //dé en image
   resultImage();
-  //si je fait un je passe mon tour
-  DiceOne();
+  //si je fait 1 je passe mon tour
+  diceOne();
+  //addition de tous mes round1 a chaque lancer
   totalRound();
-  //push de[1] dans round1
-  //round1.push(randomNumber++);
-  //round1;
-  //totalRound1();
-  //affiche la somme du tableau round1 sur ma page
-  //message1.innerHTML = resultRound1;
-  console.log('ajout des valeur dans round1:'+ round1);}        //parcour de mon tableau round1
-       // for(m = 0; m< round1.length; m++);
+};
 
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup1.onclick = function (){
 //formule pour ajouter le resultRound1 au global1 à revoir
       totalGlobal();
-      console.log('resultGlobal1 à ce niveau: ' + resultGlobal1)
+      console.log('resultGlobal1 à ce niveau: ' + resultGlobal1);
       switchPlayer();
+      removeIn();      
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
       //vidange du tableau round1 de ses valeurs
-      round1= [];
-      console.log('valeur de round1 apres reset : ' + round1)  
+      round1 = 0;
+      console.log('valeur de round1 apres reset : ' + round1);
+      winer()
     };
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
+  //nombre aléatoire
   randomize();
+  //dé en image
   resultImage();
   //si je fait un je passe mon tour
-  DiceOne();
+  diceOne();
+  //addition de tous mes round2
   totalRound();
-  //push de[2] dans round2
-  //round2.push(randomNumber++);
-  //round2;
-  //totalRound2();
-  //affiche la somme du tableau round1 sur ma page
-  //message2.innerHTML = resultRound2;
   console.log('ajout des valeur dans round2:'+ round2);}
        
-        //parcour de mon tableau round2
-        //for(n = 0; n< round2.length; n++);
+        
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup2.onclick = function (){
 //formule pour ajouter le resultRound2 au global2 à revoir
       totalGlobal();
       console.log('totalglobal2'+totalGlobal)
-      switchPlayer();  
+      switchPlayer(); 
+      removeIn(); 
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
       //vidange du tableau round2 de ses valeurs
-      round2= [];
-      console.log('valeur de round2 apres reset : ' + round2)  
+      round2 = 0;
+      console.log('valeur de round2 apres reset : ' + round2) ;
+      winer() ;
     };
 
 
@@ -227,25 +229,8 @@ recup2.onclick = function (){
       console.log('on continue');
     }};
 
-
-/***************************FUNCTION POUR MES IMAGES DE VALEUR de[1]************************** */
-//function animer (){
-//  let elem = document.getElementById('myImages');
-//  let position = 0;
-//  let id = setInterval(mvt, 5);
-//  function mvt(){
-//    if (position > 570 ){
-//      clearInterval(id);
-//    }
-//    else{
-//      position+15;
-//      elem.style.left = position + "px";
-//    }
-//  }
-//}
-function 
-
-removeIn(){
+/************************FUNCTION POUR SUPPRIMER LES IMAGES QUAND ON CHANGE DE PLAYER */
+function removeIn(){
   document.getElementById('myImages');
   $("#myImages").empty();
   
@@ -258,7 +243,7 @@ function removeImage() {
       console.log('ca va');
     }
   };
-   
+/***************************FUNCTION QUI PERMET D AFFICHER LES  IMAGES DE DE*************** */
   function resultImage () {
   switch (randomNumber){
   
