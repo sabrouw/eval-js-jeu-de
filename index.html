@@ -5,30 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
     <title>Benjigum</title>
 </head>
 <body>
+    <!--lien ou button vers notre modal #modal-->
+  
     <div id="backround">
     <main>  
         <div class="container-grid">
+            
+                <a class="regle" id="regle"href="#"> Règles du jeu</a>
+
+            
+            
+  <!--div de notre modal-->
+  <div id="modal" class="modal-dialog modal-dialog">
+    <!--contenu de la modal-->
+      <div class="modal-content">
+        <h1 id="joueurActif" class="text-center">Bienvenue!</h1>
+        <!--<p>bienvenue sur le benjigum, jeu de dé qui va faire défiler le temps pour vous.
+            Voici les règles:
+            Ce jeu de dé est pour 2 joueurs 
+            Le dé qui donnera  1 fera perdre tous ses points au joueurs et ce joueur laissera la main à son adversaire
+            Pour ne pas perdre ses points le joueur peut récolter ses points
+            Sinon le joueur peut  relancer le dé autant de fois qu'il le souhaire.
+            Le premier joueur qui obtient 100 a gagné !
+            <P id="joueurActif"></P>-->
+            
+
+            
+        </p>
+        <a href="#" class="modal-close">&times;</a>
+      </div>
+  </div>
         
             <div class="header">
                <button type="button"  class="btn-sm new-game" id="newgame"> 
-                   NOUVELLE PARTIE
+                <a href="#modal">NOUVELLE PARTIE</a>
+                   
                </button>
             </div>
 
             <div class="player1" id="player1">
                 <p>JOUEUR 1</p>
-                <img height="120" src="/images/main de blanc.png" id="ange" alt="">
+                <img height="120" src="https://www.svgrepo.com/show/322173/dice-six-faces-one.svg" id="ange" alt="">
             </div>
             
             <div class="player2" id="player2"> 
                 <p>JOUEUR 2</p>
-                <img height="120" src="/images/main de rouge.png" id="diablotin" alt="">
+                <img height="120" src="https://www.svgrepo.com/show/322178/dice-six-faces-two.svg" id="diablotin" alt="">
             </div>
 
             <div class="roll1">
@@ -80,6 +108,8 @@
             
     </div>
 </div>
+
+
 </main>
     <script src="jQuery.js"></script>
     <script src="app.js"></script>

@@ -31,6 +31,10 @@ let randomNumber;
 let clr;
 
 
+function myfunction() {
+ }
+window.onload = myfunction;
+
 /*********************************BUTTON NEW GAME RESET**********************************/
 newGame.onclick = function resultats(){
   //definit aleatoirement le joueur actif
@@ -47,6 +51,7 @@ newGame.onclick = function resultats(){
   message2.innerHTML = '0';
   messageglobal1.innerHTML = '0';
   messageglobal2.innerHTML= '0';
+  joueurActif.innerHTML = 'Le joueur ' + round +' commence';
   console.log('active player = ' + activePlayer);
 };
 
@@ -180,10 +185,13 @@ function diceOne(){
 lancer1.onclick = function resultats(){
   //nombre aléatoire
   randomize();
-  console.log('nombre aleatoire' + randomNumber)
+  console.log('nombre aleatoire' + randomNumber);
+  //song();
   //dé en image
   resultImage();
-  removeImage() ;
+  //fonction pour supprimer image au fure et a mesure
+  //myList () ;  
+  //removeImage() ;
   //si je fait 1 je passe mon tour
   diceOne();
   //addition de tous mes round1 a chaque lancer
@@ -197,7 +205,7 @@ recup1.onclick = function (){
       totalGlobal();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1);
       switchPlayer();
-      removeIn();      
+      removeIn();  
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
@@ -207,15 +215,18 @@ recup1.onclick = function (){
       //vidange du tableau round1 de ses valeurs
       round1 = 0;
       console.log('valeur de round1 apres reset : ' + round1);
-      winer()
+      winer();
     };
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
   //nombre aléatoire
   randomize();
+  //song();
   //dé en image
   resultImage();
+  //fonction pour supprimer image au fure et a mesure
+  //myList ()
   removeImage() ;
   //si je fait un je passe mon tour
   diceOne();
@@ -231,7 +242,7 @@ recup2.onclick = function (){
       totalGlobal();
       console.log('totalglobal2'+totalGlobal)
       switchPlayer(); 
-      removeIn(); 
+      //removeIn(); 
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
@@ -258,12 +269,37 @@ recup2.onclick = function (){
       console.log('on continue');
     }};
 
+/************************FUNCTION POUR SUPPRIMER LES IMAGES au FUREET A MESURE */
+//function myList (){
+//let myListe = document.querySelectorAll('ul');
+//for (i = 0; i <  myListe.length ; i ++);
+//myListe.shift(myListe[1]);
+//console.log('ma liste : '+ myListe);}
+
 /************************FUNCTION POUR SUPPRIMER LES IMAGES QUAND ON CHANGE DE PLAYER */
+//function removeIn(){
+//    let ulImg = document.querySelectorAll('ul');
+////selecteur parent
+//  //let parentImg = document.getElementById('body');
+//  console.log("liste image" + ulImg)
+//  //parcour de ma liste
+//  for(ulImg = 0; ulImg< ulImg.lenght; ulImg ++)
+//  //parent.removeEnfant(enfant)
+//  ulImg.splice(0, 1);
+
+//};
+function song(){
+let sound = document.getElementById("audioDice");
+sound.play();
+
+}
+
 function removeIn(){
   document.getElementById('myImages');
   $("#myImages").empty();
   
 };
+
 function removeImage() {
   if (myImages.style.transform = '100'){
     setTimeout(removeIn, 15000, clearTimeout);
@@ -272,63 +308,66 @@ function removeImage() {
       console.log('ca va');
     }
   };
-/***************************FUNCTION QUI PERMET D AFFICHER LES  IMAGES DE DE*************** */
+/*************************FUNCTION QUI PERMET D AFFICHER LES  IMAGES DE DE*************** */
   function resultImage () {
-  switch (randomNumber){
-  
+      switch (randomNumber)  {  
     case 1: 
   let myImage1 = document.createElement('img');
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
-  
-  
-              console.log(myImage1);
+  setTimeout(removeIn, 15000, clearTimeout);  
+  soundOk();
+  console.log(myImage1);
   break;
   
   case 2: 
   let myImage2 = document.createElement('img');
   myImage2.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/two-310337__480.png';
   document.getElementById('myImages').appendChild(myImage2).style.width = '100px';
-    
-        console.log(myImage2);  
+  setTimeout(removeIn, 15000, clearTimeout);
+  soundOk();
+  console.log(myImage2);  
       break;
       
   case 3:
   let myImage3 = document.createElement('img');
   myImage3.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/three-310336__480.png';
   document.getElementById('myImages').appendChild(myImage3).style.width = '100px';
-  
-  
-     console.log(myImage3);
+  setTimeout(removeIn, 15000, clearTimeout);
+  console.log(myImage3);
+  soundOk();
      break;
    
   case 4: 
   let myImage4 = document.createElement('img');
   myImage4.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312623__480.png';
   document.getElementById('myImages').appendChild(myImage4).style.width = '100px', visibility = 'visible';
-  
-  
-     console.log(myImage4);
+  setTimeout(removeIn, 15000, clearTimeout);
+  console.log(myImage4);
+  soundOk();
      break;
    
   case 5: 
   let myImage5 = document.createElement('img');
   myImage5.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/five-310334_1280.png';
   document.getElementById('myImages').appendChild(myImage5).style.width = '100px';
-  
- 
-  
-      console.log(myImage5);
+  setTimeout(removeIn, 15000, clearTimeout);
+  console.log(myImage5);
+  soundOk();
       break;
-  case 6: let myImage6 = document.createElement('img');
+  
+      case 6: 
+  let myImage6 = document.createElement('img');
   myImage6.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312621__480.png';
   document.getElementById('myImages').appendChild(myImage6).style.width = '100px';
-  
-        console.log(myImage6);
-    break;
+  setTimeout(removeIn, 15000, clearTimeout);
+  console.log(myImage6);
+  soundOk();
+
     default:
       console.log('mais que se passe-t-il');
       break;
+      
 };};
 
   

@@ -1,3 +1,5 @@
+
+
 html{
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
@@ -8,9 +10,9 @@ html{
 }
 
 #backround{
-    background-image: url(/images/dice-g277d1f360_1920.jpg);
+    /*background-image: url(https://freesvg.org/img/Rhombus-seamless-pattern.png);*/
     background-position: center;
-    background-color: black;
+    /*background-color: black;*/
     z-index: 0;
 
 }
@@ -35,14 +37,30 @@ html{
 .new-game{
     justify-items: end;
     margin-top: 20%;
-    background-color: #0a9396;
+    background-color: #454955;
+    color: white;
     
+}
+
+#newgame
+:hover,
+:focus,
+:active,
+:visited,
+:link
+{
+    text-decoration: none;
+    color: white;
     
+}
+a #modal{
+    color: white;
 }
 .player1{
     grid-column-end: 3;
     grid-row-start: 2;
-    color: white;
+    color: #0d0a0b;
+    font-weight: bold;
     text-align: center;
     font-size: 35px;
     
@@ -51,17 +69,17 @@ html{
     grid-column-start: 4;
     grid-row-start: 2;
     grid-gap: 10px;
-    color: #9b2226;
+    color: #0d0a0b;
+    font-weight: bold;
     text-align: center;
     font-size: 35px;
      
 }
-cube{
-    grid-row-end: 2;
-}
+
 #body{
     grid-column-start: 3;
     grid-row-start: 2;
+    justify-items: end;
     grid-row-end: 7;
     z-index: 2;
     margin-right: 5%;
@@ -77,21 +95,25 @@ ul{
 ul img {
     
     animation: 5s goRight;
+    transition-property: opacity;
+    transition-duration: 3s, 5s;
     }
 
     @keyframes goRight {
         from { transform: rotate(0.8turn);
                 transform-style: preserve-3d;
+                
         }
             to {transform: translateX(100);
                 
             }
-
+            
+           
         }
     
 /*bouton roll1*/
 #roll1{ 
-    background-color: white;
+    background-color: #3f7d20;
     border-radius: 10%;
     margin-top: 2%;
     
@@ -105,9 +127,10 @@ ul img {
 }
 /*bouton roll2*/
 #roll2{
-    background-color: #9b2226;
+    background-color: #3f7d20;
     border-radius: 10%;
     margin-top: 2%;
+    color: black;
     
 
 }
@@ -121,29 +144,37 @@ ul img {
 /*BOUTONS RECOLTER*/
 #hold1{
     
-    Background-color: white;
+    Background-color: black;
+    color: #3f7d20;
 }
 
 #hold2{
     
-    Background-color: #9b2226;
+    Background-color: black;
+    color: #3f7d20;
 }
 
 .hold1{
     grid-column-start: 2;
     grid-row-end: 5; 
     padding-bottom: 15%;
+    color: #0d0a0b;
+    font-weight: bold;
 }
 .hold2{
     grid-column-start: 4;
     grid-row-end:5;
     padding-bottom: 15%;
+    color: #0d0a0b;
+    font-weight: bold;
+
 }
 
 #round1{
     grid-column-start: 2;
     grid-row: 5;
-    color: white;
+    color: #3f7d20;
+    font-weight: bold;
     font-size: 20px;  
     
 }
@@ -154,8 +185,9 @@ ul img {
     grid-column-start: 4;
     grid-row: 5;
     align-items: end;
-    color: #9b2226;
+    color: #3f7d20;
     font-size: 20px;
+    font-weight: bold;
     margin-bottom: 10%;
     
 }
@@ -164,7 +196,8 @@ ul img {
 }
 .score-global1{
     font-size: 20px;
-    color: white;
+    color: #3f7d20;
+    font-weight: bold;
     grid-column: 2;
     grid-row-start: 3;
     
@@ -180,7 +213,8 @@ ul img {
 }
 .score-global2{
     font-size: 20px;
-    color: #9b2226;
+    color: #3f7d20;
+    font-weight: bold;
     grid-column: 4;
     grid-row: 3;
     
@@ -198,8 +232,7 @@ button{
 :link
 {
     text-decoration: none;
-    color: black;
-    font-weight: #9b2226;
+    color: #0d0a0b;
 }
 
 
@@ -210,13 +243,13 @@ audio{
     width: 20vh;
 }
 #diablotin{
-    box-shadow: 0 0 35px #9b2226;
+    box-shadow: 0 0 35px #3f7d20;
     border-radius: 9%;
     padding-right: 1%;
     
 }
 #ange{
-    box-shadow: 0 0 35px white;
+    box-shadow: 0 0 35px #3f7d20;
     border-radius: 9%;
 }
 
@@ -225,5 +258,67 @@ audio{
         overflow-block: backdrop;
     }}
 
+/*modal pour le joueur actif*/
 
-   
+.modal a {
+        text-decoration: none;
+        padding: 5%;
+        border-radius: 5px;
+        text-transform: uppercase;
+        color: black;
+      }
+      
+      /**/
+ .modal-dialog {
+        grid-column: 3;
+        grid-row: 2;
+        /*cacher la fenetre modale*/
+        visibility: hidden;
+        opacity: 0;
+        /*position absolute*/
+        position: absolute;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10%;
+        
+
+      }
+      
+      /*afficher la fenetre modale au clique*/
+     .modal-dialog:target {
+          visibility: visible;
+          opacity: 1;
+     }
+      .modal-content {
+        margin: 7%;
+         padding: 5%;
+         width: 500px;
+         border: #3f7d20 solid 5px;
+         background: linear-gradient(15deg, #0d0a0b, #3f7d20);
+         color: white;
+         
+     }
+         
+      
+      
+      
+     .modal-close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        text-decoration: none;
+        color: white;
+      }
+
+      #regle{
+          grid-column: 4;
+          grid-row: 1;
+      }
+
+     
+ 
+
+     
+  
