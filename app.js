@@ -316,7 +316,7 @@ function removeImage() {
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
   setTimeout(removeIn, 15000, clearTimeout);  
-  soundOk();
+  
   console.log(myImage1);
   break;
   
@@ -325,7 +325,7 @@ function removeImage() {
   myImage2.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/two-310337__480.png';
   document.getElementById('myImages').appendChild(myImage2).style.width = '100px';
   setTimeout(removeIn, 15000, clearTimeout);
-  soundOk();
+  
   console.log(myImage2);  
       break;
       
@@ -335,7 +335,7 @@ function removeImage() {
   document.getElementById('myImages').appendChild(myImage3).style.width = '100px';
   setTimeout(removeIn, 15000, clearTimeout);
   console.log(myImage3);
-  soundOk();
+  
      break;
    
   case 4: 
@@ -344,7 +344,7 @@ function removeImage() {
   document.getElementById('myImages').appendChild(myImage4).style.width = '100px', visibility = 'visible';
   setTimeout(removeIn, 15000, clearTimeout);
   console.log(myImage4);
-  soundOk();
+  
      break;
    
   case 5: 
@@ -353,7 +353,7 @@ function removeImage() {
   document.getElementById('myImages').appendChild(myImage5).style.width = '100px';
   setTimeout(removeIn, 15000, clearTimeout);
   console.log(myImage5);
-  soundOk();
+  
       break;
   
       case 6: 
@@ -362,7 +362,7 @@ function removeImage() {
   document.getElementById('myImages').appendChild(myImage6).style.width = '100px';
   setTimeout(removeIn, 15000, clearTimeout);
   console.log(myImage6);
-  soundOk();
+  
 
     default:
       console.log('mais que se passe-t-il');
