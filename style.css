@@ -19,9 +19,9 @@ html{
     height: 100vh;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 20% 35% 20% 1fr;
+    grid-template-columns: 1fr 15% 40% 15% 1fr;
     grid-template-rows: 10% 45% 15% 10% 10% auto;
-    /*justify-items: center;*/
+    justify-items: center;
     z-index: 7;
                 
 }
@@ -37,8 +37,6 @@ html{
     margin-top: 20%;
     background-color: #454955;
     color: white;
-    margin-left: 30%;
-    
     
 }
 
@@ -55,7 +53,6 @@ html{
 }
 a #modal{
     color: white;
-    
 }
 .player1{
     grid-column-end: 3;
@@ -64,8 +61,6 @@ a #modal{
     font-weight: bold;
     text-align: center;
     font-size: 35px;
-    justify-items: center;
-    
     
 }
 .player2{
@@ -76,47 +71,50 @@ a #modal{
     font-weight: bold;
     text-align: center;
     font-size: 35px;
-    justify-items: center;
-   
      
 }
 
 #body{
-    grid-column-start: 3;
+    grid-column-start:3;
     grid-row-start: 2;
     grid-row-end: 7;
     z-index: 2;
     margin: 0%;
     padding-top: 10%; 
-    position: relative;
+    margin: 0;
     
- 
 
 }
 
+
 ul img {
     list-style: none;
+    grid-column-end: 2;
+    grid-row-start: 2;
     animation: myAnim 2s linear 0s forwards;
     transition-property: opacity;
     transition-duration: 10s, 5s;
-    box-shadow: 30 10 50px black;
-    justify-items: flex-start;
-    position: absolute;
-    justify-self: start;
+    display: flex;
+    justify-content: start;
     padding: 0;
-    margin-top: 20%;
+
     }
 
     @keyframes myAnim {
-        from {   
-                transform: translateX(-50) rotate(0); 
-                transform-origin: 20% 40%;   
-                transition: width 2s;
+        from { 
+            
+            transform: translateX(-50px) rotate(0);
+                
         }
             to {
                 transform: translateX(150px) rotate(0.8turn);
                 
+                
+                
+                
             }
+            
+           
         }
     
 /*bouton roll1*/
@@ -124,16 +122,11 @@ ul img {
     background-color: #3f7d20;
     border-radius: 10%;
     margin-top: 2%;
-    justify-items: center;
-    margin-left: 30%;
-   
     
 }
 .roll1{
     grid-column-start: 2;
     grid-row-start: 6;
-    justify-items: center;
-    
     
     
     
@@ -144,33 +137,27 @@ ul img {
     border-radius: 10%;
     margin-top: 2%;
     color: black;
-    justify-items: center;
-    margin-left: 30%;
     
 
 }
 .roll2{
     grid-column-end: 5;
     grid-row-start: 6;
-    justify-items: center;
+    
     
     
 }
 /*BOUTONS RECOLTER*/
 #hold1{
-    justify-items: center;
+    
     Background-color: black;
     color: #3f7d20;
-    justify-items: center;
-    
-    
 }
 
 #hold2{
-    margin-left:35%;
+    
     Background-color: black;
     color: #3f7d20;
-    justify-items: center;
 }
 
 .hold1{
@@ -179,8 +166,6 @@ ul img {
     padding-bottom: 15%;
     color: #0d0a0b;
     font-weight: bold;
-    justify-items: center;
-    margin-left: 25%;
 }
 .hold2{
     grid-column-start: 4;
@@ -188,8 +173,6 @@ ul img {
     padding-bottom: 15%;
     color: #0d0a0b;
     font-weight: bold;
-    justify-items: center;
-    margin-right: 20%;
 
 }
 
@@ -198,24 +181,21 @@ ul img {
     grid-row: 5;
     color: #3f7d20;
     font-weight: bold;
-    font-size: 20px; 
-    justify-items: center; 
-    text-align: center;
+    font-size: 20px;  
     
 }
 #message1{
     font-size: 20px;
-    justify-items: center;
 }
 #round2{
     grid-column-start: 4;
     grid-row: 5;
-    justify-items: center;
+    align-items: end;
     color: #3f7d20;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10%;
-    text-align: center;
+    
 }
 #message2{
     font-size: 20px;
@@ -226,8 +206,7 @@ ul img {
     font-weight: bold;
     grid-column: 2;
     grid-row-start: 3;
-    justify-items: center;
-    text-align: center;
+    
     
 }
 
@@ -237,7 +216,6 @@ ul img {
 
 #messageglobal1{
     font-size: 20px;
-    justify-items: center;
 }
 .score-global2{
     font-size: 20px;
@@ -245,8 +223,6 @@ ul img {
     font-weight: bold;
     grid-column: 4;
     grid-row: 3;
-    justify-items: center;
-    text-align: center;
     
 }
 
@@ -296,7 +272,6 @@ audio{
       
       /**/
  .modal-dialog {
-        margin-left: 27%;
         grid-column: 3;
         grid-row: 2;
         /*cacher la fenetre modale*/
@@ -306,7 +281,7 @@ audio{
         position: absolute;
         z-index: 9999;
         display: flex;
-        
+        justify-content: center;
         align-items: center;
         margin-top: 10%;
         
@@ -319,19 +294,16 @@ audio{
           opacity: 1;
      }
       .modal-content {
-          
         margin: 7%;
          padding: 5%;
          width: 500px;
          border: #3f7d20 solid 5px;
          background: linear-gradient(15deg, #0d0a0b, #3f7d20);
          color: white;
-         
+        
      }
          
-      
-      
-      
+                 
      .modal-close {
         position: absolute;
         margin-left: 50%;
@@ -351,10 +323,3 @@ audio{
         *{ font-size: 10px;}
         img{ height: 50% ; overflow-block: backdrop }
         }
-    
-
-     
- 
-
-     
-  

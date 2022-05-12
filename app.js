@@ -29,7 +29,7 @@ let newGame = document.getElementById('newgame');
 let round = 0;
 let randomNumber;
 let clr;
-let myImage = document.getElementById('myImages');
+
 
 function myfunction() {
  }
@@ -189,7 +189,6 @@ lancer1.onclick = function resultats(){
   //song();
   //dé en image
   resultImage();
-  //myImage.remove();
   //fonction pour supprimer image au fure et a mesure
   //myList () ;  
   //removeImage() ;
@@ -226,10 +225,9 @@ lancer2.onclick = function resultats(){
   //song();
   //dé en image
   resultImage();
-  //myImage.remove();
   //fonction pour supprimer image au fure et a mesure
   //myList ()
-  //removeImage() ;
+  removeImage() ;
   //si je fait un je passe mon tour
   diceOne();
   //addition de tous mes round2
@@ -279,15 +277,15 @@ recup2.onclick = function (){
 //console.log('ma liste : '+ myListe);}
 
 /************************FUNCTION POUR SUPPRIMER LES IMAGES QUAND ON CHANGE DE PLAYER */
-function removeIn(){
-  let ulImg = document.querySelector('ul img');
-//selecteur parent
-  let parentImg = document.getElementById('body');
-  console.log("liste image" + ulImg)
-  //parcour de ma liste
-  for(ulImg = 0; ulImg< ulImg.lenght; ulImg ++)
-  //parent.removeEnfant(enfant)
-  parentImg.removeChild('ul img');}
+//function removeIn(){
+//    let ulImg = document.querySelectorAll('ul');
+////selecteur parent
+//  //let parentImg = document.getElementById('body');
+//  console.log("liste image" + ulImg)
+//  //parcour de ma liste
+//  for(ulImg = 0; ulImg< ulImg.lenght; ulImg ++)
+//  //parent.removeEnfant(enfant)
+//  ulImg.splice(0, 1);
 
 //};
 function song(){
@@ -296,16 +294,15 @@ sound.play();
 
 }
 
-//function removeIn(){
-//  document.getElementById('myImages');
-//  $('myImage').empty();
-//  
-//};
-
+function removeIn(){
+  document.getElementById('myImages');
+  $("#myImages").empty();
+  
+};
 
 function removeImage() {
   if (myImages.style.transform = '100'){
-    setTimeout(remove, 15000);
+    setTimeout(removeIn, 15000, clearTimeout);
     }
     else{
       console.log('ca va');
@@ -371,7 +368,4 @@ function removeImage() {
       console.log('mais que se passe-t-il');
       break;
       
-};};
-
-  
-  
+};}
