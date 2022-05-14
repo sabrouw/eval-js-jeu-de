@@ -29,7 +29,6 @@ let newGame = document.getElementById('newgame');
 let round = 0;
 let randomNumber;
 let clr;
-let imageDe = document.getElementById('#myImages');
 
 
 function myfunction() {
@@ -59,8 +58,8 @@ newGame.onclick = function resultats(){
 /***************************FUNCTIONS QUI DEFINISSENT L'ACTIVE PLAYER ********************************/
 function getRandomIntLancer() {
   if (round === 0) {
-      round =  Math.floor(Math.random() * 2) + 1;
-      return activePlayer = `player${round}`;
+            round =  Math.floor(Math.random() * 2) + 1;
+            return activePlayer = `player${round}`;
       
   }};
 
@@ -76,13 +75,11 @@ function disabled(){
     lancer1.disabled = false;
     recup1.disabled = false;
     
-    
   }
   else{
     activePlayer === 'player2'
     lancer2.disabled = false;
     recup2.disabled = false;
-    
     
   }
 };
@@ -90,8 +87,7 @@ function disabled(){
 function switchPlayer(){
   if (activePlayer === 'player1') {
       lancer2.disabled = true;
-      
-      
+        
           console.log(`function switchPlayer : ${activePlayer}`);
   } else {
       activePlayer === 'player2';
@@ -147,7 +143,6 @@ function totalRound(){
 function diceOne(){
   if (randomNumber === 1) {
       if (activePlayer === 'player1') {
-          removeIn();
           lancer1.disabled = true;
           activePlayer = 'player2';
           lancer2.disabled = false;
@@ -156,11 +151,9 @@ function diceOne(){
           message1.textContent = resultRound1;
           resultRound2 = 0;
           message2.textContent = resultRound2;
-          myImages.textContent = "Ton dé fait 1, tu passes la main au joueur 2!"
           
       } else {
           activePlayer = 'player1';
-          removeIn();
           console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne`);
           resultRound2 = 0;
           lancer2.disabled = true;
@@ -168,8 +161,6 @@ function diceOne(){
           message2.textContent = resultRound2;
           resultRound1 = 0;
           message1.textContent = resultRound1;
-          recup2.disabled = false;
-          myImages.textContent = "Ton dé fait 1, tu passes la main au joueur 1!"
           
       }
   }
@@ -196,12 +187,8 @@ lancer1.onclick = function resultats(){
   //nombre aléatoire
   randomize();
   console.log('nombre aleatoire' + randomNumber);
-  //song();
   //dé en image
   resultImage();
-  //fonction pour supprimer image au fure et a mesure
-  //myList () ;  
-  //removeImage() ;
   //si je fait 1 je passe mon tour
   diceOne();
   //addition de tous mes round1 a chaque lancer
@@ -211,19 +198,18 @@ lancer1.onclick = function resultats(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup1.onclick = function (){
-      playSoundRecup();
+      playRecupSound();
 //formule pour ajouter le resultRound1 au global1 à revoir
       totalGlobal();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1);
       switchPlayer();
-      removeIn(myImages);  
+      removeIn();  
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
       activePlayer = 'player2';
       lancer1.disabled = true;
       lancer2.disabled = false;
-      recup2.diabled = false;
       //vidange du tableau round1 de ses valeurs
       round1 = 0;
       console.log('valeur de round1 apres reset : ' + round1);
@@ -237,8 +223,6 @@ lancer2.onclick = function resultats(){
   randomize();
   //dé en image
   resultImage();
-  //fonction pour supprimer image au fure et a mesure
-  removeImage() ;
   //si je fait un je passe mon tour
   diceOne();
   //addition de tous mes round2
@@ -249,7 +233,7 @@ lancer2.onclick = function resultats(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup2.onclick = function (){
-  playSoundRecup();
+      playRecupSound();
 //formule pour ajouter le resultRound2 au global2 à revoir
       totalGlobal();
       console.log('totalglobal2'+totalGlobal)
@@ -261,7 +245,6 @@ recup2.onclick = function (){
       activePlayer ='player1';
       lancer2.disabled = true;
       lancer1.disabled = false;
-      recup1.disabled = false;
       //vidange du tableau round2 de ses valeurs
       round2 = 0;
       console.log('valeur de round2 apres reset : ' + round2) ;
@@ -282,32 +265,13 @@ recup2.onclick = function (){
       console.log('on continue');
     }};
 
-/************************FUNCTION POUR SUPPRIMER LES IMAGES au FUREET A MESURE */
-//function myList (){
-//let myListe = document.querySelectorAll('ul');
-//for (i = 0; i <  myListe.length ; i ++);
-//myListe.shift(myListe[1]);
-//console.log('ma liste : '+ myListe);}
 
-/************************FUNCTION POUR SUPPRIMER LES IMAGES QUAND ON CHANGE DE PLAYER */
-//function removeIn(){
-//    let ulImg = document.querySelectorAll('ul');
-////selecteur parent
-//  //let parentImg = document.getElementById('body');
-//  console.log("liste image" + ulImg)
-//  //parcour de ma liste
-//  for(ulImg = 0; ulImg< ulImg.lenght; ulImg ++)
-//  //parent.removeEnfant(enfant)
-//  ulImg.splice(0, 1);
-
-//};
-
-/*****************************SON LANCEMENT DU DE********************************* */
+/*****************************SON AU LANCER DE DE **********************************/
 let sound = new Howl ({
   src : [ "sons/bruit de dés.mp3" ],
   loop : false,
   autoplay : false,
-  volume : 0.2
+  volume : 0.3
 
 });
 
@@ -316,49 +280,31 @@ function playSound(){
   setTimeout(function() {
     sound.stop();
   }, 1000);
-};
+}
 
-/******************************SON QUAND ON RECOLTE LES POINTS****** */
-let soundRecup = new Howl ({
-  src : [ "sons/swing-whoosh-110410.mp3" ],
+/*********************************SON QUAND ON RECOLTE LES DE********************* */
+let recupSound = new Howl ({
+  src : [ "sons/swing-whoosh-110410.mp3"],
   loop : false,
   autoplay : false,
-  volume : 0.2
+  volume : 0.3
 
 });
 
-function playSoundRecup(){
-  soundRecup.play();
+function playRecupSound(){
+  recupSound.play();
   setTimeout(function() {
-    soundRecup.stop();
+    recupSound.stop();
   }, 1000);
-};
+}
 
-/******************************SON QUAND ON A OU QU ON A PERDU******* */
-/*******************FONCTION QUI DESACTIVE LES BOUTON AVANT DE CLIQUER SUR NOUVELLE PARTIE */
-document.addEventListener('DOMContentLoaded', function() {
-    lancer1.disabled = true;
-    lancer2.disabled = true;
-    recup1.disabled = true;
-    recup2.disabled = true;
-
-});
-
-/***************************************FONCTION QUI EFFACE LE DE******  */
+/****************************************SUPPRIMES LES IMAGES A CHAQUE LANCER **********/
 function removeIn(){
   document.getElementById('myImages');
   $("#myImages").empty();
   
 };
 
-function removeImage() {
-  if (myImages.style.transform = '100'){
-    setTimeout(removeIn, 15000, clearTimeout);
-    }
-    else{
-      console.log('ca va');
-    }
-  };
 /*************************FUNCTION QUI PERMET D AFFICHER LES  IMAGES DE DE*************** */
   function resultImage () {
     
