@@ -38,7 +38,7 @@ newGame.onclick = function resultats(){
   //definit aleatoirement le joueur actif
   getRandomIntLancer();
   //désactive les boutons du joueur inactif
-  disabled();
+  //disabled();
   //supprime les images de dé
   removeIn();
   // mise a 0 des scores
@@ -63,6 +63,7 @@ function getRandomIntLancer() {
       
   }};
 
+  
 //function getRandomIntStart() {
 //      tour =  Math.floor(Math.random() * 2) + 1;
 //      console.log(`function getRandomInt la valeur de tour est ${tour}`)
@@ -70,23 +71,23 @@ function getRandomIntLancer() {
 //      
 //};
 /****************************FONCTION QUI DESACTIVE LES BOUTONS DU JOUEUR INACTIF */
-function disabled(){
-  if (activePlayer === 'player1'){
-    lancer1.disabled = false;
-    recup1.disabled = false;
-    lancer2.disabled = true;
+//function disabled(){
+//  if (activePlayer === 'player1'){
+//    //lancer1.disabled = false;
+//    //recup1.disabled = false;
+//    //lancer2.disabled = true;
+//    
+//    
+//  }
+//  else{
+//    activePlayer === 'player2';
+//    //lancer2.disabled = false;
+//    //recup2.disabled = false;
+//    //lancer1.disabled = true;
     
     
-  }
-  else{
-    activePlayer === 'player2';
-    lancer2.disabled = false;
-    recup2.disabled = false;
-    lancer1.disabled = true;
-    
-    
-  }
-};
+//  }
+//};
 /*********************************FUNCTION ACTIVE PLAYER*******************************/
 function switchPlayer(){
   if (activePlayer === 'player1') {
@@ -150,10 +151,10 @@ function diceOne(){
           message1.textContent = resultRound1;
           resultRound2 = 0;
           message2.textContent = resultRound2;
-          recup2.disabled = false;
-          lancer2.disabled = false;
-          recup1.disabled = true;
-          lancer1.disabled = true;
+          //recup2.disabled = false;
+          //lancer2.disabled = false;
+          //recup1.disabled = true;
+          //lancer1.disabled = true;
           
       } else {
           activePlayer = 'player1';
@@ -162,10 +163,10 @@ function diceOne(){
           message2.textContent = resultRound2;
           resultRound1 = 0;
           message1.textContent = resultRound1;
-          recup1.disabled = false;
-          lancer1.disabled = false;
-          recup2.disabled = true;
-          lancer2.disabled = true;
+          //recup1.disabled = false;
+          //lancer1.disabled = false;
+          //recup2.disabled = true;
+          //lancer2.disabled = true;
 
           
       }
@@ -214,8 +215,8 @@ recup1.onclick = function (){
       message1.innerHTML = '0';
       //switchPlayer();
       activePlayer = 'player2';
-      lancer1.disabled = true;
-      lancer2.disabled = false;
+      //lancer1.disabled = true;
+      //lancer2.disabled = false;
       //vidange du tableau round1 de ses valeurs
       round1 = 0;
       console.log('valeur de round1 apres reset : ' + round1);
@@ -250,9 +251,9 @@ recup2.onclick = function (){
       message2.innerHTML = '0';
       //switchPlayer();
       activePlayer = 'player1';
-      lancer2.disabled = true;
-      lancer1.disabled = false;
-      recup1.disabled = false;
+      //lancer2.disabled = true;
+      //lancer1.disabled = false;
+      //recup1.disabled = false;
       //vidange du tableau round2 de ses valeurs
       round2 = 0;
       console.log('valeur de round2 apres reset : ' + round2) ;
@@ -260,20 +261,20 @@ recup2.onclick = function (){
     };
 
 /*********************************FONCTION QUI DESACTIVE LES BOUTONS AU CHARGEMENT DE LA PAGE */
-document.addEventListener('DOMContentLoaded', function() {
-    lancer1.disabled = true;
-    lancer2.disabled = true;
-    recup1.disabled = true;
-    recup2.disabled = true;
-});
+//document.addEventListener('DOMContentLoaded', function() {
+//    lancer1.disabled = true;
+//    lancer2.disabled = true;
+//    recup1.disabled = true;
+//    recup2.disabled = true;
+//});
 //*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR A 100 ALORS IL GAGNE******/   
   function winer(){ 
   if(resultGlobal1 > 100 || resultGlobal2 >100){
     modal.style.opacity = '1';
-    lancer1.disabled = true;
-    lancer2.disabled = true;
-    recup1.disabled = true;
-    recup2.disabled = true;
+    //lancer1.disabled = true;
+    //lancer2.disabled = true;
+    //recup1.disabled = true;
+    //recup2.disabled = true;
   }
     else{ 
       console.log('on continue');
@@ -281,13 +282,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 /*****************************SON AU LANCER DE DE **********************************/
-let sound = new Howl ({
-  src : [ "sons/bruit de dés.mp3" ],
-  loop : false,
-  autoplay : false,
-  volume : 0.3
-
+var sound = new Howl({
+  src: ['sons/bruit de dés.mp3'],
+  volume: 0.5,
 });
+
+
 
 function playSound(){
   sound.play();
@@ -297,8 +297,8 @@ function playSound(){
 }
 
 /*********************************SON QUAND ON RECOLTE LES DE********************* */
-let recupSound = new Howl ({
-  src : [ "sons/swing-whoosh-110410.mp3"],
+var recupSound = new Howl ({
+  src : [ "https://pixabay.com/sound-effects/id-110410/"],
   loop : false,
   autoplay : false,
   volume : 0.3
@@ -325,11 +325,14 @@ function removeIn(){
       switch (randomNumber)  {  
     case 1: 
   let myImage1 = document.createElement('img');
+  let myText1 = document.createElement('string')
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
-   
-  
-  console.log(myImage1);
+  myImages.innerHTML = 'tu as fais 1, tu passes ton tour';
+  myImages.style.fontSize = '50px';
+  myImages.style.fontStyle = 'bold';
+  myImages.style.color = 'red';
+    console.log(myImage1);
   break;
   
   case 2: 
