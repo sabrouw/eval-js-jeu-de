@@ -29,19 +29,8 @@ let activePlayer;
 let newGame = document.getElementById('newgame');
 let round = 0;
 let randomNumber;
+let modal = document.getElementById('modal');
 let clr;
-let regles= document.getElementById('regle');
-regles.onclick = function regles(){
-  joueurActif.innerHTML = "bienvenue sur le benjigum, jeu de dé qui va faire défiler le temps pour vous," +
-  "Voici les règles:" +
-  "Ce jeu de dé est pour 2 joueurs, " +
-  "Le dé qui donnera  1 fera perdre tous ses points au joueurs et ce joueur laissera la main à son adversaire" +
-  "Pour ne pas perdre ses points le joueur peut récolter ses points"+
-  "Sinon le joueur peut  relancer le dé autant de fois qu il le souhaire." +
-  "Le premier joueur qui obtient 100 a gagné !";
-  
-
-}
 
 
 /*********************************BUTTON NEW GAME RESET JOUEUR ALEATOIRE**********************************/
@@ -86,7 +75,7 @@ function disabled(){
     lancer1.disabled = false;
     recup1.disabled = false;
     lancer2.disabled = true;
-    //activePlayerStyle();
+    
     
   }
   else{
@@ -94,7 +83,7 @@ function disabled(){
     lancer2.disabled = false;
     recup2.disabled = false;
     lancer1.disabled = true;
-    //activePlayerStyle();
+    
     
   }
 };
@@ -196,7 +185,7 @@ function diceOne(){
 //    recup1.style.backgroundColor = 'black';
 //     clr = setInterval(activePlayerStyle, 1000);
 //  } };
-//
+
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
   playSound();
@@ -293,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*****************************SON AU LANCER DE DE **********************************/
 let sound = new Howl ({
-  src : [ "https://pixabay.com/fr/sound-effects/rolling-single-and-dual-20-sided-dice-19832/" ],
+  src : [ "sons/bruit de dés.mp3" ],
   loop : false,
   autoplay : false,
   volume : 0.3
@@ -309,7 +298,7 @@ function playSound(){
 
 /*********************************SON QUAND ON RECOLTE LES DE********************* */
 let recupSound = new Howl ({
-  src : [ "https://pixabay.com/fr/sound-effects/swing-whoosh-110410/"],
+  src : [ "sons/swing-whoosh-110410.mp3"],
   loop : false,
   autoplay : false,
   volume : 0.3
