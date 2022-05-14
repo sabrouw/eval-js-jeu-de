@@ -29,6 +29,7 @@ let newGame = document.getElementById('newgame');
 let round = 0;
 let randomNumber;
 let clr;
+let imageDe = document.getElementById('#myImages');
 
 
 function myfunction() {
@@ -75,11 +76,13 @@ function disabled(){
     lancer1.disabled = false;
     recup1.disabled = false;
     
+    
   }
   else{
     activePlayer === 'player2'
     lancer2.disabled = false;
     recup2.disabled = false;
+    
     
   }
 };
@@ -102,6 +105,7 @@ function switchPlayer(){
 function randomize(){
   randomNumber = Math.floor(Math.random() * 6 ) + 1;
   console.warn('valeur du dé' + randomNumber);
+  removeIn();
     return randomNumber;
     };
       
@@ -143,6 +147,7 @@ function totalRound(){
 function diceOne(){
   if (randomNumber === 1) {
       if (activePlayer === 'player1') {
+          removeIn();
           lancer1.disabled = true;
           activePlayer = 'player2';
           lancer2.disabled = false;
@@ -151,9 +156,11 @@ function diceOne(){
           message1.textContent = resultRound1;
           resultRound2 = 0;
           message2.textContent = resultRound2;
-          removeIn();
+          myImages.textContent = "Ton dé fait 1, tu passes la main au joueur 2!"
+          
       } else {
           activePlayer = 'player1';
+          removeIn();
           console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne`);
           resultRound2 = 0;
           lancer2.disabled = true;
@@ -161,7 +168,9 @@ function diceOne(){
           message2.textContent = resultRound2;
           resultRound1 = 0;
           message1.textContent = resultRound1;
-          removeIn();
+          recup2.disabled = false;
+          myImages.textContent = "Ton dé fait 1, tu passes la main au joueur 1!"
+          
       }
   }
 }
@@ -183,6 +192,7 @@ function diceOne(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
+  playSound();
   //nombre aléatoire
   randomize();
   console.log('nombre aleatoire' + randomNumber);
@@ -201,17 +211,19 @@ lancer1.onclick = function resultats(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup1.onclick = function (){
+      playSoundRecup();
 //formule pour ajouter le resultRound1 au global1 à revoir
       totalGlobal();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1);
       switchPlayer();
-      removeIn();  
+      removeIn(myImages);  
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
       activePlayer = 'player2';
       lancer1.disabled = true;
       lancer2.disabled = false;
+      recup2.diabled = false;
       //vidange du tableau round1 de ses valeurs
       round1 = 0;
       console.log('valeur de round1 apres reset : ' + round1);
@@ -220,13 +232,12 @@ recup1.onclick = function (){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
+  playSound();
   //nombre aléatoire
   randomize();
-  //song();
   //dé en image
   resultImage();
   //fonction pour supprimer image au fure et a mesure
-  //myList ()
   removeImage() ;
   //si je fait un je passe mon tour
   diceOne();
@@ -238,17 +249,19 @@ lancer2.onclick = function resultats(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup2.onclick = function (){
+  playSoundRecup();
 //formule pour ajouter le resultRound2 au global2 à revoir
       totalGlobal();
       console.log('totalglobal2'+totalGlobal)
       switchPlayer(); 
-      //removeIn(); 
+      removeIn(); 
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
       activePlayer ='player1';
       lancer2.disabled = true;
       lancer1.disabled = false;
+      recup1.disabled = false;
       //vidange du tableau round2 de ses valeurs
       round2 = 0;
       console.log('valeur de round2 apres reset : ' + round2) ;
@@ -288,12 +301,50 @@ recup2.onclick = function (){
 //  ulImg.splice(0, 1);
 
 //};
-function song(){
-let sound = document.getElementById("audioDice");
-sound.play();
 
-}
+/*****************************SON LANCEMENT DU DE********************************* */
+let sound = new Howl ({
+  src : [ "sons/bruit de dés.mp3" ],
+  loop : false,
+  autoplay : false,
+  volume : 0.2
 
+});
+
+function playSound(){
+  sound.play();
+  setTimeout(function() {
+    sound.stop();
+  }, 1000);
+};
+
+/******************************SON QUAND ON RECOLTE LES POINTS****** */
+let soundRecup = new Howl ({
+  src : [ "sons/swing-whoosh-110410.mp3" ],
+  loop : false,
+  autoplay : false,
+  volume : 0.2
+
+});
+
+function playSoundRecup(){
+  soundRecup.play();
+  setTimeout(function() {
+    soundRecup.stop();
+  }, 1000);
+};
+
+/******************************SON QUAND ON A OU QU ON A PERDU******* */
+/*******************FONCTION QUI DESACTIVE LES BOUTON AVANT DE CLIQUER SUR NOUVELLE PARTIE */
+document.addEventListener('DOMContentLoaded', function() {
+    lancer1.disabled = true;
+    lancer2.disabled = true;
+    recup1.disabled = true;
+    recup2.disabled = true;
+
+});
+
+/***************************************FONCTION QUI EFFACE LE DE******  */
 function removeIn(){
   document.getElementById('myImages');
   $("#myImages").empty();
@@ -310,6 +361,7 @@ function removeImage() {
   };
 /*************************FUNCTION QUI PERMET D AFFICHER LES  IMAGES DE DE*************** */
   function resultImage () {
+    
       switch (randomNumber)  {  
     case 1: 
   let myImage1 = document.createElement('img');
