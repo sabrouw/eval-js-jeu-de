@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*****************************SON AU LANCER DE DE **********************************/
 let sound = new Howl ({
-  src : [ "sons/bruit de dés.mp3" ],
+  src : [ "https://pixabay.com/fr/sound-effects/rolling-single-and-dual-20-sided-dice-19832/" ],
   loop : false,
   autoplay : false,
   volume : 0.3
@@ -309,7 +309,7 @@ function playSound(){
 
 /*********************************SON QUAND ON RECOLTE LES DE********************* */
 let recupSound = new Howl ({
-  src : [ "sons/swing-whoosh-110410.mp3"],
+  src : [ "https://pixabay.com/fr/sound-effects/swing-whoosh-110410/"],
   loop : false,
   autoplay : false,
   volume : 0.3
