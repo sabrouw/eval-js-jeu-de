@@ -325,13 +325,13 @@ function removeIn(){
       switch (randomNumber)  {  
     case 1: 
   let myImage1 = document.createElement('img');
-  let myText1 = document.createElement('string')
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
-  myImages.innerHTML = 'tu as fais 1, tu passes ton tour';
-  myImages.style.fontSize = '50px';
-  myImages.style.fontStyle = 'bold';
-  myImages.style.color = 'reds';
+  //message pour prevenir que le tour change, mais ca ne marche pas pour petits ecran alors désactiver
+  //myImages.innerHTML = 'tu as fais 1, tu passes ton tour';
+  //myImages.style.fontSize = '50px';
+  //myImages.style.fontStyle = 'bold';
+  //myImages.style.color = 'reds';
     console.log(myImage1);
   break;
   
