@@ -104,7 +104,7 @@ ul img {
     grid-row-start: 2;
     animation: myAnim 0.7s linear 0s forwards;
     transition-property: opacity;
-    transition-duration: 10s, 5s;
+    transition-duration: 15s, 10s;
     display: flex;
     justify-content: start;
     padding: 0;
@@ -120,7 +120,8 @@ ul img {
                 
         }
             to {
-                transform: translateX(150px) rotate(1turn);
+                transform: translateX(200px) rotate(1turn);
+                
                 
                 
                 
@@ -346,6 +347,7 @@ audio{
       }
 
     @media screen and (max-width: 500px) {
+        ul img { animation: none;}
         *{ font-size: 10px;}
         img{ height: 50% ; overflow-block: backdrop }
         }
