@@ -1,13 +1,14 @@
 //************************************REGLES DU JEU*******************************************
 //ceci un jeu de dé avec 2 joueurs 
-//le dé qui me donnera des valeurs entre 1 et 6
-//si la valeur est 1 je passe mon tour
-//sinon je peux relancer le dé.
+//le dé me donnera des valeurs entre 1 et 6 (logique)
+//si la valeur est 1 je passe mon tour à l'autre joueur et je lui donne la valeur de mon dé actuel qui est 1
+//sinon je peux relancer le dé autant de fois que je veux
 
-//mon score global démarre à 0 
-//on lui ajoute le résultat des lancers de dé au fur et à mesure en cliquant sur hold
-//tant qu'aucun score global n'est égal à 100 alors le jeu continue
-//sinon le joueur qui a 100 à gagné
+//mes score démarrent à 0 
+//on lui ajoute le score des lancers de dé au fur et à mesure en cliquant sur hold
+//quand on clique sur hold on passe aussi la main à l'autre joueur
+//tant qu'aucun score total n'est égal à 100 alors le jeu continue
+//sinon le joueur qui a 100 a gagné
 
 //***************************VARIABLES UTILES***************************************
 const lancer1 = document.getElementById('roll1');
@@ -29,20 +30,29 @@ let newGame = document.getElementById('newgame');
 let round = 0;
 let randomNumber;
 let clr;
+let regles= document.getElementById('regle');
+regles.onclick = function regles(){
+  joueurActif.innerHTML = "bienvenue sur le benjigum, jeu de dé qui va faire défiler le temps pour vous," +
+  "Voici les règles:" +
+  "Ce jeu de dé est pour 2 joueurs, " +
+  "Le dé qui donnera  1 fera perdre tous ses points au joueurs et ce joueur laissera la main à son adversaire" +
+  "Pour ne pas perdre ses points le joueur peut récolter ses points"+
+  "Sinon le joueur peut  relancer le dé autant de fois qu il le souhaire." +
+  "Le premier joueur qui obtient 100 a gagné !";
+  
+
+}
 
 
-function myfunction() {
- }
-window.onload = myfunction;
-
-/*********************************BUTTON NEW GAME RESET**********************************/
+/*********************************BUTTON NEW GAME RESET JOUEUR ALEATOIRE**********************************/
 newGame.onclick = function resultats(){
   //definit aleatoirement le joueur actif
-  getRandomIntLancer()
+  getRandomIntLancer();
+  //désactive les boutons du joueur inactif
   disabled();
   //supprime les images de dé
   removeIn();
-  // mise a 0 scores
+  // mise a 0 des scores
   round1 = 0;
   round2 = 0;
   global1 = 0;
@@ -51,6 +61,7 @@ newGame.onclick = function resultats(){
   message2.innerHTML = '0';
   messageglobal1.innerHTML = '0';
   messageglobal2.innerHTML= '0';
+  //affiche le message du joueur qui doit jouer
   joueurActif.innerHTML = 'Le joueur ' + round +' commence';
   console.log('active player = ' + activePlayer);
 };
@@ -69,31 +80,32 @@ function getRandomIntLancer() {
 //      return activePlayer = `player${tour}`;
 //      
 //};
-
+/****************************FONCTION QUI DESACTIVE LES BOUTONS DU JOUEUR INACTIF */
 function disabled(){
   if (activePlayer === 'player1'){
     lancer1.disabled = false;
     recup1.disabled = false;
+    lancer2.disabled = true;
+    //activePlayerStyle();
     
   }
   else{
-    activePlayer === 'player2'
+    activePlayer === 'player2';
     lancer2.disabled = false;
     recup2.disabled = false;
+    lancer1.disabled = true;
+    //activePlayerStyle();
     
   }
 };
 /*********************************FUNCTION ACTIVE PLAYER*******************************/
 function switchPlayer(){
   if (activePlayer === 'player1') {
-      lancer2.disabled = true;
-        
+             
           console.log(`function switchPlayer : ${activePlayer}`);
   } else {
       activePlayer === 'player2';
-      lancer2.disabled = false;
-      lancer1.disabled = true;
-      console.log('mon active player est : ' + activePlayer);
+            console.log('mon active player est : ' + activePlayer);
   }};
 
   
@@ -143,24 +155,29 @@ function totalRound(){
 function diceOne(){
   if (randomNumber === 1) {
       if (activePlayer === 'player1') {
-          lancer1.disabled = true;
           activePlayer = 'player2';
-          lancer2.disabled = false;
           console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne `);
           resultRound1 = 0;
           message1.textContent = resultRound1;
           resultRound2 = 0;
           message2.textContent = resultRound2;
+          recup2.disabled = false;
+          lancer2.disabled = false;
+          recup1.disabled = true;
+          lancer1.disabled = true;
           
       } else {
           activePlayer = 'player1';
           console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne`);
           resultRound2 = 0;
-          lancer2.disabled = true;
-          lancer1.disabled = false;
           message2.textContent = resultRound2;
           resultRound1 = 0;
           message1.textContent = resultRound1;
+          recup1.disabled = false;
+          lancer1.disabled = false;
+          recup2.disabled = true;
+          lancer2.disabled = true;
+
           
       }
   }
@@ -178,9 +195,8 @@ function diceOne(){
 //    player1.style.backgroundColor =   'black';
 //    recup1.style.backgroundColor = 'black';
 //     clr = setInterval(activePlayerStyle, 1000);
-//  } }
-
-
+//  } };
+//
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
   playSound();
@@ -202,11 +218,12 @@ recup1.onclick = function (){
 //formule pour ajouter le resultRound1 au global1 à revoir
       totalGlobal();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1);
-      switchPlayer();
+      //switchPlayer();
       removeIn();  
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
+      //switchPlayer();
       activePlayer = 'player2';
       lancer1.disabled = true;
       lancer2.disabled = false;
@@ -236,26 +253,34 @@ recup2.onclick = function (){
       playRecupSound();
 //formule pour ajouter le resultRound2 au global2 à revoir
       totalGlobal();
-      console.log('totalglobal2'+totalGlobal)
-      switchPlayer(); 
+      console.log('totalglobal2'+ totalGlobal)
+      //switchPlayer(); 
       removeIn(); 
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
-      activePlayer ='player1';
+      //switchPlayer();
+      activePlayer = 'player1';
       lancer2.disabled = true;
       lancer1.disabled = false;
+      recup1.disabled = false;
       //vidange du tableau round2 de ses valeurs
       round2 = 0;
       console.log('valeur de round2 apres reset : ' + round2) ;
       winer() ;
     };
 
-
+/*********************************FONCTION QUI DESACTIVE LES BOUTONS AU CHARGEMENT DE LA PAGE */
+document.addEventListener('DOMContentLoaded', function() {
+    lancer1.disabled = true;
+    lancer2.disabled = true;
+    recup1.disabled = true;
+    recup2.disabled = true;
+});
 //*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR A 100 ALORS IL GAGNE******/   
   function winer(){ 
   if(resultGlobal1 > 100 || resultGlobal2 >100){
-    alert('tu as gagné !!😄');
+    modal.style.opacity = '1';
     lancer1.disabled = true;
     lancer2.disabled = true;
     recup1.disabled = true;
@@ -313,7 +338,7 @@ function removeIn(){
   let myImage1 = document.createElement('img');
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
-  setTimeout(removeIn, 15000, clearTimeout);  
+   
   
   console.log(myImage1);
   break;
@@ -322,7 +347,7 @@ function removeIn(){
   let myImage2 = document.createElement('img');
   myImage2.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/two-310337__480.png';
   document.getElementById('myImages').appendChild(myImage2).style.width = '100px';
-  setTimeout(removeIn, 15000, clearTimeout);
+  
   
   console.log(myImage2);  
       break;
@@ -331,7 +356,7 @@ function removeIn(){
   let myImage3 = document.createElement('img');
   myImage3.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/three-310336__480.png';
   document.getElementById('myImages').appendChild(myImage3).style.width = '100px';
-  setTimeout(removeIn, 15000, clearTimeout);
+  
   console.log(myImage3);
   
      break;
@@ -340,7 +365,7 @@ function removeIn(){
   let myImage4 = document.createElement('img');
   myImage4.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312623__480.png';
   document.getElementById('myImages').appendChild(myImage4).style.width = '100px', visibility = 'visible';
-  setTimeout(removeIn, 15000, clearTimeout);
+  
   console.log(myImage4);
   
      break;
@@ -349,7 +374,7 @@ function removeIn(){
   let myImage5 = document.createElement('img');
   myImage5.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/five-310334_1280.png';
   document.getElementById('myImages').appendChild(myImage5).style.width = '100px';
-  setTimeout(removeIn, 15000, clearTimeout);
+  
   console.log(myImage5);
   
       break;
@@ -358,7 +383,7 @@ function removeIn(){
   let myImage6 = document.createElement('img');
   myImage6.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312621__480.png';
   document.getElementById('myImages').appendChild(myImage6).style.width = '100px';
-  setTimeout(removeIn, 15000, clearTimeout);
+  
   console.log(myImage6);
   
 

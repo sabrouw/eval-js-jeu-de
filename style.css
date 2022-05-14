@@ -1,14 +1,22 @@
 html{
-    font-family: 'Oswald', sans-serif;
-    font-size: 20px;
-    font-weight: bold;
     overflow: hidden;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 20px;
+    letter-spacing: 0px;
+    word-spacing: 2px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: bold;
+    font-variant: small-caps;
+    text-transform: none;
+    
 
     
 }
 
 #backround{
-    /*background-image: url(https://freesvg.org/img/Rhombus-seamless-pattern.png);*/
+    background-image: url(https://cdn.pixabay.com/photo/2018/02/18/20/29/computer-3163436_1280.png);
     background-position: center;
     background-color: #a7c957;
     z-index: 0;
@@ -19,7 +27,7 @@ html{
     height: 100vh;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 20% 40% 20% 1fr;
+    grid-template-columns: 1fr 21% 40% 21% 1fr;
     grid-template-rows: 10% 45% 15% 10% 10% auto;
     justify-items: center;
     
@@ -127,11 +135,13 @@ ul img {
     background-color: #3f7d20;
     border-radius: 10%;
     margin-top: 2%;
+    margin-bottom: 10%;
     
 }
 .roll1{
     grid-column-start: 2;
     grid-row-start: 6;
+    
     
     
     
@@ -169,14 +179,14 @@ ul img {
     grid-column-start: 2;
     grid-row-end: 5; 
     padding-bottom: 15%;
-    color: #0d0a0b;
+    color: black;
     font-weight: bold;
 }
 .hold2{
     grid-column-start: 4;
     grid-row-end:5;
     padding-bottom: 15%;
-    color: #0d0a0b;
+    color: black;
     font-weight: bold;
 
 }
@@ -184,9 +194,14 @@ ul img {
 #round1{
     grid-column-start: 2;
     grid-row: 5;
-    color: #3f7d20;
+    align-items: end;
+    color: #0d0a0b;
+    font-size: 20px;
     font-weight: bold;
-    font-size: 20px;  
+    margin-bottom: 10%;
+    
+    
+    
     
 }
 #message1{
@@ -196,9 +211,10 @@ ul img {
     grid-column-start: 4;
     grid-row: 5;
     align-items: end;
-    color: #3f7d20;
+    color: #0d0a0b;
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 10%;
     margin-bottom: 10%;
     
 }
@@ -207,7 +223,7 @@ ul img {
 }
 .score-global1{
     font-size: 20px;
-    color: #3f7d20;
+    color: #0d0a0b;
     font-weight: bold;
     grid-column: 2;
     grid-row-start: 3;
@@ -224,7 +240,7 @@ ul img {
 }
 .score-global2{
     font-size: 20px;
-    color: #3f7d20;
+    color: #0d0a0b;
     font-weight: bold;
     grid-column: 4;
     grid-row: 3;
@@ -254,13 +270,13 @@ audio{
     width: 20vh;
 }
 #joueur2{
-    box-shadow: 0 0 35px #3f7d20;
+    box-shadow: 0 0 10px #3f7d20;
     border-radius: 9%;
     padding-right: 1%;
     
 }
 #joueur1{
-    box-shadow: 0 0 35px #3f7d20;
+    box-shadow: 5 10 35px black;
     border-radius: 9%;
 }
 
@@ -322,6 +338,11 @@ audio{
           grid-column: 4;
           grid-row: 1;
           font-size: 15px;
+          font-style: bold;
+          color: #000000;
+          background-color: #a7c957;
+          padding: 0;
+          margin: 0;
       }
 
     @media screen and (max-width: 500px) {
