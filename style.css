@@ -8,10 +8,7 @@ html{
     text-decoration: none;
     font-style: bold;
     font-variant: small-caps;
-    text-transform: none;
-    
-
-    
+    text-transform: none; 
 }
 
 #backround{
@@ -19,7 +16,6 @@ html{
     background-position: center;
     background-color: #a7c957;
     z-index: 0;
-
 }
 
 .container-grid{
@@ -29,24 +25,19 @@ html{
     grid-template-columns: 1fr 22% 40% 22% 1fr;
     grid-template-rows: 10% 40% 15% 10% 10% auto;
     justify-items: center;
-    font-family: 'Arial Black', Gadget, sans-serif;
-    
-                
+    font-family: 'Arial Black', Gadget, sans-serif;              
 }
 
 .header{
     grid-column-end: 4;
-    grid-row: 1;
-
-    
-   
+    grid-row: 1; 
 }
+
 .new-game{
     justify-items: end;
     margin-top: 10%;
     background-color: white;
-    color: white;
-    
+    color: white;   
 }
 
 #newgame
@@ -60,9 +51,11 @@ html{
     color: white;
     
 }
+
 a #modal{
     color: white;
 }
+
 .player1{
     grid-column-end: 3;
     grid-row-start: 2;
@@ -70,9 +63,9 @@ a #modal{
     font-weight: bold;
     text-align: center;
     font-size: 30px;
-    margin-top: 5%;
-    
+    margin-top: 5%;   
 }
+
 .player2{
     grid-column-start: 4;
     grid-row-start: 2;
@@ -81,8 +74,7 @@ a #modal{
     font-weight: bold;
     text-align: center;
     font-size: 30px;
-    margin-top: 5%;
-     
+    margin-top: 5%;    
 }
 
 #body{
@@ -94,9 +86,6 @@ a #modal{
     margin: 0%;
     padding-top: 10%; 
     justify-self: left;
-    
-    
-
 }
 
 
@@ -112,26 +101,15 @@ ul img {
     justify-content: start;
     padding: 0;
     margin-top: 200%;
-    
-
     }
 
     @keyframes myAnim {
         from { 
-            
-            transform: translateX(-50px) rotate(0);
-                
+                transform: translateX(-50px) rotate(0);       
         }
             to {
-                transform: translateX(110px) rotate(1turn);
-                
-                
-                
-                
-                
-            }
-            
-           
+                transform: translateX(110px) rotate(1turn);     
+            } 
         }
     
 /*bouton roll1*/
@@ -139,16 +117,12 @@ ul img {
     background-color: #3f7d20;
     border-radius: 10%;
     margin-top: 2%;
-    margin-bottom: 10%;
-    
+    margin-bottom: 10%;   
 }
+
 .roll1{
     grid-column-start: 2;
-    grid-row-start: 6;
-    
-    
-    
-    
+    grid-row-start: 6;    
 }
 /*bouton roll2*/
 #roll2{
@@ -156,16 +130,13 @@ ul img {
     border-radius: 10%;
     margin-top: 2%;
     color: black;
-    
-
 }
+
 .roll2{
     grid-column-end: 5;
-    grid-row-start: 6;
-    
-    
-    
+    grid-row-start: 6;    
 }
+
 /*BOUTONS RECOLTER*/
 #hold1{
     
@@ -186,13 +157,13 @@ ul img {
     color: black;
     font-weight: bold;
 }
+
 .hold2{
     grid-column-start: 4;
     grid-row-end:5;
     padding-bottom: 15%;
     color: black;
     font-weight: bold;
-
 }
 
 #round1{
@@ -202,12 +173,9 @@ ul img {
     color: #0d0a0b;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 30%;
-    
-    
-    
-    
+    margin-bottom: 30%;  
 }
+
 #message1{
     font-size: 20px;
 }
@@ -219,20 +187,19 @@ ul img {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10%;
-    margin-bottom: 10%;
-    
-}
+    margin-bottom: 10%; 
+} 
+
 #message2{
     font-size: 20px;
 }
+
 .score-global1{
     font-size: 20px;
     color: #0d0a0b;
     font-weight: bold;
     grid-column: 2;
-    grid-row-start: 3;
-    
-    
+    grid-row-start: 3;    
 }
 
 #messageglobal2{
@@ -251,7 +218,6 @@ ul img {
     
 }
 
-
 button{
     box-shadow: 0 0 10px gray;
 }
@@ -265,9 +231,6 @@ button{
     text-decoration: none;
     color: #0d0a0b;
 }
-
-
-
 
 audio{
     height: 10vh;

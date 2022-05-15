@@ -32,7 +32,7 @@ let randomNumber;
 const modal = document.getElementById('modal');
 let regles = document.getElementById('regles');
 
-
+/****************************************REGLES DU JEU MODAL*************************** */
 regles.onclick = function (){
   joueurActif.innerHTML = 
   "Bienvenue sur le benjigum, jeu de dé qui va faire défiler le temps pour toi. " +
@@ -87,7 +87,7 @@ function switchPlayer(){
   }};
 
   
-//**************************  FUNCTION NOMBRE ALEATOIRE************* ****************/
+//**************************  FUNCTION NOMBRE ALEATOIRE POUR LE DE************* ****************/
 function randomize(){
   randomNumber = Math.floor(Math.random() * 6 ) + 1;
   console.warn('valeur du dé' + randomNumber);
@@ -214,14 +214,12 @@ recup2.onclick = function (){
     };
 
 
-//*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR A 100 ALORS IL GAGNE******/   
-  function winer(){ 
+//*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR OU = A 100 ALORS IL GAGNE******/   
+ 
+let modalWin = document.getElementsByClassName('modal-dialog')
+function winer(){ 
   if(resultGlobal1 > 100 || resultGlobal2 >100){
-    modal.style.opacity = '1';
-    //lancer1.disabled = true;
-    //lancer2.disabled = true;
-    //recup1.disabled = true;
-    //recup2.disabled = true;
+    alert('ton score est de 100 tu as gagné bravo !')
   }
     else{ 
       console.log('on continue');
@@ -251,56 +249,46 @@ function removeIn(){
   myImages.style.marginTop = '150%'; paddingRight = '10%';
   myImages.style.borderRadius = '15%';
   myImages.style.textAlign = 'center';
-  
-    console.log(myImage1);
+      console.log(myImage1);
   break;
   
   case 2: 
   let myImage2 = document.createElement('img');
   myImage2.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/two-310337__480.png';
   document.getElementById('myImages').appendChild(myImage2).style.width = '100px';
-  
-  
-  console.log(myImage2);  
+    console.log(myImage2);  
       break;
       
   case 3:
   let myImage3 = document.createElement('img');
   myImage3.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/three-310336__480.png';
   document.getElementById('myImages').appendChild(myImage3).style.width = '100px';
-  
-  console.log(myImage3);
-  
-     break;
+    console.log(myImage3);
+       break;
    
   case 4: 
   let myImage4 = document.createElement('img');
   myImage4.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312623__480.png';
   document.getElementById('myImages').appendChild(myImage4).style.width = '100px', visibility = 'visible';
-  
-  console.log(myImage4);
-  
-     break;
+    console.log(myImage4);
+       break;
    
   case 5: 
   let myImage5 = document.createElement('img');
   myImage5.src = 'https://cdn.pixabay.com/photo/2014/04/03/10/24/five-310334_1280.png';
   document.getElementById('myImages').appendChild(myImage5).style.width = '100px';
-  
-  console.log(myImage5);
-  
-      break;
+    console.log(myImage5);
+        break;
   
       case 6: 
   let myImage6 = document.createElement('img');
   myImage6.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312621__480.png';
   document.getElementById('myImages').appendChild(myImage6).style.width = '100px';
+    console.log(myImage6);
+    break;
   
-  console.log(myImage6);
-  
-
     default:
       console.log('mais que se passe-t-il');
       break;
       
-};}
+};};
