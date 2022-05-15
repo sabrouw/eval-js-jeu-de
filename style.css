@@ -1,11 +1,10 @@
 html{
     overflow: hidden;
-    font-family: Impact, Charcoal, sans-serif;
+    font-family: 'Arial Black', Gadget, sans-serif;
     font-size: 20px;
     letter-spacing: 0px;
-    word-spacing: 2px;
     color: #000000;
-    font-weight: 700;
+    /*font-weight: 700;*/
     text-decoration: none;
     font-style: bold;
     font-variant: small-caps;
@@ -30,6 +29,7 @@ html{
     grid-template-columns: 1fr 22% 40% 22% 1fr;
     grid-template-rows: 10% 40% 15% 10% 10% auto;
     justify-items: center;
+    font-family: 'Arial Black', Gadget, sans-serif;
     
                 
 }
@@ -37,12 +37,13 @@ html{
 .header{
     grid-column-end: 4;
     grid-row: 1;
+
     
    
 }
 .new-game{
     justify-items: end;
-    margin-top: 20%;
+    margin-top: 10%;
     background-color: white;
     color: white;
     
@@ -68,7 +69,8 @@ a #modal{
     color: #0d0a0b;
     font-weight: bold;
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
+    margin-top: 5%;
     
 }
 .player2{
@@ -78,7 +80,8 @@ a #modal{
     color: #0d0a0b;
     font-weight: bold;
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
+    margin-top: 5%;
      
 }
 
@@ -199,7 +202,7 @@ ul img {
     color: #0d0a0b;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10%;
+    margin-bottom: 30%;
     
     
     
@@ -316,8 +319,11 @@ audio{
           opacity: 1;
      }
       .modal-content {
-        margin: 7%;
-         padding: 5%;
+         /*margin: 3%;*/
+         padding-top: 8%;
+         padding-bottom: 8%;
+         padding-left: 0%;
+         padding-right: 0%;
          width: 500px;
          border: #3f7d20 solid 5px;
          background: linear-gradient(15deg, #0d0a0b, #3f7d20);
@@ -329,7 +335,7 @@ audio{
      .modal-close {
         position: absolute;
         margin-left: 50%;
-        top: 50%;
+        top: 60%;
         text-decoration: none;
         color: white;
         font-size: 50px;
@@ -348,13 +354,19 @@ audio{
       }
 
     @media screen and (max-width: 500px) {
-        ul img { animation: none;width: 50px ;};
+        ul img { animation: none;width: 50px ; padding-right: 20%};
         *{ font-size: 15px; };
-        #joueur1{ width: 50%; };
-        #joueur2{ width: 50%; };
-        .modal-dialog{ padding-top: 10% ;};
-        #round1{font-size: 15px;};
-        #round2{font-size: 15px; margin-bottom: 5%;};
+        #joueur1{ width: 50%; margin-top: 50%};
+        #joueur2{ width: 50%; margin-top: 50%};
+        .modal-dialog{ padding-top: 3% ; };
+        .modal-content{font-size: 10PX; margin: 0; padding: 0;}
+        .modal-close{font-size: 15PX;}
+        #round1{font-size: 12px;};
+        #round2{font-size: 12px;};
+        .header{margin-top: 0;}
+        
+        
+        
         
         
         }
