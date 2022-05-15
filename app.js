@@ -43,8 +43,9 @@ regles.onclick = function (){
   "Le joueur actif peut lancer le dé autant de fois qu'il le souhaite. " +
  " Le premier joueur qui obtient 100 a gagné !"
  joueurActif.style.textTransform = 'lowercase';
- joueurActif.style.fontSize = '18px'
-}
+ joueurActif.style.fontSize = '18px';
+ joueurActif.style.padding = '15%';
+};
 
 
 /*********************************BUTTON NEW GAME RESET JOUEUR ALEATOIRE**********************************/
