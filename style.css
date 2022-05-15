@@ -361,9 +361,10 @@ audio{
         .modal-dialog{ padding-top: 3% ; };
         .modal-content{font-size: 10PX; margin: 0; padding: 0;}
         .modal-close{font-size: 15PX;}
-        #round1{font-size: 12px;};
-        #round2{font-size: 12px;};
+        /*#round1{font-size: 12px;};
+        #round2{font-size: 12px;};*/
         .header{margin-top: 0;}
+        #newgame{font-size: 10px;}
         
         
         
