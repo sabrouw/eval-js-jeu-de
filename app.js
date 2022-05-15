@@ -23,22 +23,34 @@ let resultGlobal1 = 0;
 let resultGlobal2 = 0;
 let resultRound1 = 0;
 let resultRound2 = 0;
-let player1 = document.getElementById('player1');
-let player2 = document.getElementById('player2');
+const player1 = document.getElementById('player1');
+const player2 = document.getElementById('player2');
 let activePlayer;
-let newGame = document.getElementById('newgame');
+const newGame = document.getElementById('newgame');
 let round = 0;
 let randomNumber;
-let modal = document.getElementById('modal');
-let clr;
+const modal = document.getElementById('modal');
+let regles = document.getElementById('regles');
+
+
+regles.onclick = function (){
+  joueurActif.innerHTML = 
+  "Bienvenue sur le benjigum, jeu de dé qui va faire défiler le temps pour toi. " +
+  "Voici les règles: " +
+  "Ce jeu de dé est pour 2 joueurs " +
+  "Le dé du joueur qui donnera 1 fera perdre tous ses points à ce joueur et ce joueur donnera ce point et laissera la main à son adversaire " +
+  "Pour ne pas perdre ses points le joueur peut récolter ses points " +
+  "Le joueur actif peut lancer le dé autant de fois qu'il le souhaite. " +
+ " Le premier joueur qui obtient 100 a gagné !"
+ joueurActif.style.textTransform = 'lowercase';
+ joueurActif.style.fontSize = '18px'
+}
 
 
 /*********************************BUTTON NEW GAME RESET JOUEUR ALEATOIRE**********************************/
 newGame.onclick = function resultats(){
   //definit aleatoirement le joueur actif
   getRandomIntLancer();
-  //désactive les boutons du joueur inactif
-  //disabled();
   //supprime les images de dé
   removeIn();
   // mise a 0 des scores
@@ -64,30 +76,6 @@ function getRandomIntLancer() {
   }};
 
   
-//function getRandomIntStart() {
-//      tour =  Math.floor(Math.random() * 2) + 1;
-//      console.log(`function getRandomInt la valeur de tour est ${tour}`)
-//      return activePlayer = `player${tour}`;
-//      
-//};
-/****************************FONCTION QUI DESACTIVE LES BOUTONS DU JOUEUR INACTIF */
-//function disabled(){
-//  if (activePlayer === 'player1'){
-//    //lancer1.disabled = false;
-//    //recup1.disabled = false;
-//    //lancer2.disabled = true;
-//    
-//    
-//  }
-//  else{
-//    activePlayer === 'player2';
-//    //lancer2.disabled = false;
-//    //recup2.disabled = false;
-//    //lancer1.disabled = true;
-    
-    
-//  }
-//};
 /*********************************FUNCTION ACTIVE PLAYER*******************************/
 function switchPlayer(){
   if (activePlayer === 'player1') {
@@ -151,11 +139,7 @@ function diceOne(){
           message1.textContent = resultRound1;
           resultRound2 = 0;
           message2.textContent = resultRound2;
-          //recup2.disabled = false;
-          //lancer2.disabled = false;
-          //recup1.disabled = true;
-          //lancer1.disabled = true;
-          
+                    
       } else {
           activePlayer = 'player1';
           console.log(`le joueur passe la main au ${activePlayer} grâce à la fonction looseDiceOne`);
@@ -163,33 +147,14 @@ function diceOne(){
           message2.textContent = resultRound2;
           resultRound1 = 0;
           message1.textContent = resultRound1;
-          //recup1.disabled = false;
-          //lancer1.disabled = false;
-          //recup2.disabled = true;
-          //lancer2.disabled = true;
-
-          
+           
       }
   }
 }
-/**************FONCTION QUI PERMET DE STYLISER L ACTIVE PLAYER***************/
-//function activePlayerStyle(){
-//  if (activePlayer === 'player1') {
-//      lancer2.style.backgroundColor = 'black';
-//      player2.style.backgroundColor  = 'black';
-//      recup2.style.backgroundColor  = 'black';
-//      clr = setInterval(activePlayerStyle, 1000);
-//  
-//  } else if (activePlayer === 'player2') {
-//    lancer1.style.backgroundColor =  'black';
-//    player1.style.backgroundColor =   'black';
-//    recup1.style.backgroundColor = 'black';
-//     clr = setInterval(activePlayerStyle, 1000);
-//  } };
+
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
-  playSound();
   //nombre aléatoire
   randomize();
   console.log('nombre aleatoire' + randomNumber);
@@ -204,19 +169,14 @@ lancer1.onclick = function resultats(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup1.onclick = function (){
-      playRecupSound();
 //formule pour ajouter le resultRound1 au global1 à revoir
       totalGlobal();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1);
-      //switchPlayer();
       removeIn();  
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
-      //switchPlayer();
       activePlayer = 'player2';
-      //lancer1.disabled = true;
-      //lancer2.disabled = false;
       //vidange du tableau round1 de ses valeurs
       round1 = 0;
       console.log('valeur de round1 apres reset : ' + round1);
@@ -225,7 +185,6 @@ recup1.onclick = function (){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
-  playSound();
   //nombre aléatoire
   randomize();
   //dé en image
@@ -240,33 +199,21 @@ lancer2.onclick = function resultats(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup2.onclick = function (){
-      playRecupSound();
-//formule pour ajouter le resultRound2 au global2 à revoir
+  //formule pour ajouter le resultRound2 au global2 à revoir
       totalGlobal();
       console.log('totalglobal2'+ totalGlobal)
-      //switchPlayer(); 
       removeIn(); 
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
-      //switchPlayer();
       activePlayer = 'player1';
-      //lancer2.disabled = true;
-      //lancer1.disabled = false;
-      //recup1.disabled = false;
       //vidange du tableau round2 de ses valeurs
       round2 = 0;
       console.log('valeur de round2 apres reset : ' + round2) ;
       winer() ;
     };
 
-/*********************************FONCTION QUI DESACTIVE LES BOUTONS AU CHARGEMENT DE LA PAGE */
-//document.addEventListener('DOMContentLoaded', function() {
-//    lancer1.disabled = true;
-//    lancer2.disabled = true;
-//    recup1.disabled = true;
-//    recup2.disabled = true;
-//});
+
 //*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR A 100 ALORS IL GAGNE******/   
   function winer(){ 
   if(resultGlobal1 > 100 || resultGlobal2 >100){
@@ -280,37 +227,6 @@ recup2.onclick = function (){
       console.log('on continue');
     }};
 
-
-/*****************************SON AU LANCER DE DE **********************************/
-//let sound = new Howl({
-//  src: ['sons/pourde.mp3'],
-//  volume: 0.5,
-//});
-//
-//
-//
-//function playSound(){
-//  sound.play();
-//  setTimeout(function() {
-//    sound.stop();
-//  }, 1000);
-//}
-////
-////*********************************SON QUAND ON RECOLTE LES DE********************* */
-//let recupSound = new Howl ({
-//  src : [ "sons/recoltede.mp3"],
-//  loop : false,
-//  autoplay : false,
-//  volume : 0.3
-//
-//});
-//
-//function playRecupSound(){
-//  recupSound.play();
-//  setTimeout(function() {
-//    recupSound.stop();
-//  }, 1000);
-//}
 
 /****************************************SUPPRIMES LES IMAGES A CHAQUE LANCER **********/
 function removeIn(){
@@ -332,7 +248,6 @@ function removeIn(){
   myImages.style.fontSize = '15px';
   /*myImages.style.background = '#a7c957';*/
   myImages.style.fontStyle = 'bold';
-  myImages.style.color = 'red';
   myImages.style.marginTop = '150%'; paddingRight = '10%';
   myImages.style.borderRadius = '15%';
   myImages.style.textAlign = 'center';
