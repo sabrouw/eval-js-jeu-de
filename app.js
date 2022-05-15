@@ -282,35 +282,35 @@ recup2.onclick = function (){
 
 
 /*****************************SON AU LANCER DE DE **********************************/
-let sound = new Howl({
-  src: ['sons/pourde.mp3'],
-  volume: 0.5,
-});
-
-
-
-function playSound(){
-  sound.play();
-  setTimeout(function() {
-    sound.stop();
-  }, 1000);
-}
+//let sound = new Howl({
+//  src: ['sons/pourde.mp3'],
+//  volume: 0.5,
+//});
 //
-//*********************************SON QUAND ON RECOLTE LES DE********************* */
-let recupSound = new Howl ({
-  src : [ "sons/recoltede.mp3"],
-  loop : false,
-  autoplay : false,
-  volume : 0.3
-
-});
-
-function playRecupSound(){
-  recupSound.play();
-  setTimeout(function() {
-    recupSound.stop();
-  }, 1000);
-}
+//
+//
+//function playSound(){
+//  sound.play();
+//  setTimeout(function() {
+//    sound.stop();
+//  }, 1000);
+//}
+////
+////*********************************SON QUAND ON RECOLTE LES DE********************* */
+//let recupSound = new Howl ({
+//  src : [ "sons/recoltede.mp3"],
+//  loop : false,
+//  autoplay : false,
+//  volume : 0.3
+//
+//});
+//
+//function playRecupSound(){
+//  recupSound.play();
+//  setTimeout(function() {
+//    recupSound.stop();
+//  }, 1000);
+//}
 
 /****************************************SUPPRIMES LES IMAGES A CHAQUE LANCER **********/
 function removeIn(){
