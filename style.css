@@ -348,15 +348,13 @@ audio{
       }
 
     @media screen and (max-width: 500px) {
-        ul img { animation: none;width: 50px ;}
-        *{ font-size: 15px; }
-        #joueur1{ width: 50%; }
-        #joueur2{ width: 50%; }
-        .modal-dialog{ padding-top: 10% ;}
-        #round1{font-size: 15px;}
-        #round2{font-size: 15px; margin-bottom: 5%;}
-
-        
+        ul img { animation: none;width: 50px ;};
+        *{ font-size: 15px; };
+        #joueur1{ width: 50%; };
+        #joueur2{ width: 50%; };
+        .modal-dialog{ padding-top: 10% ;};
+        #round1{font-size: 15px;};
+        #round2{font-size: 15px; margin-bottom: 5%;};
         
         
         }
