@@ -189,7 +189,7 @@ function diceOne(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
-  //playSound();
+  playSound();
   //nombre aléatoire
   randomize();
   console.log('nombre aleatoire' + randomNumber);
@@ -204,7 +204,7 @@ lancer1.onclick = function resultats(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup1.onclick = function (){
-      //playRecupSound();
+      playRecupSound();
 //formule pour ajouter le resultRound1 au global1 à revoir
       totalGlobal();
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1);
@@ -225,7 +225,7 @@ recup1.onclick = function (){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
-  //playSound();
+  playSound();
   //nombre aléatoire
   randomize();
   //dé en image
@@ -240,7 +240,7 @@ lancer2.onclick = function resultats(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup2.onclick = function (){
-      //playRecupSound();
+      playRecupSound();
 //formule pour ajouter le resultRound2 au global2 à revoir
       totalGlobal();
       console.log('totalglobal2'+ totalGlobal)
@@ -282,35 +282,35 @@ recup2.onclick = function (){
 
 
 /*****************************SON AU LANCER DE DE **********************************/
-//var sound = new Howl({
-//  src: ['sons/bruit de dés.mp3'],
-//  volume: 0.5,
-//});
+let sound = new Howl({
+  src: ['sons/pourde.mp3'],
+  volume: 0.5,
+});
+
+
+
+function playSound(){
+  sound.play();
+  setTimeout(function() {
+    sound.stop();
+  }, 1000);
+}
 //
-//
-//
-//function playSound(){
-//  sound.play();
-//  setTimeout(function() {
-//    sound.stop();
-//  }, 1000);
-//}
-//
-///*********************************SON QUAND ON RECOLTE LES DE********************* */
-//var recupSound = new Howl ({
-//  src : [ "sons/swing-whoosh-110410.mp3"],
-//  loop : false,
-//  autoplay : false,
-//  volume : 0.3
-//
-//});
-//
-//function playRecupSound(){
-//  recupSound.play();
-//  setTimeout(function() {
-//    recupSound.stop();
-//  }, 1000);
-//}
+//*********************************SON QUAND ON RECOLTE LES DE********************* */
+let recupSound = new Howl ({
+  src : [ "sons/recoltede.mp3"],
+  loop : false,
+  autoplay : false,
+  volume : 0.3
+
+});
+
+function playRecupSound(){
+  recupSound.play();
+  setTimeout(function() {
+    recupSound.stop();
+  }, 1000);
+}
 
 /****************************************SUPPRIMES LES IMAGES A CHAQUE LANCER **********/
 function removeIn(){
@@ -328,10 +328,15 @@ function removeIn(){
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
   //message pour prevenir que le tour change, mais ca ne marche pas pour petits ecran alors désactiver
-  //myImages.innerHTML = 'tu as fais 1, tu passes ton tour';
-  //myImages.style.fontSize = '50px';
-  //myImages.style.fontStyle = 'bold';
-  //myImages.style.color = 'reds';
+  myImages.innerHTML = 'tu as fais 1, tu passes ton tour';
+  myImages.style.fontSize = '15px';
+  /*myImages.style.background = '#a7c957';*/
+  myImages.style.fontStyle = 'bold';
+  myImages.style.color = 'red';
+  myImages.style.marginTop = '150%'; paddingRight = '10%';
+  myImages.style.borderRadius = '15%';
+  myImages.style.textAlign = 'center';
+  
     console.log(myImage1);
   break;
   
