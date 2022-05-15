@@ -218,7 +218,7 @@ recup2.onclick = function (){
  
 let modalWin = document.getElementsByClassName('modal-dialog')
 function winer(){ 
-  if(resultGlobal1 > 100 || resultGlobal2 >100){
+  if(resultGlobal1 >= 100 || resultGlobal2 >= 100){
     alert('ton score est de 100 tu as gagné bravo !')
   }
     else{ 
