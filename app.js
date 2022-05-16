@@ -44,7 +44,7 @@ regles.onclick = function (){
  " Le premier joueur qui obtient 100 a gagné !"
  joueurActif.style.textTransform = 'lowercase';
  joueurActif.style.fontSize = '18px';
- joueurActif.style.padding = '15%';
+ 
 };
 
 
