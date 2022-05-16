@@ -216,8 +216,6 @@ recup2.onclick = function (){
 
 
 //*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR OU = A 100 ALORS IL GAGNE******/   
- 
-let modalWin = document.getElementsByClassName('modal-dialog')
 function winer(){ 
   if(resultGlobal1 >= 100 || resultGlobal2 >= 100){
     alert('ton score est de 100 tu as gagné bravo !')
@@ -244,12 +242,14 @@ function removeIn(){
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
   //message pour prevenir que le tour change, mais ca ne marche pas pour petits ecran alors désactiver
   myImages.innerHTML = 'tu as fais 1, tu passes ton tour';
-  myImages.style.fontSize = '15px';
+  myImages.style.fontSize = '25px';
   /*myImages.style.background = '#a7c957';*/
   myImages.style.fontStyle = 'bold';
-  myImages.style.marginTop = '150%'; paddingRight = '10%';
+  myImages.style.marginTop = '100%'; paddingRight = '10%';
   myImages.style.borderRadius = '15%';
   myImages.style.textAlign = 'center';
+  
+  
       console.log(myImage1);
   break;
   

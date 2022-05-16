@@ -1,6 +1,14 @@
+*{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    font-style: bold;
+    font-variant: small-caps;
+    text-transform: none; 
+}
+
 html{
     overflow: hidden;
-    font-family: 'Arial Black', Gadget, sans-serif;
     font-size: 20px;
     letter-spacing: 0px;
     color: #000000;
@@ -9,10 +17,11 @@ html{
     font-style: bold;
     font-variant: small-caps;
     text-transform: none; 
+    
 }
 
 #backround{
-    background-image: url(https://cdn.pixabay.com/photo/2018/02/18/20/29/computer-3163436_1280.png);
+    background-image: url(https://cdn.pixabay.com/photo/2022/03/21/13/44/background-7083244__480.png);
     background-position: center;
     background-color: #a7c957;
     z-index: 0;
@@ -37,7 +46,7 @@ html{
     justify-items: end;
     margin-top: 10%;
     background-color: white;
-    color: white;   
+    color: black;   
 }
 
 #newgame
@@ -59,7 +68,7 @@ a #modal{
 .player1{
     grid-column-end: 3;
     grid-row-start: 2;
-    color: #0d0a0b;
+    color: black;
     font-weight: bold;
     text-align: center;
     font-size: 30px;
@@ -70,7 +79,7 @@ a #modal{
     grid-column-start: 4;
     grid-row-start: 2;
     grid-gap: 10px;
-    color: #0d0a0b;
+    color: black;
     font-weight: bold;
     text-align: center;
     font-size: 30px;
@@ -99,7 +108,7 @@ ul img {
     transition-duration: 15s, 10s;
     display: flex;
     justify-content: start;
-    padding: 0;
+    padding:auto;
     margin-top: 200%;
     }
 
@@ -114,10 +123,12 @@ ul img {
     
 /*bouton roll1*/
 #roll1{ 
-    background-color: #3f7d20;
+    background-color: #dde5b6;
     border-radius: 10%;
     margin-top: 2%;
-    margin-bottom: 10%;   
+    margin-bottom: 10%; 
+    color: black;  
+    text-shadow:#000000;
 }
 
 .roll1{
@@ -126,10 +137,11 @@ ul img {
 }
 /*bouton roll2*/
 #roll2{
-    background-color: #3f7d20;
+    background-color: #dde5b6;
     border-radius: 10%;
     margin-top: 2%;
     color: black;
+    text-shadow:#000000;
 }
 
 .roll2{
@@ -141,13 +153,13 @@ ul img {
 #hold1{
     
     Background-color: black;
-    color: #3f7d20;
+    color: #ffcdb2;
 }
 
 #hold2{
     
     Background-color: black;
-    color: #3f7d20;
+    color: #ffcdb2;
 }
 
 .hold1{
@@ -170,20 +182,22 @@ ul img {
     grid-column-start: 2;
     grid-row: 5;
     align-items: end;
-    color: #0d0a0b;
+    color: black;
+    text-shadow:#000000;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 30%;  
 }
 
 #message1{
-    font-size: 20px;
+    font-size: 25px;
 }
 #round2{
     grid-column-start: 4;
     grid-row: 5;
     align-items: end;
-    color: #0d0a0b;
+    color: black;
+    text-shadow:#000000;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10%;
@@ -191,7 +205,7 @@ ul img {
 } 
 
 #message2{
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .score-global1{
@@ -203,11 +217,11 @@ ul img {
 }
 
 #messageglobal2{
-    font-size: 20px;
+    font-size: 25px;
 }
 
 #messageglobal1{
-    font-size: 20px;
+    font-size: 25px;
 }
 .score-global2{
     font-size: 20px;
@@ -237,13 +251,12 @@ audio{
     width: 20vh;
 }
 #joueur2{
-    box-shadow: 0 0 10px #3f7d20;
+    
     border-radius: 9%;
     padding-right: 1%;
     
 }
 #joueur1{
-    box-shadow: 5 10 35px black;
     border-radius: 9%;
 }
 
@@ -282,15 +295,15 @@ audio{
           opacity: 1;
      }
       .modal-content {
-         /*margin: 3%;*/
          padding-top: 8%;
          padding-bottom: 30%;
          padding-left: 0%;
          padding-right: 0%;
          width: 500px;
-         border: #3f7d20 solid 5px;
-         background: linear-gradient(15deg, #0d0a0b, #3f7d20);
-         color: white;
+         border: #6c584c solid 5px;
+         background: linear-gradient(15deg, #b5838d, #dde5b6);
+         color: black;
+         
         
      }
          
@@ -300,7 +313,7 @@ audio{
         margin-left: 50%;
         top: 70%;
         text-decoration: none;
-        color: white;
+        color: black;
         font-size: 35px;
        
       }
@@ -311,13 +324,12 @@ audio{
           font-size: 15px;
           font-style: bold;
           color: #000000;
-          background-color: #a7c957;
           padding: 0;
           margin: 0;
       }
 
     @media screen and (max-width: 500px) {
-        ul img { animation: none;width: 50px ; padding-right: 20%};
+        ul img { animation: none;width: 50px ; /*padding-right: 20%*/};
         *{ font-size: 15px; };
         #joueur1{ width: 50%; margin-top: 50%};
         #joueur2{ width: 50%; margin-top: 50%};
