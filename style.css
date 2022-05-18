@@ -12,7 +12,7 @@ html{
     font-size: 20px;
     letter-spacing: 0px;
     color: #000000;
-    /*font-weight: 700;*/
+
     text-decoration: none;
     font-style: bold;
     font-variant: small-caps;
@@ -21,8 +21,8 @@ html{
 }
 
 #backround{
-    background-image: url(https://cdn.pixabay.com/photo/2022/03/21/13/44/background-7083244__480.png);
-    background-position: center;
+    background-image: url(https://media.istockphoto.com/photos/wide-green-screen-web-stream-background-picture-id178727840?k=20&m=178727840&s=612x612&w=0&h=kjYiBPqUGV0uJtWmPJbe-V2O5v53YzNnvFlN1ccCd4w=);
+    background-size: cover;
     background-color: #a7c957;
     z-index: 0;
 }
@@ -46,7 +46,7 @@ html{
     justify-items: end;
     margin-top: 10%;
     background-color: white;
-    color: black;   
+       
 }
 
 #newgame
@@ -57,35 +57,13 @@ html{
 :link
 {
     text-decoration: none;
-    color: white;
+    
     
 }
 
 a #modal{
     color: white;
 }
-
-.player1{
-    grid-column-end: 3;
-    grid-row-start: 2;
-    color: black;
-    font-weight: bold;
-    text-align: center;
-    font-size: 30px;
-    margin-top: 5%;   
-}
-
-.player2{
-    grid-column-start: 4;
-    grid-row-start: 2;
-    grid-gap: 10px;
-    color: black;
-    font-weight: bold;
-    text-align: center;
-    font-size: 30px;
-    margin-top: 5%;    
-}
-
 #body{
     grid-column-start:2;
     grid-column: 3;
@@ -97,9 +75,55 @@ a #modal{
     justify-self: left;
 }
 
+.player1{
+    grid-column-end: 3;
+    grid-row-start: 2;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 5%;  
+    position: relative; 
+    z-index: 1;
+}
+
+.player2{
+    grid-column-start: 4;
+    grid-row-start: 2;
+    grid-gap: 10px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 5%;   
+}
+
+
+/*image joueur1*/
+#joueur1{
+    border-radius: 9%;  
+}
+
+/*image joueur2*/
+#joueur2{
+    border-radius: 9%;
+    padding-right: 1%;
+    
+    
+}
+
+/*anim joueur actif*/
+.clignote{
+        color: yellow;
+        animation: clignote 1s linear 1s 5s;
+}
+      @keyframes clignote {  
+        50% { opacity: 0; }
+        
+      }
+      
 
 ul img {
-    
     list-style: none;
     grid-column-end: 2;
     grid-row-start: 2;
@@ -123,11 +147,11 @@ ul img {
     
 /*bouton roll1*/
 #roll1{ 
-    background-color: #dde5b6;
+    background-color: #800e13;
     border-radius: 10%;
     margin-top: 2%;
     margin-bottom: 10%; 
-    color: black;  
+    color: white;  
     text-shadow:#000000;
 }
 
@@ -137,10 +161,10 @@ ul img {
 }
 /*bouton roll2*/
 #roll2{
-    background-color: #dde5b6;
+    background-color: #800e13;
     border-radius: 10%;
     margin-top: 2%;
-    color: black;
+    color: white;
     text-shadow:#000000;
 }
 
@@ -153,13 +177,13 @@ ul img {
 #hold1{
     
     Background-color: black;
-    color: #ffcdb2;
+    color: white;
 }
 
 #hold2{
     
     Background-color: black;
-    color: #ffcdb2;
+    color: white;
 }
 
 .hold1{
@@ -250,19 +274,18 @@ audio{
     height: 10vh;
     width: 20vh;
 }
-#joueur2{
-    
-    border-radius: 9%;
-    padding-right: 1%;
-    
+/*bouton joueur1 actif
+.circle1{
+    visibility: hidden;
+    opacity: 0;
 }
-#joueur1{
-    border-radius: 9%;
-}
+/*bouton joueur1 actif
+.circle2{
+    visibility: hidden;
+    opacity: 0;
+}*/
 
-
-/*modal pour le joueur actif*/
-
+/*modal pour joueuractif*/
 .modal a {
         text-decoration: none;
         padding: 5%;
@@ -271,42 +294,35 @@ audio{
         color: black;
       }
       
-      /**/
  .modal-dialog {
         grid-column: 3;
         grid-row: 2;
         /*cacher la fenetre modale*/
         visibility: hidden;
         opacity: 0;
-        /*position absolute*/
         position: absolute;
         z-index: 9999;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 10%;
         
-
-      }
+          }
       
       /*afficher la fenetre modale au clique*/
      .modal-dialog:target {
           visibility: visible;
           opacity: 1;
      }
+
       .modal-content {
-         padding-top: 8%;
+         padding-top: 5%;
          padding-bottom: 30%;
-         padding-left: 0%;
-         padding-right: 0%;
          width: 500px;
-         border: #6c584c solid 5px;
-         background: linear-gradient(15deg, #b5838d, #dde5b6);
+         font-size: 25px;
+         border: #55a630 solid 5px;
+         background: linear-gradient(15deg, #bfd200, #dde5b6);
          color: black;
-         
-        
      }
-         
                  
      .modal-close {
         position: absolute;
@@ -315,7 +331,6 @@ audio{
         text-decoration: none;
         color: black;
         font-size: 35px;
-       
       }
 
       #regles{
@@ -340,9 +355,5 @@ audio{
         #round2{font-size: 12px;};*/
         .header{margin-top: 0;}
         #newgame{font-size: 10px;}
-        
-        
-        
-        
         
         }

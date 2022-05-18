@@ -44,7 +44,9 @@
   </div>
         
             <div class="header">
-               <button type="button"  class="btn new-game" id="newgame"> 
+               <button type="button"  class="btn new-game" id="newgame"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dice-5-fill" viewBox="0 0 16 16">
+                <path d="M3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3zm2.5 4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm8 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM12 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM8 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+              </svg>
                 <a href="#modal">NOUVELLE PARTIE</a>
                    
                </button>
@@ -52,10 +54,16 @@
 
             <div class="player1" id="player1">
                 <p>JOUEUR</p>
-                <img height="120" src="https://svgsilh.com/svg/1920549.svg" id="joueur2" alt="JOUEUR 1">
+                <img height="120" src="https://svgsilh.com/svg/1920549.svg" id="joueur2" alt="JOUEUR 1"><br>
+                <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill circle1 " viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8"/>
+                  </svg>-->
             </div>
             <div class="roll1">
-                <button type="button" class="btn-sm roll1" id="roll1"> 
+                <button type="button" class="btn-sm roll1 " id="roll1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                  </svg>
                     LANCER
                 </button>
             </div>
@@ -63,20 +71,29 @@
                 <P class="text-center" id="messageglobal1">0</P>
             </div>
             <div class="hold1">
-                <button type="button" class="btn-sm hold" id="hold1"> 
+                <button type="button" class="btn-sm hold" id="hold1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
+                    <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                  </svg> 
                     RECOLTER
                 </button></div>
                 <div class="round" id="round1"> LANCER
                     <p class="text-center" id="message1">0</p>
                </div>
             
-            <div></div><div class="player2" id="player2"> 
+            <div class="player2" id="player2">
                 <p>JOUEUR</p>
                 <img height="120" src="https://svgsilh.com/svg/1920550.svg" id="joueur2" alt="JOUEUR 2">
+                <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill circle2" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8"/>
+                  </svg>-->
             </div>
 
             <DIV class="roll2" >
-                <button type="button"  class="btn-sm roll2" id="roll2" >
+                <button type="button"  class="btn-sm roll2 " id="roll2" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                  </svg>
                        LANCER
                 </button>
             </DIV>
@@ -84,7 +101,10 @@
                 <P class="text-center" id="messageglobal2">0</P>
             </div>
             <div class="hold2">
-                <button type="button" class="btn-sm hold" id="hold2">
+                <button type="button" class="btn-sm hold " id="hold2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
+                    <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                  </svg>
                   RECOLTER
                 </button></div>
                         
