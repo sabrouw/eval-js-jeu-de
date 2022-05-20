@@ -134,6 +134,7 @@ ul img {
     justify-content: start;
     padding:auto;
     margin-top: 200%;
+    
     }
 
     @keyframes myAnim {
@@ -141,7 +142,7 @@ ul img {
                 transform: translateX(-50px) rotate(0);       
         }
             to {
-                transform: translateX(110px) rotate(1turn);     
+                transform: translateX(200px) rotate(1turn);     
             } 
         }
     

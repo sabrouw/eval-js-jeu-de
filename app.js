@@ -49,6 +49,14 @@ regles.onclick = function (){
 };
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  lancer2.disabled = true;
+    recup2.disabled = true;
+    lancer1.disabled = true;
+    recup1.disabled = true;
+    alert('cliques sur start pour commencer la partie !')
+});
+
 /*********************************BUTTON NEW GAME RESET JOUEUR ALEATOIRE**********************************/
 newGame.onclick = function resultats(){
   //definit aleatoirement le joueur actif
@@ -104,7 +112,11 @@ switch (activePlayer){
   case 'player1':
     lancer1.style.background = 'yellow';
     lancer2.style.background = '';
-    lancer1.style.color = 'black'
+    lancer1.style.color = 'black';
+    lancer2.disabled = true;
+    recup2.disabled = true;
+    lancer1.disabled = false;
+    recup1.disabled = false;
     
         console.log(`function switchPlayer : ${activePlayer}`);
         break;
@@ -112,6 +124,10 @@ switch (activePlayer){
       lancer2.style.background = 'yellow';
       lancer1.style.background = '';
       lancer2.style.color = 'black';
+      lancer1.disabled = true;
+      recup1.disabled = true;
+      lancer2.disabled = false;
+      recup2.disabled = false;
       
       console.log(`function switchPlayer : ${activePlayer}`);
       break;
@@ -123,6 +139,10 @@ function styleActivePlayer(){
       lancer1.style.background = 'yellow';
       lancer2.style.background = '';
       lancer1.style.color = 'black'
+      lancer2.disabled = true;
+      recup2.disabled = true;
+      lancer1.disabled = false;
+      recup1.disabled = false;
       
           console.log(`function switchPlayer : ${activePlayer}`);
           break;
@@ -130,6 +150,10 @@ function styleActivePlayer(){
         lancer2.style.background = 'yellow';
         lancer1.style.background = '';
         lancer2.style.color = 'black';
+        lancer1.disabled = true;
+        recup1.disabled = true;
+        lancer2.disabled = false;
+        recup2.disabled = false;
         
         console.log(`function switchPlayer : ${activePlayer}`);
         break;
@@ -297,9 +321,11 @@ function removeIn(){
   //message pour prevenir que le tour change, mais ca ne marche pas pour petits ecran alors désactiver
   myImages.innerHTML = 'tu as fais 1, tu passes ton tour';
   myImages.style.fontSize = '25px';
+  myImages.style.color = 'red';
   /*myImages.style.background = '#a7c957';*/
   myImages.style.fontStyle = 'bold';
-  myImages.style.marginTop = '100%'; paddingRight = '10%';
+  myImages.style.marginTop = '70%'; 
+  myImages.style.paddingLeft = '100px';
   myImages.style.borderRadius = '15%';
   myImages.style.textAlign = 'center';
   
