@@ -15,7 +15,7 @@ const lancer1 = document.getElementById('roll1');
 const lancer2 = document.getElementById('roll2');
 const recup1 = document.getElementById('hold1');
 const recup2 = document.getElementById('hold2');
-let global1;;
+let global1;
 let global2;
 let round1;
 let round2;
@@ -30,28 +30,30 @@ const newGame = document.getElementById('newgame');
 let round = 0;
 let randomNumber;
 const modal = document.getElementById('modal');
-let regles = document.getElementById('regles');
+const regles = document.getElementById('regles');
 
 /****************************************REGLES DU JEU MODAL*************************** */
 regles.onclick = function (){
   joueurActif.innerHTML = 
-  "Bienvenue sur le benjigum, jeu de dé qui va faire défiler le temps pour toi. " +
-  "Voici les règles: " +
-  "Ce jeu de dé est pour 2 joueurs " +
-  "Le dé du joueur qui donnera 1 fera perdre tous ses points à ce joueur et ce joueur donnera ce point et laissera la main à son adversaire " +
-  "Pour ne pas perdre ses points le joueur peut récolter ses points " +
-  "Le joueur actif peut lancer le dé autant de fois qu'il le souhaite. " +
- " Le premier joueur qui obtient 100 a gagné !"
+  `LES REGLES DU JEU
+    Bienvenue sur le benjigum, jeu de dé qui va faire défiler le temps pour toi.
+    Voici les règles: 
+    Ce jeu de dé est pour 2 joueurs 
+    Le dé du joueur qui donnera 1 fera perdre tous ses points à ce joueur et ce joueur donnera ce point et laissera la main à son adversaire 
+    Pour ne pas perdre ses points le joueur peut récolter ses points 
+    Le joueur actif peut lancer le dé autant de fois qu'il le souhaite.
+    Le premier joueur qui obtient 100 a gagné !`
  joueurActif.style.textTransform = 'lowercase';
  joueurActif.style.fontSize = '18px';
- 
+ joueurActif.style.margin = '100px';
 };
 
 
 /*********************************BUTTON NEW GAME RESET JOUEUR ALEATOIRE**********************************/
 newGame.onclick = function resultats(){
   //definit aleatoirement le joueur actif
-  getRandomIntLancer();
+  getRandomIntStart();
+  styleActivePlayer()
   //supprime les images de dé
   removeIn();
   // mise a 0 des scores
@@ -59,6 +61,10 @@ newGame.onclick = function resultats(){
   round2 = 0;
   global1 = 0;
   global2 = 0;
+  resultRound1 = 0;
+  resultRound2 = 0;
+  resultGlobal1 = 0;
+  resultGlobal2 = 0;
   message1.innerHTML = '0';
   message2.innerHTML = '0';
   messageglobal1.innerHTML = '0';
@@ -72,18 +78,61 @@ newGame.onclick = function resultats(){
 function getRandomIntLancer() {
   if (round === 0) {
             round =  Math.floor(Math.random() * 2) + 1;
-            return activePlayer = `player${round}`;
-      
-  }};
+ 
+  return activePlayer = `player${round}`;}}
+            
 
+  function getRandomIntStart() {
+    round =  Math.floor(Math.random() * 2) + 1;
+    console.log(`function getRandomInt la valeur de tour est ${round}`)
+    return activePlayer = `player${round}`;
+    
+};
   
 /*********************************FUNCTION ACTIVE PLAYER*******************************/
+
 function switchPlayer(){
-  if (activePlayer === 'player1') {
-            console.log(`function switchPlayer : ${activePlayer}`);
-  } else {
-      activePlayer === 'player2';
-            console.log('mon active player est : ' + activePlayer);
+ if (activePlayer === 'player1'){
+   activePlayer = 'player2';
+   
+ }
+  else {
+    activePlayer = 'player1';
+  };
+
+switch (activePlayer){
+  case 'player1':
+    lancer1.style.background = 'yellow';
+    lancer2.style.background = '';
+    lancer1.style.color = 'black'
+    
+        console.log(`function switchPlayer : ${activePlayer}`);
+        break;
+  case 'player2':
+      lancer2.style.background = 'yellow';
+      lancer1.style.background = '';
+      lancer2.style.color = 'black';
+      
+      console.log(`function switchPlayer : ${activePlayer}`);
+      break;
+}};
+
+function styleActivePlayer(){
+  switch (activePlayer){
+    case 'player1':
+      lancer1.style.background = 'yellow';
+      lancer2.style.background = '';
+      lancer1.style.color = 'black'
+      
+          console.log(`function switchPlayer : ${activePlayer}`);
+          break;
+    case 'player2':
+        lancer2.style.background = 'yellow';
+        lancer1.style.background = '';
+        lancer2.style.color = 'black';
+        
+        console.log(`function switchPlayer : ${activePlayer}`);
+        break;
   }};
 
   
@@ -139,6 +188,7 @@ function diceOne(){
           message1.textContent = resultRound1;
           resultRound2 = 0;
           message2.textContent = resultRound2;
+          styleActivePlayer()
                     
       } else {
           activePlayer = 'player1';
@@ -147,6 +197,7 @@ function diceOne(){
           message2.textContent = resultRound2;
           resultRound1 = 0;
           message1.textContent = resultRound1;
+          styleActivePlayer();
            
       }
   }
@@ -155,6 +206,7 @@ function diceOne(){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE1*****************
 lancer1.onclick = function resultats(){
+  getRandomIntLancer()
   //nombre aléatoire
   randomize();
   console.log('nombre aleatoire' + randomNumber);
@@ -171,12 +223,13 @@ lancer1.onclick = function resultats(){
 recup1.onclick = function (){
 //formule pour ajouter le resultRound1 au global1 à revoir
       totalGlobal();
+      switchPlayer();
+        console.log('mon activeplayer est : '+ activePlayer);
       console.log('resultGlobal1 à ce niveau: ' + resultGlobal1);
       removeIn();  
       //la valeur de global 1 est maintenant resultGlobal1
       messageglobal1.innerHTML = resultGlobal1;
       message1.innerHTML = '0';
-      activePlayer = 'player2';
       //vidange du tableau round1 de ses valeurs
       round1 = 0;
       console.log('valeur de round1 apres reset : ' + round1);
@@ -185,6 +238,7 @@ recup1.onclick = function (){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
+  getRandomIntLancer()
   //nombre aléatoire
   randomize();
   //dé en image
@@ -193,20 +247,21 @@ lancer2.onclick = function resultats(){
   diceOne();
   //addition de tous mes round2
   totalRound();
-  console.log('ajout des valeur dans round2:'+ round2);}
+  }
        
         
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON HOLD1*****************   
 recup2.onclick = function (){
   //formule pour ajouter le resultRound2 au global2 à revoir
-      totalGlobal();
-      console.log('totalglobal2'+ totalGlobal)
+    totalGlobal();
+    switchPlayer()
+              console.log('mon activeplayer est : '+ activePlayer);
+      console.log('resultGloba2  = '+ resultGlobal2)
       removeIn(); 
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
       message2.innerHTML = '0';
-      activePlayer = 'player1';
       //vidange du tableau round2 de ses valeurs
       round2 = 0;
       console.log('valeur de round2 apres reset : ' + round2) ;
@@ -215,8 +270,6 @@ recup2.onclick = function (){
 
 
 //*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR OU = A 100 ALORS IL GAGNE******/   
- 
-let modalWin = document.getElementsByClassName('modal-dialog')
 function winer(){ 
   if(resultGlobal1 >= 100 || resultGlobal2 >= 100){
     alert('ton score est de 100 tu as gagné bravo !')
@@ -241,7 +294,17 @@ function removeIn(){
   let myImage1 = document.createElement('img');
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
-        console.log(myImage1);
+  //message pour prevenir que le tour change, mais ca ne marche pas pour petits ecran alors désactiver
+  myImages.innerHTML = 'tu as fais 1, tu passes ton tour';
+  myImages.style.fontSize = '25px';
+  /*myImages.style.background = '#a7c957';*/
+  myImages.style.fontStyle = 'bold';
+  myImages.style.marginTop = '100%'; paddingRight = '10%';
+  myImages.style.borderRadius = '15%';
+  myImages.style.textAlign = 'center';
+  
+  
+      console.log(myImage1);
   break;
   
   case 2: 
@@ -284,3 +347,6 @@ function removeIn(){
       break;
       
 };};
+
+   
+

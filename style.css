@@ -344,16 +344,15 @@ audio{
       }
 
     @media screen and (max-width: 500px) {
-        ul img { animation: none;width: 50px ; /*padding-right: 20%*/};
-        *{ font-size: 15px; };
+        ul img { animation: none;width: 50px ; padding-right: 20PX};
+        *{ font-size: 7px; };
         #joueur1{ width: 50%; margin-top: 50%};
         #joueur2{ width: 50%; margin-top: 50%};
         .modal-dialog{ padding-top: 3% ;};
         .modal-content{font-size: 7PX; margin: 0; padding: 0;}
         .modal-close{font-size: 15PX;}
-        /*#round1{font-size: 12px;};
-        #round2{font-size: 12px;};*/
         .header{margin-top: 0;}
-        #newgame{font-size: 10px;}
+        #newgame{font-size: 7px; width: 130px; }
+        button{ height: 60PX;  width: 115px; }
         
         }
