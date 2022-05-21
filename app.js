@@ -31,6 +31,7 @@ let round = 0;
 let randomNumber;
 const modal = document.getElementById('modal');
 const regles = document.getElementById('regles');
+const messagede1 = document.getElementById('messagede1')
 
 /****************************************REGLES DU JEU MODAL*************************** */
 regles.onclick = function (){
@@ -45,7 +46,8 @@ regles.onclick = function (){
     Le premier joueur qui obtient 100 a gagné !`
  joueurActif.style.textTransform = 'lowercase';
  joueurActif.style.fontSize = '18px';
- joueurActif.style.margin = '100px';
+ joueurActif.style.margin = '50px';
+ 
 };
 
 
@@ -319,13 +321,13 @@ function removeIn(){
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
   //message pour prevenir que le tour change, mais ca ne marche pas pour petits ecran alors désactiver
-  myImages.innerHTML = 'tu as fais 1, tu passes ton tour';
+  myImages.innerHTML = 'ton dé fait 1, tu passes ton tour';
   myImages.style.fontSize = '25px';
   myImages.style.color = 'red';
   /*myImages.style.background = '#a7c957';*/
   myImages.style.fontStyle = 'bold';
   myImages.style.marginTop = '70%'; 
-  myImages.style.paddingLeft = '100px';
+  myImages.style.margingRight = '80px';
   myImages.style.borderRadius = '15%';
   myImages.style.textAlign = 'center';
   
