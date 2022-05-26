@@ -31,7 +31,8 @@ let round = 0;
 let randomNumber;
 const modal = document.getElementById('modal');
 const regles = document.getElementById('regles');
-const messagede1 = document.getElementById('messagede1')
+const de1 = document.getElementById('de1');
+
 
 /****************************************REGLES DU JEU MODAL*************************** */
 regles.onclick = function (){
@@ -56,14 +57,14 @@ document.addEventListener('DOMContentLoaded', function() {
     recup2.disabled = true;
     lancer1.disabled = true;
     recup1.disabled = true;
-    alert('cliques sur start pour commencer la partie !')
+    alert('cliques sur start pour commencer la partie !');
 });
 
 /*********************************BUTTON NEW GAME RESET JOUEUR ALEATOIRE**********************************/
 newGame.onclick = function resultats(){
   //definit aleatoirement le joueur actif
   getRandomIntStart();
-  styleActivePlayer()
+  styleActivePlayer();
   //supprime les images de dé
   removeIn();
   // mise a 0 des scores
@@ -167,6 +168,7 @@ function randomize(){
   randomNumber = Math.floor(Math.random() * 6 ) + 1;
   console.warn('valeur du dé' + randomNumber);
   removeIn();
+  de1.innerHTML = '';
     return randomNumber;
     };
       
@@ -214,7 +216,8 @@ function diceOne(){
           message1.textContent = resultRound1;
           resultRound2 = 0;
           message2.textContent = resultRound2;
-          styleActivePlayer()
+          styleActivePlayer();
+          switchPlayer();
                     
       } else {
           activePlayer = 'player1';
@@ -224,6 +227,7 @@ function diceOne(){
           resultRound1 = 0;
           message1.textContent = resultRound1;
           styleActivePlayer();
+          switchPlayer();
            
       }
   }
@@ -242,6 +246,7 @@ lancer1.onclick = function resultats(){
   diceOne();
   //addition de tous mes round1 a chaque lancer
   totalRound();
+
 };
 
 
@@ -264,7 +269,7 @@ recup1.onclick = function (){
 
 //****************************APPEL DE MES FONCTIONS POUR BOUTON ROLLDICE2*****************
 lancer2.onclick = function resultats(){
-  getRandomIntLancer()
+  getRandomIntLancer();
   //nombre aléatoire
   randomize();
   //dé en image
@@ -281,9 +286,9 @@ lancer2.onclick = function resultats(){
 recup2.onclick = function (){
   //formule pour ajouter le resultRound2 au global2 à revoir
     totalGlobal();
-    switchPlayer()
+    switchPlayer();
               console.log('mon activeplayer est : '+ activePlayer);
-      console.log('resultGloba2  = '+ resultGlobal2)
+      console.log('resultGloba2  = '+ resultGlobal2);
       removeIn(); 
       //la valeur de global2 est maintenant resultGlobal2
       messageglobal2.innerHTML = resultGlobal2;
@@ -298,7 +303,7 @@ recup2.onclick = function (){
 //*********************SI UN DES JOUEURS A UN GLOBAL SUPERIEUR OU = A 100 ALORS IL GAGNE******/   
 function winer(){ 
   if(resultGlobal1 >= 100 || resultGlobal2 >= 100){
-    alert('ton score est de 100 tu as gagné bravo !')
+    alert('ton score est de 100 tu as gagné bravo !');
   }
     else{ 
       console.log('on continue');
@@ -320,16 +325,19 @@ function removeIn(){
   let myImage1 = document.createElement('img');
   myImage1.src = 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312625_1280.png';
   document.getElementById('myImages').appendChild(myImage1).style.width = '100px';
+  document.getElementById('messagede1').appendChild(de1);
   //message pour prevenir que le tour change, mais ca ne marche pas pour petits ecran alors désactiver
-  myImages.innerHTML = 'ton dé fait 1, tu passes ton tour';
-  myImages.style.fontSize = '25px';
-  myImages.style.color = 'red';
+  de1.innerHTML = 'ton dé fait 1, tu passes ton tour';
+  de1.style.fontSize = '25px';
+  de1.style.color = 'red';
   /*myImages.style.background = '#a7c957';*/
-  myImages.style.fontStyle = 'bold';
-  myImages.style.marginTop = '70%'; 
-  myImages.style.margingRight = '80px';
-  myImages.style.borderRadius = '15%';
-  myImages.style.textAlign = 'center';
+  de1.style.fontStyle = 'bold';
+  de1.style.marginTop = '50%'; 
+  de1.style.margingRight = '80px';
+  de1.style.borderRadius = '15%';
+  de1.style.textAlign = 'center';
+  switchPlayer();
+  
   
   
       console.log(myImage1);
